@@ -1,0 +1,38 @@
+
+body { 
+
+}
+
+.navbar {
+	margin-bottom: 5px;
+}
+
+.head3 {
+	text-align: center;
+}
+
+.col-6{
+	background-color: #dbdbdb; 
+	border-radius: 10px;
+	text-align: center;
+}
+
+.container {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.head3 {
+	text-align: center;
+}
+
+.navbar {
+	
+}
+
+
+.footer {
+	padding: 1rem;
+	width: 100%;
+	text-align: center;
+}

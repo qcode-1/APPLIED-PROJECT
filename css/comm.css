@@ -1,0 +1,28 @@
+
+body { 
+
+	/*background-color: #333A41;*/
+	background-color: #E8ECEF;
+
+}
+
+.head3 {
+	text-align: center;
+}
+
+.col-6{
+	background-color: #dbdbdb; 
+	border-radius: 10px;
+	text-align: center;
+}
+
+.container {
+	/*padding-top: 15px;*/
+}
+
+
+.footer {
+	padding: 1rem;
+	width: 100%;
+	text-align: center;
+}

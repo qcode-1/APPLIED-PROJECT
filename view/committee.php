@@ -47,6 +47,9 @@
 					<a class="nav-link" href="#">Committees</a>
 				</li>
 				<li class="nav-item">
+					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" href="#">Parliament</a>
 				</li>
 				<li class="nav-item">

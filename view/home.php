@@ -53,6 +53,9 @@
 					<a class="nav-link" href="committee.php">Committees</a>
 				</li>
 				<li class="nav-item">
+					<a class="nav-link" href="committee.php">Track Manifesto</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" href="#">Parliament</a>
 				</li>
 				<li class="nav-item">
@@ -73,7 +76,15 @@
 		<span class="navbar-text">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="../index.php">Logout</a>
+					<a class="nav-link" href="../index.php?logout">Logout</a>
+
+					<?php
+
+					if (isset($_GET['logout'])) {
+						session_start();
+						session_destroy();
+					}
+					?>
 				</li>
 			</ul>
 		</span>

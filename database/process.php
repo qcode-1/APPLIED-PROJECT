@@ -3,6 +3,8 @@
 
 require_once('dbConnection.php');
 
+date_default_timezone_set('UTC');
+
 
 function test_input($dat) {
 	$data = trim($dat);
@@ -96,28 +98,7 @@ function registerStudent() {
 			}
 			else {
 				$message = "Username and/or Password incorrect.\\nTry again.";
-
-				// $message = "
-				// <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
-				// <div class=\"modal-dialog\" role=\"document\">
-				// <div class=\"modal-content\">
-				// <div class=\"modal-header\">
-				// <h5 class=\"modal-title\" id=\"exampleModalLabel\">Login Unsuccessful</h5>
-				// <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">
-				// <span aria-hidden=\"true\">&times;</span>
-				// </button>
-				// </div>
-				// <div class=\"modal-body\">
-				// Email or password may be wrong. Try again!
-				// </div>
-				// <div class=\"modal-footer\">
-				// <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>
-				// </div>
-				// </div>
-				// </div>
-				// </div>";
 				echo "<script type='text/javascript'>alert('$message');</script>";
-				// echo $message;
 			}
 		}
 
@@ -129,7 +110,52 @@ function registerStudent() {
 	}
 
 
+	function logout() {
+		session_start();
+		session_destroy();
+		if (session_destroy()) {
+			header("Location: ../index.php");
+		}
+
+	}
 
 
+	function insertComment() {
+
+		if (isset($_POST['anonCheck'])) {
+			$username = "Anon";
+		}
+		else {
+			$username = $_POST['user'];
+		}
+		$datetime = $_POST['datetime'];
+		$comment = $_POST['commnt'];
+
+		$dbconn = new datbconnection();
+		$query = "INSERT INTO usercomment (user, comment_datetime, comment) VALUES ('$username', '$datetime', '$comment')";
+		$addC = $dbconn->query($query);
+
+		if ($addC) {
+			echo "<script type='text/javascript'> alert(\"COMMENT ADDED\");  </script>";
+		}
+
+		else {
+			echo "<script type='text/javascript'> alert(\"COULDNOT BE ADDED\");  </script>";
+		}		
+
+	}
+
+
+
+	function displayCcomments() {
+
+
+		$dbconn = new datbconnection();
+		$query = "SELECT user, comment_datetime and comment FROM usercomment";
+		$addC = $dbconn->query($query);
+
+	}
 
 	?>
+
+

@@ -136,23 +136,41 @@ function registerStudent() {
 		$addC = $dbconn->query($query);
 
 		if ($addC) {
-			echo "<script type='text/javascript'> alert(\"COMMENT ADDED\");  </script>";
+			echo "<script type='text/javascript'> alert(\"COMMENT ADDED\"); </script>";
 		}
 
 		else {
-			echo "<script type='text/javascript'> alert(\"COULDNOT BE ADDED\");  </script>";
+			echo "<script type='text/javascript'> alert(\"COULD NOT BE ADDED\"); </script>";
 		}		
 
 	}
 
 
 
-	function displayCcomments() {
+	function displayComments() {
 
 
 		$dbconn = new datbconnection();
-		$query = "SELECT user, comment_datetime and comment FROM usercomment";
+		$query = "SELECT user, comment_datetime, comment FROM usercomment";
 		$addC = $dbconn->query($query);
+
+		if ($addC) {
+
+			while ($rows = $dbconn->fetchArray()) {
+
+				if ($rows) {
+					echo "<div class=\"commentsection\">
+					<p><span class=\"float-left\"> " .$rows['user']. " </span> <span class=\"font-weight-light float-right\">" .$rows['comment_datetime']. "</span></p>
+					<br>
+					<p class=\"float-left\">" .$rows['comment']. "</p>
+					</div>
+
+					<br>
+					<br>";
+				}
+
+			}
+		}
 
 	}
 

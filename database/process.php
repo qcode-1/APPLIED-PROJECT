@@ -28,6 +28,10 @@ function loadClasses() {
 	}
 }
 
+function loadMajors() {
+	
+}
+
 
 //reisters new admin
 function registerStudent() {

@@ -73,7 +73,7 @@
 						<select class="form-control" name="class" id="exampleFormControlSelect1">
 							<?php
 
-							loadClasses();
+							loadMajors();
 
 							?>
 						</select>

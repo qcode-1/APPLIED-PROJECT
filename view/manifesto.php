@@ -13,7 +13,7 @@
 
 	<link rel="stylesheet" type="text/css" href="../css/comm.css">
 
-	<link rel="stylesheet" type="text/css" href="../css/manifesto.css">
+	<!-- <link rel="stylesheet" type="text/css" href="../css/manifesto.css"> -->
 
 	
 
@@ -53,7 +53,7 @@
 					<a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Committees</a>
+					<a class="nav-link" href="committee.php">Committees</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="manifesto.php">Track Manifesto</a>

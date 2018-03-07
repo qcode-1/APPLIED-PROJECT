@@ -14,22 +14,18 @@ function test_input($dat) {
 }
 
 
-function loadClasses() {
+function loadMajors() {
 
 	$datbconn = new datbconnection();
-	$que = "SELECT * FROM classes";
+	$que = "SELECT * FROM majors";
 	$result = $datbconn->query($que);
 
 	if ($result) {
 
 		while ($row = $datbconn->fetchArray()) {
-			echo "<option value=" . $row['year_id'] . ">" . $row['year_group'] ."</option>";
+			echo "<option value=" . $row['major_id'] . ">" . $row['major_group'] ."</option>";
 		}
 	}
-}
-
-function loadMajors() {
-	
 }
 
 
@@ -97,7 +93,8 @@ function registerStudent() {
 			if(password_verify($pwrd, $passd)){ 					//verifies string password against hashed password in db
 				session_start();
 				$_SESSION['id'] = $row['student_id'];
-				$_SESSION['user'] = $row['firstname'] . "." . $row['lastname'] ; 
+				$fn = str_replace(' ', '', $row['firstname']);
+				$_SESSION['user'] = strtolower($fn . "." . $row['lastname']);
 				header ("Location: home.php");  				//starts a session and returns homepage
 			}
 			else {

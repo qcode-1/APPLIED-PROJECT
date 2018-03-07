@@ -129,7 +129,7 @@
 
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container" style="text-align: center;">
-			<h1 class="display-4">Sure &amp; Reliable Electoral Process</h1>
+			<h1 class="display-4">Secure &amp; Reliable Electoral Process</h1>
 			<p class="lead">AshVigil&trade; seeks to bridge the gap between technology and the general elections. Our system will keep users up to date on all matters concerning election candidates and provide a swift means of voting. Results will be efficiently caluclated in real time, with the use of perfectly designed algorithms that are verifiable and accurate.</p>
 		</div>
 		<br>

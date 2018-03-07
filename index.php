@@ -24,6 +24,8 @@
 
 	require_once("database/process.php");
 
+	require_once("mailer/welcomemailer.php");
+
 
 	?>
 

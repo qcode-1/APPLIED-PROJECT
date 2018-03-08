@@ -8,8 +8,9 @@ use PHPMailer\PHPMailer\Exception;
 
 require_once('dbConnection.php');
 
+
 //Load composer's autoloader
-require '../mailer/vendor/autoload.php';
+//require_once ('../mailer/vendor/autoload.php');
 
 date_default_timezone_set('UTC');
 
@@ -22,7 +23,7 @@ function test_input($dat) {
 }
 
 
-function loadMajors() {
+function loadClasses() {
 
 	$datbconn = new datbconnection();
 	$que = "SELECT * FROM majors";
@@ -39,6 +40,7 @@ function loadMajors() {
 
 //reisters new admin
 function registerStudent() {
+
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		$fname = $_POST["fname"];
@@ -50,7 +52,7 @@ function registerStudent() {
 		test_input($fname);
 		test_input($lname);
 
-			//inserts data in db with query parameters
+		//inserts data in db with query parameters
 		$database = new datbconnection();
 		$passhash = password_hash($passwrd, PASSWORD_BCRYPT);
 		$query = "INSERT INTO student(firstname,lastname,year_group,email,password) VALUES('$fname','$lname','$yr', '$email', '$passhash')";
@@ -58,7 +60,7 @@ function registerStudent() {
 
 
 		if ($reg) {
-			$msg = "Registration could not be completed. \\nTry again.";
+			$msg = "Registration successful. \\nTry again.";
 			echo "<script type='text/javascript'>alert('$msg');</script>"; 
 				header ("Location: view/login.php"); //if successful , return index page
 			}
@@ -70,6 +72,8 @@ function registerStudent() {
 	}
 
 	function checkValidEmail($email) {
+
+		include('../mailer/vendor/autoload.php');
 
 
 		$email = $_POST['eml'];
@@ -99,7 +103,7 @@ function registerStudent() {
     $mail->addAddress($email, '');     // Add a recipient
 
     $body = "<p><h4> Thank You for Using ASCVigil&trade;</h4></p>
-    <p>You have requested to chnage your password. Please follow this link to <a href=\"../view/changePassword.php\">change your password</a>.</p>
+    <p>You have requested to chnage your password. Please follow this link to <a href=\"http://localhost/Github/APPLIED-PROJECT/view/changePassword.php\">change your password</a>.</p>
     <p>Any Questions? Please login and leave your comments. Your feedback will be much appreciated.</p>
 
     <p>Kind Regards,</p>
@@ -136,13 +140,13 @@ else {
 function changePassword($email, $pass) {
 
 	$datbconn = new datbconnection();
-	$que = "SELECT email FROM student where email = '$email'";
+	$que = "SELECT password FROM student where email = '$email'";
 	$result = $datbconn->query($que);
 
-	if ($result && $datbconn->getNumRows() > 0) {
+	if ($result) {
 
 		$passd = password_hash($pass, PASSWORD_BCRYPT);
-		$que = "UPDATE student SET passwrd = $passd WHERE email = '$email'";
+		$que = "UPDATE student SET password = '$passd' WHERE email = '$email'";
 		$result = $datbconn->query($que);
 
 		if ($result) {
@@ -159,7 +163,7 @@ function changePassword($email, $pass) {
 }
 
 
-	//function to verify user details before login
+//function to verify user details before login
 function loginStudent($email, $pwrd) {
 
 	$dbconn = new datbconnection();

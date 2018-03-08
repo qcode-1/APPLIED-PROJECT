@@ -44,7 +44,7 @@ if ($result && $datbconn->getNumRows() > 0) {
     $mail->addAddress($email, '');     // Add a recipient
 
     $body = "<p><h4> Thank You for Using ASCVigil&trade;</h4></p>
-    <p>You have requested to chnage your password. Please follow this link to <a href=\"../view/changePassword.php\">change your password</a>.</p>
+    <p>You have requested to chnage your password. Please follow this link to <a href=\"http://localhost/Github/APPLIED-PROJECT/view/changePassword.php\">change your password</a>.</p>
     <p>Any Questions? Please login and leave your comments. Your feedback will be much appreciated.</p>";
 
     //Content

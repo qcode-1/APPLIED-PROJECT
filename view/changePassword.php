@@ -24,6 +24,15 @@
 
 	require_once("../database/process.php");
 
+	//don't display errors
+	ini_set('display_errors', 0);
+	//write errors to log
+	ini_set('log_errors', 1);
+	//error log file name
+	ini_set('log_errors', '../error.log');
+
+	error_reporting(E_ALL);
+
 	session_start();
 
 	?>
@@ -71,7 +80,7 @@
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label>
-						<input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="enter your new password">
+						<input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="enter your new password" required>
 					</div>
 					<button type="submit button" class="btn btn-primary" data-toggle="modal" name="changePass" class="btn btn-primary">Change Password</button>
 				</form>

@@ -1,3 +1,56 @@
+<?php
+
+
+$fname_error = "";
+$lname_error = "";
+$email_error = "";
+$class_error = "";
+
+if (isset($_POST['register'])) {
+
+	if (empty($_POST['fname'])) {
+		$fname_error = "<small>Please enter a name</small>";			
+	}
+	else {
+		if (!preg_match("/^[a-zA-Z ]*$/", $_POST['fname'])) {
+			$fname_error = "<small>Only letters and space is allowed</small>";
+		}
+	}
+
+
+	if (empty($_POST['lname'])) {
+		$lname_error = "<small>Please enter a name</small>";			
+	}
+	else {
+		if (!preg_match("/^[a-zA-Z ]*$/", $_POST['lname'])) {
+			$lname_error = "<small>Only letters and space is allowed</small>";
+		}
+	}
+
+	if (empty($_POST['eml'])) {
+		$email_error = "<small>Please enter an email address</small>";			
+	}
+	else {
+		if (!filter_var($_POST['eml'], FILTER_VALIDATE_EMAIL)) {
+			$email_error = "<small>Invalid email format</small>";
+		}
+	}
+
+	if (empty($_POST['class'])) {
+		$class_error = "<small>Please choose a class/small>";			
+	}
+
+	if ($fname_error == "" && $lname_error == "" && $email_error == "" && $class_error == "") {
+
+		registerStudent();
+
+	}
+
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,10 +75,18 @@
 
 	<?php
 
+	//don't display errors
+	ini_set('display_errors', 0);
+	//write errors to log
+	ini_set('log_errors', 1);
+	//error log file name
+	ini_set('log_errors', 'error.log');
+
+	error_reporting(E_ALL);
+
 	require_once("database/process.php");
 
-	require_once("mailer/welcomemailer.php");
-
+	require("mailer/welcomemailer.php");
 
 	?>
 
@@ -65,29 +126,32 @@
 					<div class="form-group">
 						<label for="inputFirstname">Firstname</label>
 						<input type="text" class="form-control"  name="fname" id="inputFirstname" aria-describedby="emailHelp" placeholder="Enter firstname">
+						<span class="text-danger"><?php echo $fname_error; ?></span>
 					</div>
 					<div class="form-group">
 						<label for="inputLastname">Lastname</label>
-						<input type="text" class="form-control" id="inputLastname" name="lname" aria-describedby="emailHelp" placeholder="Enter lastname">
+						<input type="text" class="form-control" id="inputLastname" name="lname" aria-describedby="emailHelp" placeholder="Enter lastname" required>
+						<span class="text-danger"><?php echo $lname_error; ?></span>
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlSelect1">Class</label>
-						<select class="form-control" name="class" id="exampleFormControlSelect1">
+						<select class="form-control" name="class" id="exampleFormControlSelect1" required>
 							<?php
 
-							loadMajors();
+							loadClasses();
 
 							?>
 						</select>
+						<span class="text-danger"><?php echo $class_error; ?></span>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" class="form-control" name="eml" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-						<!-- <small id="email" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+						<input type="email" class="form-control" name="eml" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+						<span class="text-danger"><?php echo $email_error; ?></span>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label>
-						<input type="password" class="form-control"  name ="passd" id="exampleInputPassword1" placeholder="Password">
+						<input type="password" class="form-control"  name ="passd" id="exampleInputPassword1" placeholder="Password" required>
 					</div>
 					<div class="">
 						<a href="fgpass.php"><span>Forgot Password?</span></a>
@@ -95,13 +159,6 @@
 					<button type="submit" name="register" class="btn btn-primary">Sign Up</button>
 				</form>
 
-				<?php
-
-				if (isset($_POST['register'])) {
-					registerStudent();
-				}
-
-				?>
 
 			</div>
 

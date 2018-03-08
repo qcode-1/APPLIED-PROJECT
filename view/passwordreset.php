@@ -24,9 +24,9 @@
 
 	//don't display errors
 	ini_set('display_errors', 0);
-//write errors to log
+	//write errors to log
 	ini_set('log_errors', 1);
-//error log file name
+	//error log file name
 	ini_set('log_errors', '../error.log');
 
 	error_reporting(E_ALL);
@@ -80,7 +80,7 @@
 					
 					<div class="form-group">
 						<label for="exampleInputEmail1">Please enter a valid email address</label>
-						<input type="email" name="eml"  class="form-control" aria-describedby="emailHelp" placeholder="Enter email address">
+						<input type="email" name="eml"  class="form-control" aria-describedby="emailHelp" placeholder="Enter email address" required>
 						<small id="email" class="form-text text-muted">We'll send you an email shortly.</small>
 					</div>
 

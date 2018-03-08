@@ -65,12 +65,12 @@
 					
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" name="email"  class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+						<input type="email" name="email"  class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
 						
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label>
-						<input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password">
+						<input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
 						<a href="passwordreset.php"><small id="email" class="form-text">Forgot Password?</small></a>
 					</div>
 					<button type="submit button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" name="login" class="btn btn-primary">Login</button>

@@ -12,11 +12,23 @@ use PHPMailer\PHPMailer\Exception;
 //Load composer's autoloader
 require 'vendor/autoload.php';
 
-$email = $_POST['eml'];
-$name = $_POST['fname'] . " " . $_POST['lname'];
+require_once('../database/dbConnection.php');
 
-$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-try {
+
+
+
+$email = $_POST['eml'];
+
+
+
+$datbconn = new datbconnection();
+$que = "SELECT email FROM student where email = '$email'";
+$result = $datbconn->query($que);
+
+if ($result && $datbconn->getNumRows() > 0) {
+
+    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+    try {
     //Server settings
     //$mail->SMTPDebug = 1;                                 // Enable verbose debug output
     $mail->isSMTP();                                      // Set mailer to use SMTP
@@ -29,10 +41,10 @@ try {
 
     //Recipients
     $mail->setFrom('nii.quartey19@gmail.com', 'ASCVigil');
-    $mail->addAddress($email, $name);     // Add a recipient
+    $mail->addAddress($email, '');     // Add a recipient
 
-    $body = "<p><h4> Thank You for Signing Up to ASCVigil&trade;</h4></p>
-    <p>ASCVigil is an application that allows you the electorate to demand accountability from your leaders. It is made for you, so you can voice out your opinions regarding student governance.  </p>
+    $body = "<p><h4> Thank You for Using ASCVigil&trade;</h4></p>
+    <p>You have requested to chnage your password. Please follow this link to <a href=\"../view/changePassword.php\">change your password</a>.</p>
     <p>Any Questions? Please login and leave your comments. Your feedback will be much appreciated.</p>";
 
     //Content
@@ -42,10 +54,25 @@ try {
     $mail->AltBody = strip_tags($body);
 
     $mail->send();
-    echo 'Message has been sent';
-} catch (Exception $e) {
+    //echo 'Message has been sent';
+    header("Location: login.php");
+
+    } 
+
+
+    catch (Exception $e) {
     //echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-    echo "<script type='text/javascript'>alert('Registration Unsuccessful');</script>";
+    echo "<script type='text/javascript'>alert('UNSUCCESSFUL');</script>";
+
 }
+
+}
+
+else {
+    $message = "This email does not exist.\\nEnter a valid email address.";
+    echo "<script type='text/javascript'>alert('$message');</script>";
+}
+
+
 
 ?>

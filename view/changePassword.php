@@ -16,7 +16,7 @@
 
 	<link rel="stylesheet" type="text/css" href="../css/indexpage.css">
 
-	<title>Login - ASCVigil&trade;</title>
+	<title>Forgot Password - ASCVigil&trade;</title>
 </head>
 <body>
 
@@ -24,6 +24,7 @@
 
 	require_once("../database/process.php");
 
+	session_start();
 
 	?>
 
@@ -42,7 +43,7 @@
 			<ul class="navbar-nav ml-auto">
 
 				<li class="nav-item">
-					<a class="nav-link" href="../index.php">Signup</a>
+					<a class="nav-link" href="login.php">Login</a>
 				</li>
 			</ul>
 		</div>
@@ -59,32 +60,33 @@
 			<div class="col-6">
 
 
-				<h3 class="head3">Login</h3>
+				<h3 class="head3">Get Back Into Your Account</h3>
 
 				<form action="" method="POST">
 					
 					<div class="form-group">
-						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" name="email"  class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-						
+						<label for="exampleInputEmail1">Please enter a valid email address</label>
+						<input type="email" name="eml" readonly  class="form-control" aria-describedby="emailHelp" value="<?php echo $_SESSION['emailadd'];?>">
+						<small id="email" class="form-text text-muted">We'll send you an email shortly.</small>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label>
-						<input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password">
-						<a href="passwordreset.php"><small id="email" class="form-text">Forgot Password?</small></a>
+						<input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="enter your new password">
 					</div>
-					<button type="submit button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" name="login" class="btn btn-primary">Login</button>
+					<button type="submit button" class="btn btn-primary" data-toggle="modal" name="changePass" class="btn btn-primary">Change Password</button>
 				</form>
 
 				<?php
-				
-				if (isset($_POST['login'])) {
 
-					$eml = $_POST['email'];
-					$password = $_POST['pass'];
+				$email = $_POST['eml'];
+				$pass = $_POST['pass'];
 
-					loginStudent($eml, $password);
+				if (isset($_POST['changePass'])) {
+
+					changePassword($email, $pass);
+
 				}
+
 				?>
 
 			</div>

@@ -26,13 +26,13 @@ function test_input($dat) {
 function loadClasses() {
 
 	$datbconn = new datbconnection();
-	$que = "SELECT * FROM majors";
+	$que = "SELECT * FROM classes";
 	$result = $datbconn->query($que);
 
 	if ($result) {
 
 		while ($row = $datbconn->fetchArray()) {
-			echo "<option value=" . $row['major_id'] . ">" . $row['major_group'] ."</option>";
+			echo "<option value=" . $row['class_id'] . ">" . $row['class_group'] ."</option>";
 		}
 	}
 }
@@ -41,7 +41,7 @@ function loadClasses() {
 //reisters new admin
 function registerStudent() {
 
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	//if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		$fname = $_POST["fname"];
 		$lname = $_POST["lname"];
@@ -68,7 +68,7 @@ function registerStudent() {
 				$msg = "Registration could not be completed. \\nTry again.";
 				echo "<script type='text/javascript'>alert('$msg');</script>"; //return an alert message if unsuccessful
 			}
-		}
+		//}
 	}
 
 	function checkValidEmail($email) {

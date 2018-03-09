@@ -1,13 +1,13 @@
 <?php
 
-
-$fname_error = "";
-$lname_error = "";
-$email_error = "";
-$class_error = "";
+	$fname_error = "";
+	$lname_error = "";
+	$email_error = "";
+	$class_error = "";
+	$pass_error = "";
 
 if (isset($_POST['register'])) {
-
+	
 	if (empty($_POST['fname'])) {
 		$fname_error = "<small>Please enter a name</small>";			
 	}
@@ -27,20 +27,27 @@ if (isset($_POST['register'])) {
 		}
 	}
 
-	if (empty($_POST['eml'])) {
+	if (empty($_POST['emladd'])) {
 		$email_error = "<small>Please enter an email address</small>";			
 	}
 	else {
-		if (!filter_var($_POST['eml'], FILTER_VALIDATE_EMAIL)) {
+		if (!filter_var($_POST['emladd'], FILTER_VALIDATE_EMAIL)) {
 			$email_error = "<small>Invalid email format</small>";
 		}
 	}
 
-	if (empty($_POST['class'])) {
-		$class_error = "<small>Please choose a class/small>";			
+	if (isset($_POST['classes'])) {
+					
+	}
+	else {
+		$class_error = "<small>Please choose a class/small>";
 	}
 
-	if ($fname_error == "" && $lname_error == "" && $email_error == "" && $class_error == "") {
+	if (empty($_POST['passd'])) {
+		$pass_error = "<small>Please enter a password</small>";			
+	}
+
+	if ($fname_error == "" && $lname_error == "" && $email_error == "" && $class_error == "" && $pass_error = "") {
 
 		registerStudent();
 
@@ -54,6 +61,7 @@ if (isset($_POST['register'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -64,7 +72,6 @@ if (isset($_POST['register'])) {
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 	<link rel="stylesheet" type="text/css" href="css/indexpage.css">
 
 	
@@ -125,17 +132,17 @@ if (isset($_POST['register'])) {
 				<form method="POST" action="">
 					<div class="form-group">
 						<label for="inputFirstname">Firstname</label>
-						<input type="text" class="form-control"  name="fname" id="inputFirstname" aria-describedby="emailHelp" placeholder="Enter firstname">
-						<span class="text-danger"><?php echo $fname_error; ?></span>
+						<input type="text" class="form-control"  name="fname" id="inputFirstname" aria-describedby="emailHelp" placeholder="Enter firstname" value="<?php echo isset($_POST['fname']) ? $_POST['fname'] : ''; ?>">
+						<span class="text-danger"><?php echo $fname_error ?></span>
 					</div>
 					<div class="form-group">
 						<label for="inputLastname">Lastname</label>
-						<input type="text" class="form-control" id="inputLastname" name="lname" aria-describedby="emailHelp" placeholder="Enter lastname" required>
+						<input type="text" class="form-control" id="inputLastname" name="lname" aria-describedby="emailHelp" placeholder="Enter lastname" value="<?php echo isset($_POST['lname']) ? $_POST['lname'] : ''; ?>">
 						<span class="text-danger"><?php echo $lname_error; ?></span>
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlSelect1">Class</label>
-						<select class="form-control" name="class" id="exampleFormControlSelect1" required>
+						<select class="form-control" name="classes" id="exampleFormControlSelect1" >
 							<?php
 
 							loadClasses();
@@ -146,12 +153,13 @@ if (isset($_POST['register'])) {
 					</div>
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" class="form-control" name="eml" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+						<input type="email" class="form-control" name="emladd" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" value="<?php echo isset($_POST['emladd']) ? $_POST['emladd'] : ''; ?>">
 						<span class="text-danger"><?php echo $email_error; ?></span>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label>
-						<input type="password" class="form-control"  name ="passd" id="exampleInputPassword1" placeholder="Password" required>
+						<input type="password" class="form-control"  name ="passd" id="exampleInputPassword1" placeholder="Password">
+						<span class="text-danger"><?php echo $pass_error; ?></span>
 					</div>
 					<div class="">
 						<a href="fgpass.php"><span>Forgot Password?</span></a>

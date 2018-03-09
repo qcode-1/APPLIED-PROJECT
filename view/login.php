@@ -1,3 +1,40 @@
+<?php
+
+$fname_error = "";
+$lname_error = "";
+$email_error = "";
+$class_error = "";
+$pass_error = "";
+
+if (isset($_POST['login'])) {
+
+	if (empty($_POST['email'])) {
+		$email_error = "<small>Please enter an email address</small>";			
+	}
+	else {
+		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+			$email_error = "<small>Invalid email format</small>";
+		}
+	}
+
+	if (empty($_POST['pass'])) {
+		$pass_error = "<small>Please enter a password</small>";			
+	}
+
+	if ($fname_error == "" && $lname_error == "" && $email_error == "" && $class_error == "") {
+
+		$eml = $_POST['email'];
+		$password = $_POST['pass'];
+
+		loginStudent($eml, $password);
+
+	}
+
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,7 +102,7 @@
 					
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" name="email"  class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+						<input type="email" name="email"  class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>">
 						
 					</div>
 					<div class="form-group">
@@ -73,17 +110,14 @@
 						<input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
 						<a href="passwordreset.php"><small id="email" class="form-text">Forgot Password?</small></a>
 					</div>
-					<button type="submit button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" name="login" class="btn btn-primary">Login</button>
+					<button type="submit button" class="btn btn-primary" data-toggle="modal" name="login" class="btn btn-primary">Login</button>
 				</form>
 
 				<?php
 				
 				if (isset($_POST['login'])) {
 
-					$eml = $_POST['email'];
-					$password = $_POST['pass'];
-
-					loginStudent($eml, $password);
+					
 				}
 				?>
 

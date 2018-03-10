@@ -13,9 +13,12 @@
 
 	<link rel="stylesheet" type="text/css" href="../css/comm.css">
 
+	<link href="https://surveyjs.azureedge.net/1.0.13/survey.css" type="text/css" rel="stylesheet"/>
+	<script src="https://unpkg.com/jquery"></script>
+
 	
 
-	<title> Polls - ASCVigil&trade;</title>
+	<title> Poll Results - ASCVigil&trade;</title>
 </head>
 <body>
 
@@ -117,16 +120,14 @@
 <br>
 
 
-<!-- <div class="alert alert-primary" role="alert">
-	This is a primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div> -->
 
 
 
 
+<!-- <div id="surveyContainer"></div> -->
 
 
-<div id="surveyContainer"></div>
+<div id="surveyResult"></div>
 
 
 
@@ -183,19 +184,25 @@
 	<script type="text/javascript">
 
 
-		Survey.Survey.cssType = "bootstrap";
+		Survey
+		.StylesManager
+		.applyTheme("default");
 
-		var surveyJSON = {title:"ASC Assessment Survey",pages:[{name:"demograchicsAUC",elements:[{type:"checkbox",name:"whatGender",title:"Gender",isRequired:true,choices:[{value:"M",text:"Male"},{value:"F",text:"Female"}]},{type:"checkbox",name:"Class",title:"Year Group?",isRequired:true,choices:[{value:"Senior",text:"2018"},{value:"Junior",text:"2019"},{value:"Sophomore",text:"2020"},{value:"Freshman",text:"2021"}]},{type:"checkbox",name:"whatMajor",title:"What is your major?",isRequired:true,choices:[{value:"CS",text:"Computer Science"},{value:"BA",text:"Business Administration"},{value:"MIS",text:"Management Information Systems"},{value:"CE",text:"Computer Engineering"},{value:"ME",text:"Mechanical Engineering"},{value:"EE",text:"Electrical Engineering"}]}]},{name:"actualAssessment",elements:[{type:"rating",name:"presidentAssessment",title:"On a scale of 1(poor) - 5(excellent), how would you rate the performance of the incumbent ASC president and Vice?",isRequired:true},{type:"rating",name:"ecAssessment",title:"On a scale of 1(poor) - 5(excellent), how would you rate the performance of the incumbent entertainment chairperson?"},{type:"comment",name:"additionalComments",title:"Any additional Comments?"}]}]}
+		var json = {
+			surveyId: 'c54c7faa-3ce2-48a1-b0c5-a0e6338e8b0a'
+		};
 
-		function sendDataToServer(survey) {
-			survey.sendResult('c54c7faa-3ce2-48a1-b0c5-a0e6338e8b0a');
-		}
+		window.survey = new Survey.Model(json);
 
-		var survey = new Survey.Model(surveyJSON);
-		$("#surveyContainer").Survey({
-			model: survey,
-			onComplete: sendDataToServer
+		survey
+		.onComplete
+		.add(function (result) {
+			document
+			.querySelector('#surveyResult')
+			.innerHTML = "result: " + JSON.stringify(result.data);
 		});
+
+		$("#surveyElement").Survey({model: survey});
 
 
 	</script>

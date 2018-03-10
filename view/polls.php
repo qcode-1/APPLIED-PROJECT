@@ -15,7 +15,7 @@
 
 	
 
-	<title> Polls - ASCVigil&trade;</title>
+	<title>Polls - ASCVigil&trade;</title>
 </head>
 <body>
 

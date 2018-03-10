@@ -1,10 +1,23 @@
 <?php
 
-	$fname_error = "";
-	$lname_error = "";
-	$email_error = "";
-	$class_error = "";
-	$pass_error = "";
+
+//don't display errors
+ini_set('display_errors', 0);
+//write errors to log
+ini_set('log_errors', 1);
+//error log file name
+ini_set('log_errors', 'error.log');
+error_reporting(E_ALL);
+
+require_once("database/process.php");
+
+require("mailer/welcomemailer.php");
+
+$fname_error = "";
+$lname_error = "";
+$email_error = "";
+$class_error = "";
+$pass_error = "";
 
 if (isset($_POST['register'])) {
 	
@@ -37,7 +50,7 @@ if (isset($_POST['register'])) {
 	}
 
 	if (isset($_POST['classes'])) {
-					
+
 	}
 	else {
 		$class_error = "<small>Please choose a class/small>";
@@ -47,11 +60,9 @@ if (isset($_POST['register'])) {
 		$pass_error = "<small>Please enter a password</small>";			
 	}
 
-	if ($fname_error == "" && $lname_error == "" && $email_error == "" && $class_error == "" && $pass_error = "") {
-
+	//if ($fname_error == "" && $lname_error == "" && $email_error == "" && $pass_error = "") {
 		registerStudent();
-
-	}
+	//}
 
 }
 
@@ -79,23 +90,6 @@ if (isset($_POST['register'])) {
 	<title>Sign Up - ASCVigil&trade;</title>
 </head>
 <body>
-
-	<?php
-
-	//don't display errors
-	ini_set('display_errors', 0);
-	//write errors to log
-	ini_set('log_errors', 1);
-	//error log file name
-	ini_set('log_errors', 'error.log');
-
-	error_reporting(E_ALL);
-
-	require_once("database/process.php");
-
-	require("mailer/welcomemailer.php");
-
-	?>
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -129,20 +123,20 @@ if (isset($_POST['register'])) {
 
 				<h3 class="head3">SignUp</h3>
 
-				<form method="POST" action="">
+				<form method="POST" onsubmit="return FormValidation();" onchange="return FormValidation();">
 					<div class="form-group">
-						<label for="inputFirstname">Firstname</label>
-						<input type="text" class="form-control"  name="fname" id="inputFirstname" aria-describedby="emailHelp" placeholder="Enter firstname" value="<?php echo isset($_POST['fname']) ? $_POST['fname'] : ''; ?>">
+						<label for="">Firstname</label>
+						<input type="text" class="form-control"  name="fname" id="inputFirstname"  placeholder="Enter firstname" value="<?php echo isset($_POST['fname']) ? $_POST['fname'] : ''; ?>">
 						<span class="text-danger"><?php echo $fname_error ?></span>
 					</div>
 					<div class="form-group">
-						<label for="inputLastname">Lastname</label>
-						<input type="text" class="form-control" id="inputLastname" name="lname" aria-describedby="emailHelp" placeholder="Enter lastname" value="<?php echo isset($_POST['lname']) ? $_POST['lname'] : ''; ?>">
+						<label for="">Lastname</label>
+						<input type="text" class="form-control" id="inputLastname" name="lname" placeholder="Enter lastname" value="<?php echo isset($_POST['lname']) ? $_POST['lname'] : ''; ?>">
 						<span class="text-danger"><?php echo $lname_error; ?></span>
 					</div>
 					<div class="form-group">
-						<label for="exampleFormControlSelect1">Class</label>
-						<select class="form-control" name="classes" id="exampleFormControlSelect1" >
+						<label for="">Class</label>
+						<select class="form-control" name="classes" id="inputClass" >
 							<?php
 
 							loadClasses();
@@ -158,7 +152,7 @@ if (isset($_POST['register'])) {
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label>
-						<input type="password" class="form-control"  name ="passd" id="exampleInputPassword1" placeholder="Password">
+						<input type="password" class="form-control"  name ="passd" id="inputPassword" placeholder="Password">
 						<span class="text-danger"><?php echo $pass_error; ?></span>
 					</div>
 					<div class="">
@@ -194,5 +188,45 @@ if (isset($_POST['register'])) {
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+
+	<script type="text/javascript">
+
+
+		function FormValidation(){
+
+			var fname = document.getElementById('inputFirstname').value;
+			var lname = document.getElementById('inputLastname').value;
+			var email = document.getElementById('inputEmail').value;
+			var passd = document.getElementById('inputPassword').value;
+
+			if(fname == ""){
+				document.getElementById('inputFirstname').style.borderColor = "red";
+			}else{
+				document.getElementById('inputFirstname').style.borderColor = "green";
+			}
+
+			if(lname == ""){
+				document.getElementById('inputLastname').style.borderColor = "red";	
+			}else{
+				document.getElementById('inputLastname').style.borderColor = "green";
+			}
+
+			if(email == ""){
+				document.getElementById('inputEmail').style.borderColor = "red";
+			}else{
+				document.getElementById('inputEmail').style.borderColor = "green";
+			}
+
+			if(passd == ""){
+				document.getElementById('inputPassword').style.borderColor = "red";
+			}else{
+				document.getElementById('inputPassword').style.borderColor = "green";
+			}
+		}
+
+	</script>
+
+
 </body>
 </html>

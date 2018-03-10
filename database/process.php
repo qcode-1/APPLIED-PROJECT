@@ -41,12 +41,12 @@ function loadClasses() {
 //reisters new admin
 function registerStudent() {
 
-	//if ($_SERVER["REQUEST_METHOD"] == "POST") {
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 		$fname = $_POST["fname"];
 		$lname = $_POST["lname"];
-		$yr = $_POST["class"];
-		$email = $_POST["eml"];
+		$yr = $_POST["classes"];
+		$email = $_POST["emladd"];
 		$passwrd = $_POST["passd"];
 
 		test_input($fname);
@@ -58,27 +58,24 @@ function registerStudent() {
 		$query = "INSERT INTO student(firstname,lastname,year_group,email,password) VALUES('$fname','$lname','$yr', '$email', '$passhash')";
 		$reg = $database->query($query);
 
-
 		if ($reg) {
+			header ("Location: view/login.php"); //if successful , return index page
 			$msg = "Registration successful. \\nTry again.";
 			echo "<script type='text/javascript'>alert('$msg');</script>"; 
-				header ("Location: view/login.php"); //if successful , return index page
 			}
 			else {
 				$msg = "Registration could not be completed. \\nTry again.";
 				echo "<script type='text/javascript'>alert('$msg');</script>"; //return an alert message if unsuccessful
 			}
-		//}
+		}
 	}
+
+
 
 	function checkValidEmail($email) {
 
 		include('../mailer/vendor/autoload.php');
-
-
 		$email = $_POST['eml'];
-
-
 
 		$datbconn = new datbconnection();
 		$que = "SELECT email FROM student where email = '$email'";

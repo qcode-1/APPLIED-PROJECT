@@ -1,15 +1,17 @@
 <?php
 
-$fname_error = "";
-$lname_error = "";
+require_once("../database/process.php");
+
+
 $email_error = "";
-$class_error = "";
 $pass_error = "";
 
 if (isset($_POST['login'])) {
 
 	if (empty($_POST['email'])) {
-		$email_error = "<small>Please enter an email address</small>";			
+		$email_error = "<div class='alert alert-danger' role='alert'>
+  This is a danger alert—check it out!
+</div>";			
 	}
 	else {
 		if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
@@ -21,11 +23,10 @@ if (isset($_POST['login'])) {
 		$pass_error = "<small>Please enter a password</small>";			
 	}
 
-	if ($fname_error == "" && $lname_error == "" && $email_error == "" && $class_error == "") {
+	if ($email_error == "" && $pass_error == "") {
 
 		$eml = $_POST['email'];
 		$password = $_POST['pass'];
-
 		loginStudent($eml, $password);
 
 	}
@@ -56,13 +57,6 @@ if (isset($_POST['login'])) {
 	<title>Login - ASCVigil&trade;</title>
 </head>
 <body>
-
-	<?php
-
-	require_once("../database/process.php");
-
-
-	?>
 
 
 	<!-- Navigation -->
@@ -98,28 +92,21 @@ if (isset($_POST['login'])) {
 
 				<h3 class="head3">Login</h3>
 
-				<form action="" method="POST">
+				<form method="POST"  onsubmit="return FormValidation();" onchange="return FormValidation();" >
 					
 					<div class="form-group">
 						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" name="email"  class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>">
-						
+						<input type="email" name="email"  class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>">
+						<?php echo $email_error; ?>
 					</div>
 					<div class="form-group">
 						<label for="exampleInputPassword1">Password</label>
-						<input type="password" name="pass" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+						<input type="password" name="pass" class="form-control" id="inputPassword" placeholder="Password">
+						<span class="text-danger"><?php echo $pass_error; ?></span>
 						<a href="passwordreset.php"><small id="email" class="form-text">Forgot Password?</small></a>
 					</div>
 					<button type="submit button" class="btn btn-primary" data-toggle="modal" name="login" class="btn btn-primary">Login</button>
 				</form>
-
-				<?php
-				
-				if (isset($_POST['login'])) {
-
-					
-				}
-				?>
 
 			</div>
 
@@ -130,7 +117,7 @@ if (isset($_POST['login'])) {
 	</div>
 
 
-	<div class="footer bg-dark text-white fixed-bottom">
+	<div class="footer bg-dark text-white ">
 		<p class="">&copy; AshVigil. All rights reserved.</p>
 		<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
 		<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
@@ -145,5 +132,29 @@ if (isset($_POST['login'])) {
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+
+	<script type="text/javascript">
+
+		function FormValidation(){
+
+			var fname = document.getElementById('inputEmail').value;
+			var passd = document.getElementById('inputPassword').value;
+
+			if(fname == ""){
+				document.getElementById('inputEmail').style.borderColor = "red";
+
+			}else{
+				document.getElementById('inputEmail').style.borderColor = "green";
+			}
+
+			if(passd == ""){
+				document.getElementById('inputPassword').style.borderColor = "red";
+
+			}else{
+				document.getElementById('inputPassword').style.borderColor = "green";
+			}
+		}	
+	</script>
 </body>
 </html>

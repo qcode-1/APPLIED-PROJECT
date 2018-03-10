@@ -12,7 +12,7 @@ use PHPMailer\PHPMailer\Exception;
 //Load composer's autoloader
 require 'vendor/autoload.php';
 
-$email = $_POST['eml'];
+$email = $_POST['emladd'];
 $name = $_POST['fname'] . " " . $_POST['lname'];
 
 $mail = new PHPMailer(true);                              // Passing `true` enables exceptions

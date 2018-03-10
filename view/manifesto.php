@@ -194,7 +194,7 @@
 						<label>Add Comment</label>
 						<textarea class="form-control" name="commnt" id="commentText" rows="3"></textarea>
 					</div>
-					<button type="submit" id="cmmBtn" name="addComment" class="btn btn-primary mb-2">Add Comment</button>
+					<button type="submit" id="cmmBtn" name="addComment" disabled="true" class="btn btn-primary mb-2">Add Comment</button>
 
 					<div class="form-group bttn">
 						<div class="form-check">
@@ -247,31 +247,17 @@
 
 <script type="text/javascript">
 
-	$(document).ready(function() {
+	document.getElementById("commentText").addEventListener("keyup", ()=>{
+		document.getElementById("cmmBtn").disabled = false;
 
-		$('#cmmBtn').prop('disbaled', 'true');
+	})
 
-		$('#commnt').keyup(function() {
-
-			if ($(this).val().length != 0) {
-				$('#cmmBtn').prop('disbaled', 'false');
-			}
-
-			else {
-				$('#cmmBtn').prop('disbaled', 'true');
-			}
-
-		});
-
-	});
+	
 
 </script>
 
-
-<!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
-
+<script src="../js/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 

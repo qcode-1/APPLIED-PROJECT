@@ -8,14 +8,18 @@
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="../css/comm.css">
 
+	<script src="../js/jquery-3.3.1.min.js"></script>
+	<script src="https://unpkg.com/jquery"></script>
+	<script src="https://surveyjs.azureedge.net/1.0.13/survey.jquery.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/poll.css">
+	<script src="https://cdn3.devexpress.com/jslib/17.2.5/js/dx.all.js"></script>
 	
 
-	<title> Polls - ASCVigil&trade;</title>
+	<title> See Results - ASCVigil&trade;</title>
 </head>
 <body>
 
@@ -87,69 +91,16 @@
 
 		<div class="row">
 
+			<br>
 
-			<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button> -->
-
-<!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<br>
+			<div id="chartContainer"></div>
+			<div id="surveyElement"></div>
+			<div id="surveyResult"></div>
 
 
-<!-- <div class="alert alert-primary" role="alert">
-	This is a primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div> -->
-
-
-
-
-
-
-<div id="surveyContainer"></div>
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-	<!-- <div class="jumbotron jumbotron-fluid">
-		<div class="container" style="text-align: center;">
-			<h1 class="display-4">Sure &amp; Reliable Electoral Process</h1>
-			<p class="lead">AshVigil&trade; seeks to bridge the gap between technology and the general elections. Our system will keep users up to date on all matters concerning election candidates and provide a swift means of voting. Results will be efficiently caluclated in real time, with the use of perfectly designed algorithms that are verifiable and accurate.</p>
 		</div>
-		<br>
-		<div class="container" style="text-align: center;">
-			<h1 class="display-4">Accountability &amp; Transparency</h1>
-			<p class="lead">AshVigil&trade; goes the extra mile to ensure that our leaders are accountable and transparent in their actions. It creates the platform for discussion and delibration for issues pertaining to student governance and overall administation. </p>
-		</div>
-	</div> -->
+
+	</div>
 
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container" style="text-align: center;">
@@ -175,30 +126,86 @@
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="../js/jquery-3.3.1.min.js"></script>
-	<script src="https://surveyjs.azureedge.net/1.0.13/survey.jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+	<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script> -->
 
 	<script type="text/javascript">
 
-
 		Survey.Survey.cssType = "bootstrap";
-		Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
 
 
-		var surveyJSON = { surveyId: 'd34f3597-b28c-4252-be5a-6ee2c7173d62'}
+		var surveyGetResult = function (s, options) {
+			if (options.success) {
+				showChart(options.dataList);
+			}
+		};
 
-		function sendDataToServer(survey) {
-			survey.sendResult('c54c7faa-3ce2-48a1-b0c5-a0e6338e8b0a');
+//The callback on getting results from the server
+survey.onGetResult = surveyGetResult;
+
+var surveyResultId = 'e423fa92-8a6c-411e-af3c-9f249ae3c10e';
+//get aggregation for question 'langs'
+survey.getResult(surveyResultId, 'siblings');
+
+function showChart(chartDataSource) {
+	document
+	.getElementById("chartContainer")
+	.style
+	.height = "500px";
+	$("#chartContainer").dxPieChart({
+		dataSource: chartDataSource,
+		series: {
+			argumentField: 'name',
+			valueField: 'value'
 		}
+	});
+}
 
-		var survey = new Survey.Model(surveyJSON);
-		$("#surveyContainer").Survey({
-			model: survey,
-			onComplete: sendDataToServer
-		});
 
+
+		// var surveySendResult = function (s, options) {
+		// 	if (options.success) {
+		// 		s.getResult('e423fa92-8a6c-411e-af3c-9f249ae3c10e', 'whatAge');
+		// 	}
+		// };
+
+		// var surveyGetResult = function (s, options) {
+		// 	if (options.success) {
+		// 		showChart(options.dataList);
+		// 	}
+		// };
+
+		// function showChart(chartDataSource) {
+		// 	document
+		// 	.getElementById("chartContainer")
+		// 	.style
+		// 	.height = "500px";
+		// 	$("#chartContainer").dxPieChart({
+		// 		dataSource: chartDataSource,
+		// 		series: {
+		// 			argumentField: 'name',
+		// 			valueField: 'value'
+		// 		}
+		// 	});
+		// }
+
+		// var json = {
+		// 	surveyId: 'd34f3597-b28c-4252-be5a-6ee2c7173d62',
+		// 	surveyPostId: 'c54c7faa-3ce2-48a1-b0c5-a0e6338e8b0a'
+		// };
+
+		// window.survey = new Survey.Model(json);
+
+		// survey
+		// .onComplete
+		// .add(function (result) {
+		// 	document
+		// 	.querySelector('#surveyResult')
+		// 	.innerHTML = "result: " + JSON.stringify(result.data);
+		// });
+
+		// $("#surveyElement").Survey({model: survey, onSendResult: surveySendResult, onGetResult: surveyGetResult});
 
 	</script>
 

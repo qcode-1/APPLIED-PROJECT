@@ -90,7 +90,7 @@
 
 
 				<div class="col-8">
-					<h3>Feedback Form - Academic Committee</h3>
+					<h3>Feedback Form - Public Relations</h3>
 					<form>
 						<div class="form-group">
 							<label for="exampleFormControlInput1">Email address</label>

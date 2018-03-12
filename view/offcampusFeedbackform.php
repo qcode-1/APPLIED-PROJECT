@@ -90,7 +90,7 @@
 
 
 				<div class="col-8">
-					<h3>Feedback Form - Academic Committee</h3>
+					<h3>Feedback Form - Off-Campus Committee</h3>
 					<form>
 						<div class="form-group">
 							<label for="exampleFormControlInput1">Email address</label>
@@ -99,7 +99,7 @@
 
 						<div class="form-group">
 							<label for="exampleFormControlTextarea1">Your comments</label>
-							<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="add comments.."></textarea>
+							<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="add comments.."></textarea>
 						</div>
 						<button type="submit" class="btn btn-primary mb-2">Submit</button>
 					</form>

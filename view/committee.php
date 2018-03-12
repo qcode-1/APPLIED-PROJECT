@@ -114,7 +114,7 @@
 							Edwin enjoys playing basketball and cooking.
 						In his role as the new ASC president, his teams’ primary objective is to create an entirely independent and collaborative student body, with a vibrant campus outlook. An outlook which should be nothing but lasting.</p>
 						<p>
-							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="presidentFeedbackform.php">Write Feedback</a></span>
 						</p>
 						<br>
 
@@ -124,7 +124,7 @@
 						<hr>
 						<p class="text-justify">Benjamin Annan, a Mechanical Engineering major of the Ashesi class of 2019 is best described as a politician at heart and an engineer in mind. Since enrolling in Ashesi in the Fall of 2015, he has previously served as the Fund manager of the Ashesi Student Scholarship Fund (ASSF). He currently holds the position of Programs Manager of Kingdom Christian Fellowship (KCF), and doubles as a Career Peer Advisor with the Career Center. As Vice-President of the Ashesi Student Council his primary aim is to build a firm fundamental structure with professionalism to the Student Council. He aspires to become a politician in a few years. He believes Engineers make the best leaders and the best of every profession and pledges to do whatever he can to contribute his quota because Ashesi is one of God’s great gifts to Africa.</p>
 						<p>
-							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="vicepFeedbackform.php">Write Feedback</a></span>
 						</p>
 						<br>
 
@@ -145,7 +145,7 @@
 						<p class="text-justify">Yoofi Brown-Pobee'19 is the Finance Committee Chairperson of the Student Council and a Management Information Systems major. An alumnus of Tema International School, he immediately got into student government in his first year, joining the Sports and Finance Committees. He also joined the Ashesi D: Lab where he coordinated a cross university Design Project between Ashesi University and Brown University. He engaged in a similar project in 2017 this time with Dartmouth University and is currently a Design Lab Management Intern in charge of coordinating Hackathons that produce high impact solutions.
 						He loves professional wrestling particularly WWE, is a Chelsea fan and thinks Breaking Bad and Prison Break are the best series ever made. He knows nothing about basketball (still thinks Kobe is 25 years). He loves banter and making jokes and really cherishes his friends and classmates. One thing he guarantees with this ASC is efficiency and diligence. You won't forget team.</p>
 						<p>
-							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="financeFeedbackform.php">Write Feedback</a></span>
 						</p>
 						<br>
 
@@ -157,7 +157,7 @@
 							Kofi is a member of Tech Era, an organization that seeks to equip underprivileged Junior High School students with the necessary computing skills needed in this fast-growing technological era. There, he serves in the capacity of the Tech Module lead and manages student volunteer tutors, develop and manage the curriculum for teaching and learning in the most practical way possible.
 						As the Outreach Committee Chairperson, Kofi looks forward to creating a conducive space where community engagement groups have the resources necessary to operate, as well as radiate the giving back spirit of the community.</p>
 						<p>
-							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="outreachFeedbackform.php">Write Feedback</a></span>
 						</p>
 						<br>
 
@@ -168,7 +168,7 @@
 						<p class="text-justify">Kennedy expresses deep concerns to improve sports in Ashesi, and offer major attention towards the less patronized sports. He is an individual grounded on the principles of commitment and leadership. He was on the previous Sports Committee, and in the upcoming year hopes to further the remarkable work done by the outgoing team. Kennedy is currently the deputy captain for Kasanoma FC, an Ashesi Premier League club. Prior to Ashesi, he participated in the Danish Soccer Tournament, Dana Cup.
 						He has fun when playing sports, and would encourage you to join his fun by showing up for all sports related activities on and off campus. Kennedy is an easily approachable individual and will welcome your ideas on how sports can be enhanced at Ashesi.</p>
 						<p>
-							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="sportsFeedbackform.php">Write Feedback</a></span>
 						</p>
 						<br>
 
@@ -179,7 +179,7 @@
 						<p class="text-justify">“when the music changes, so does the dance…” as such, it is time for entertainment to be turned up a notch. 
 						Odette Ofosu-Siaw is currently a sophomore majoring in Business Administration and the ASC Entertainment Committee Chairperson. She finds delight in creating experiences by traveling the world, learning new things and meeting new people. She has previously served as an active member of the entertainment committee since her freshman year. In her tenure of office, she aspires to make the Ashesi community vibrant for students, staff, and faculty, to not only promote inclusion in Ashesi but have fun while doing so. For what shall it profit a man, to gain a 4.0 GPA with no college experience</p>
 						<p>
-							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="entFeedbackform.php">Write Feedback</a></span>
 						</p>
 						<br>
 
@@ -191,7 +191,7 @@
 							There’s always one thing he’s kept close to heart and it’s that “life is but one”. Life is way too short, but God didn’t only give us 24 hours, He gave us time and he intends to use that meaningfully and its full capacity.
 						As Off-Campus chairperson, he intends to explore the different fun opportunities that can engage as many students as possible regardless of your year group, nationality or residence. Stress is eminent here at Ashesi and fun can be the same too. I can’t do this without the cooperation of the student body, so I hope to see you all around. Remember, like me, never wake up without hope and sleep with disappointment. Just live, laugh and learn!</p>
 						<p>
-							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="offcampusFeedbackform.php">Write Feedback</a></span>
 						</p>
 						<br>
 
@@ -202,7 +202,7 @@
 						<p class="text-justify">Wayne Gakuo is a social and outgoing student who hails from Mombasa, Kenya. His love for social media came when he just finished high school. As a tech-enthusiast and always thirsty for knowledge, he was constantly using online media to satisfy his curiosity; knowing what is trending and newly-introduced technological gadgets. Having been financially-sponsored in high school, and now in Ashesi University under the MasterCard Foundation Scholarship, Wayne loves community outreach programs since he feels he has an obligation to mentor the young ones from disadvantaged backgrounds. “Financial constraints should not bar people from gaining access to education”, he says. “There is unlimited and untapped potential that rests with these future leaders.”
 						Wayne has been in the previous Public Relations Committee where he spearheaded the Ashesi Students Council’s social media team that saw 128% increase in the number of followers both on Instagram and Facebook. “I look forward to using my committee as a platform where students get to learn and sharpen their skills in photography, writing, cinematography and graphic designing”, he adds. “With this, the produced content will be used to showcase the lives of Ashesi students and magnify the image of the ASC”</p>
 						<p>
-							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="prFeedbackform.php">Write Feedback</a></span>
 						</p>
 						<br>
 
@@ -214,7 +214,7 @@
 
 						As the ASC general secretary, she hopes to use her leadership and communication skills to improve student wellbeing and provide support to the other executive members as they carry out their duties. Her willingness to volunteer and work with different student groups, while maintaining a consistently high GPA attest to her strong organizational and time management skills and her ability to prioritize. She believes that this role would give her the ability to serve and protect the students by ensuring the members of the committee meet their deadlines and live out their promises.</p>
 						<p>
-							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="gsFeedbackform.php">Write Feedback</a></span>
 						</p>
 						<br>
 
@@ -231,12 +231,12 @@
 
 						In the end, she strongly believe the lives we touch, the destinies we redefine and the impacts we make will be what matters the most.</p>
 						<p>
-							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="welfareFeedbackform.php">Write Feedback</a></span>
 						</p>
 						<br>
 
 					</div>
-					<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"><h4>Please Visit The Ashesi Websit for the Full <a class="text-secondary" href="http://www.ashesi.edu.gh/student-life-5/student-government/history-of-student-government.html">Ashesi Student Council Government History.</a></h4>
+					<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"><h4>Please Visit The Ashesi Website for the Full <a class="text-secondary" href="http://www.ashesi.edu.gh/student-life-5/student-government/history-of-student-government.html">Ashesi Student Council Government History.</a></h4>
 
 						<h5>Thank You.</h5></div>
 				</div>

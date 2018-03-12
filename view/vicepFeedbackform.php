@@ -15,7 +15,7 @@
 
 	
 
-	<title>Feedback Form - ASCVigil&trade;</title>
+	<title>xFeedback Form - ASCVigil&trade;</title>
 </head>
 <body>
 
@@ -90,7 +90,7 @@
 
 
 				<div class="col-8">
-					<h3>Feedback Form - Academic Committee</h3>
+					<h3>Feedback Form - Vice President</h3>
 					<form>
 						<div class="form-group">
 							<label for="exampleFormControlInput1">Email address</label>

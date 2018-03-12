@@ -44,7 +44,7 @@
 					<a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">Committees</a>
+					<a class="nav-link" href="committee.php">Committees</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
@@ -53,7 +53,7 @@
 					<a class="nav-link" href="#">Parliament</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="#">News</a>
+					<a class="nav-link" href="polls.php">Polls</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -98,11 +98,13 @@
 
 			<div class="col-7">
 				<div class="tab-content" id="v-pills-tabContent">
-					<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"><p class="text-justify">My journey of a thousand miles began with my first step to fill out my Ashesi application form. Today, I stand humbled to be the President of the Ashesi Student Council. This journey continues with a solid and capable team of result-oriented thinkers who stand out with excellence and zeal to lead the executive council. It’s all about the student body and we, the Executive Council of the ASC have made it our sole mission to serve students and create the college experience we all yearn for.
-
+					<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+						<h3>Message From The ASC President</h3>
+						<p class="text-justify">My journey of a thousand miles began with my first step to fill out my Ashesi application form. Today, I stand humbled to be the President of the Ashesi Student Council. This journey continues with a solid and capable team of result-oriented thinkers who stand out with excellence and zeal to lead the executive council. It’s all about the student body and we, the Executive Council of the ASC have made it our sole mission to serve students and create the college experience we all yearn for.
 					That experience will be characterized by an inclusive and vibrant campus which brings to light the beauty of our diverse campus. This same experience will see a very transparent ASC which is open to suggestions and ever ready to engage in a conversation. It is all about US, the student body. It is all about the student’s needs. It is all about our college experience.</p>
-
 					<p><strong>- Edwin Adatsi '19</strong></p></div>
+
+
 					<div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
 
 						<p><strong>Edwin Adatsi</strong></p>
@@ -111,6 +113,9 @@
 						<p class="text-justify">“Be nothing, lest it be lasting” this has been the grounding principle of the current ASC president, Edwin Adatsi. Edwin is a junior who is currently studying Computer Engineering in Ashesi University. Edwin believes every act should be motivated by the greater good of a lasting and impactful effect. From his time in first year, Edwin served as the Communication Head of Pencils of Promise Club which has the sole objective of improving access to education all over the world. Through several projects and engagement, the students of Berekuso and Adaklu-Sofa have felt the impact of the club’s objective. He currently heads the club with a fellow student. With a developing knack for public speaking, Edwin and six other students represented Ashesi in the 64th edition of the Harvard National Model United Nations where he represented Uruguay’s interests.
 							Edwin enjoys playing basketball and cooking.
 						In his role as the new ASC president, his teams’ primary objective is to create an entirely independent and collaborative student body, with a vibrant campus outlook. An outlook which should be nothing but lasting.</p>
+						<p>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+						</p>
 						<br>
 
 
@@ -118,6 +123,9 @@
 						<span>Vice President</span>
 						<hr>
 						<p class="text-justify">Benjamin Annan, a Mechanical Engineering major of the Ashesi class of 2019 is best described as a politician at heart and an engineer in mind. Since enrolling in Ashesi in the Fall of 2015, he has previously served as the Fund manager of the Ashesi Student Scholarship Fund (ASSF). He currently holds the position of Programs Manager of Kingdom Christian Fellowship (KCF), and doubles as a Career Peer Advisor with the Career Center. As Vice-President of the Ashesi Student Council his primary aim is to build a firm fundamental structure with professionalism to the Student Council. He aspires to become a politician in a few years. He believes Engineers make the best leaders and the best of every profession and pledges to do whatever he can to contribute his quota because Ashesi is one of God’s great gifts to Africa.</p>
+						<p>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+						</p>
 						<br>
 
 						<p><strong>Kwasi Korboe</strong></p>
@@ -125,6 +133,9 @@
 						<hr>
 						<p class="text-justify">Kwasi Korboe is a junior studying Business Administration. Since the tender age of ten, he has loved taking part in various experiences and engaging with people. As a result, he lives by the mantra, “Life is an Experience”. He has engaged in many projects since entering Ashesi and hopes to take part in more in the future. He led a team of students to attend the Harvard National Model United Nations 2017 and has worked at two reputable petroleum companies. He is currently a Career Peer Advisor educating students on how to develop their careers, and he works with different social enterprises such as 19 Ambassador Integrity Campaign to give back to his society.
 						Having served on the Academic Committee in his first year, Kwasi hopes to make the committee more engaging to the students in the next year. By organizing interactive educational events, involving students in solving student problems and campaigning for decreased academic misconduct, Kwasi aims at making the Academic Committee an influential and important aspect of student life on campus.</p>
+						<p>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="academicFeedbackform.php">Write Feedback</a></span>
+						</p>
 						<br>
 
 
@@ -133,6 +144,9 @@
 						<hr>
 						<p class="text-justify">Yoofi Brown-Pobee'19 is the Finance Committee Chairperson of the Student Council and a Management Information Systems major. An alumnus of Tema International School, he immediately got into student government in his first year, joining the Sports and Finance Committees. He also joined the Ashesi D: Lab where he coordinated a cross university Design Project between Ashesi University and Brown University. He engaged in a similar project in 2017 this time with Dartmouth University and is currently a Design Lab Management Intern in charge of coordinating Hackathons that produce high impact solutions.
 						He loves professional wrestling particularly WWE, is a Chelsea fan and thinks Breaking Bad and Prison Break are the best series ever made. He knows nothing about basketball (still thinks Kobe is 25 years). He loves banter and making jokes and really cherishes his friends and classmates. One thing he guarantees with this ASC is efficiency and diligence. You won't forget team.</p>
+						<p>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+						</p>
 						<br>
 
 
@@ -142,6 +156,9 @@
 						<p class="text-justify">Kofi Anamoa is a junior studying Electrical / Electronic Engineering. He enjoys teaching and helping others in whatever capacity he can. Serving on previous Outreach Committees since his freshman year, Kofi has developed a desire to foster a community that is socially and environmentally conscious.
 							Kofi is a member of Tech Era, an organization that seeks to equip underprivileged Junior High School students with the necessary computing skills needed in this fast-growing technological era. There, he serves in the capacity of the Tech Module lead and manages student volunteer tutors, develop and manage the curriculum for teaching and learning in the most practical way possible.
 						As the Outreach Committee Chairperson, Kofi looks forward to creating a conducive space where community engagement groups have the resources necessary to operate, as well as radiate the giving back spirit of the community.</p>
+						<p>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+						</p>
 						<br>
 
 
@@ -150,6 +167,9 @@
 						<hr>
 						<p class="text-justify">Kennedy expresses deep concerns to improve sports in Ashesi, and offer major attention towards the less patronized sports. He is an individual grounded on the principles of commitment and leadership. He was on the previous Sports Committee, and in the upcoming year hopes to further the remarkable work done by the outgoing team. Kennedy is currently the deputy captain for Kasanoma FC, an Ashesi Premier League club. Prior to Ashesi, he participated in the Danish Soccer Tournament, Dana Cup.
 						He has fun when playing sports, and would encourage you to join his fun by showing up for all sports related activities on and off campus. Kennedy is an easily approachable individual and will welcome your ideas on how sports can be enhanced at Ashesi.</p>
+						<p>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+						</p>
 						<br>
 
 
@@ -158,6 +178,9 @@
 						<hr>
 						<p class="text-justify">“when the music changes, so does the dance…” as such, it is time for entertainment to be turned up a notch. 
 						Odette Ofosu-Siaw is currently a sophomore majoring in Business Administration and the ASC Entertainment Committee Chairperson. She finds delight in creating experiences by traveling the world, learning new things and meeting new people. She has previously served as an active member of the entertainment committee since her freshman year. In her tenure of office, she aspires to make the Ashesi community vibrant for students, staff, and faculty, to not only promote inclusion in Ashesi but have fun while doing so. For what shall it profit a man, to gain a 4.0 GPA with no college experience</p>
+						<p>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+						</p>
 						<br>
 
 
@@ -167,6 +190,9 @@
 						<p class="text-justify">Elorm is a junior, a Business Administration major and an avid sportsman. He’s enthusiastic about welfare and being a part of fun occasions.
 							There’s always one thing he’s kept close to heart and it’s that “life is but one”. Life is way too short, but God didn’t only give us 24 hours, He gave us time and he intends to use that meaningfully and its full capacity.
 						As Off-Campus chairperson, he intends to explore the different fun opportunities that can engage as many students as possible regardless of your year group, nationality or residence. Stress is eminent here at Ashesi and fun can be the same too. I can’t do this without the cooperation of the student body, so I hope to see you all around. Remember, like me, never wake up without hope and sleep with disappointment. Just live, laugh and learn!</p>
+						<p>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+						</p>
 						<br>
 
 
@@ -175,6 +201,9 @@
 						<hr>
 						<p class="text-justify">Wayne Gakuo is a social and outgoing student who hails from Mombasa, Kenya. His love for social media came when he just finished high school. As a tech-enthusiast and always thirsty for knowledge, he was constantly using online media to satisfy his curiosity; knowing what is trending and newly-introduced technological gadgets. Having been financially-sponsored in high school, and now in Ashesi University under the MasterCard Foundation Scholarship, Wayne loves community outreach programs since he feels he has an obligation to mentor the young ones from disadvantaged backgrounds. “Financial constraints should not bar people from gaining access to education”, he says. “There is unlimited and untapped potential that rests with these future leaders.”
 						Wayne has been in the previous Public Relations Committee where he spearheaded the Ashesi Students Council’s social media team that saw 128% increase in the number of followers both on Instagram and Facebook. “I look forward to using my committee as a platform where students get to learn and sharpen their skills in photography, writing, cinematography and graphic designing”, he adds. “With this, the produced content will be used to showcase the lives of Ashesi students and magnify the image of the ASC”</p>
+						<p>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+						</p>
 						<br>
 
 
@@ -184,6 +213,9 @@
 						<p class="text-justify">Zoe Delasi Tagboto is a member of the Class of 2020 majoring in Computer Science. She is passionate about being an active member of student government. Since freshman year, she has been actively involved in extracurricular activities having the chance to interact with and learn about the various concerns of the student body. She was elected by her peers as the Academic Representative for the class of 2020 and is a Career Peer Advisor which gave her the drive to use the skills she developed to create change in Ashesi.
 
 						As the ASC general secretary, she hopes to use her leadership and communication skills to improve student wellbeing and provide support to the other executive members as they carry out their duties. Her willingness to volunteer and work with different student groups, while maintaining a consistently high GPA attest to her strong organizational and time management skills and her ability to prioritize. She believes that this role would give her the ability to serve and protect the students by ensuring the members of the committee meet their deadlines and live out their promises.</p>
+						<p>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+						</p>
 						<br>
 
 						<p><strong>Isatou Jallow</strong></p>
@@ -198,13 +230,15 @@
 							She has also had the privilege of serving on various boards in the Ashesi student council. Most of all, she takes pride in been part of the first student parliament in the school's history. She looks forward to serving Ashesi once again, as the Welfare Chairperson.
 
 						In the end, she strongly believe the lives we touch, the destinies we redefine and the impacts we make will be what matters the most.</p>
+						<p>
+							<span><i class="fa fa-pencil-square-o" aria-hidden="true"></i><a href="">Write Feedback</a></span>
+						</p>
 						<br>
 
-
-
 					</div>
-					<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">DADADADADAD</div>
-					<div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+					<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"><h4>Please Visit The Ashesi Websit for the Full <a class="text-secondary" href="http://www.ashesi.edu.gh/student-life-5/student-government/history-of-student-government.html">Ashesi Student Council Government History.</a></h4>
+
+						<h5>Thank You.</h5></div>
 				</div>
 			</div>
 

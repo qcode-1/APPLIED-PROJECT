@@ -135,77 +135,49 @@
 		Survey.Survey.cssType = "bootstrap";
 
 
+
+		var surveySendResult = function (s, options) {
+			if (options.success) {
+				s.getResult('e423fa92-8a6c-411e-af3c-9f249ae3c10e', 'whatGender');
+			}
+		};
+
 		var surveyGetResult = function (s, options) {
 			if (options.success) {
 				showChart(options.dataList);
 			}
 		};
 
-//The callback on getting results from the server
-survey.onGetResult = surveyGetResult;
-
-var surveyResultId = 'e423fa92-8a6c-411e-af3c-9f249ae3c10e';
-//get aggregation for question 'langs'
-survey.getResult(surveyResultId, 'siblings');
-
-function showChart(chartDataSource) {
-	document
-	.getElementById("chartContainer")
-	.style
-	.height = "500px";
-	$("#chartContainer").dxPieChart({
-		dataSource: chartDataSource,
-		series: {
-			argumentField: 'name',
-			valueField: 'value'
+		function showChart(chartDataSource) {
+			document
+			.getElementById("chartContainer")
+			.style
+			.height = "500px";
+			$("#chartContainer").dxPieChart({
+				dataSource: chartDataSource,
+				series: {
+					argumentField: 'name',
+					valueField: 'value'
+				}
+			});
 		}
-	});
-}
 
+		var json = {
+			surveyId: 'd34f3597-b28c-4252-be5a-6ee2c7173d62',
+			surveyPostId: 'c54c7faa-3ce2-48a1-b0c5-a0e6338e8b0a'
+		};
 
+		window.survey = new Survey.Model(json);
 
-		// var surveySendResult = function (s, options) {
-		// 	if (options.success) {
-		// 		s.getResult('e423fa92-8a6c-411e-af3c-9f249ae3c10e', 'whatAge');
-		// 	}
-		// };
+		survey
+		.onComplete
+		.add(function (result) {
+			document
+			.querySelector('#surveyResult')
+			.innerHTML = "result: " + JSON.stringify(result.data);
+		});
 
-		// var surveyGetResult = function (s, options) {
-		// 	if (options.success) {
-		// 		showChart(options.dataList);
-		// 	}
-		// };
-
-		// function showChart(chartDataSource) {
-		// 	document
-		// 	.getElementById("chartContainer")
-		// 	.style
-		// 	.height = "500px";
-		// 	$("#chartContainer").dxPieChart({
-		// 		dataSource: chartDataSource,
-		// 		series: {
-		// 			argumentField: 'name',
-		// 			valueField: 'value'
-		// 		}
-		// 	});
-		// }
-
-		// var json = {
-		// 	surveyId: 'd34f3597-b28c-4252-be5a-6ee2c7173d62',
-		// 	surveyPostId: 'c54c7faa-3ce2-48a1-b0c5-a0e6338e8b0a'
-		// };
-
-		// window.survey = new Survey.Model(json);
-
-		// survey
-		// .onComplete
-		// .add(function (result) {
-		// 	document
-		// 	.querySelector('#surveyResult')
-		// 	.innerHTML = "result: " + JSON.stringify(result.data);
-		// });
-
-		// $("#surveyElement").Survey({model: survey, onSendResult: surveySendResult, onGetResult: surveyGetResult});
+		$("#surveyElement").Survey({model: survey, onSendResult: surveySendResult, onGetResult: surveyGetResult});
 
 	</script>
 

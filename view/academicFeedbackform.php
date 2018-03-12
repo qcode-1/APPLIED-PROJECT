@@ -30,132 +30,113 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light ">
 
-		<a class="navbar-brand" href="home.php">
-			<img src="../images/logo.jpg">ASCVigil&trade;
-		</a>
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+		<!-- <div class="container"> -->
 
-		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav">
-				<li class="nav-item active">
-					<a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="committee.php">Committees</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Parliament</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="polls.php">Polls</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						About
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="#">ASCVigil&trade;</a>
-						<a class="dropdown-item" href="#">FAQ's</a>
+			<a class="navbar-brand" href="home.php">
+				<img src="../images/logo.jpg">ASCVigil&trade;
+			</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="committee.php">Committees</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="manifesto.php">Track Manifesto</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Parliament</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="polls.php">Polls</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							About
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="#">ASCVigil&trade;</a>
+							<a class="dropdown-item" href="#">FAQ's</a>
+						</div>
+					</li>
+				</ul>
+
+			</div>
+			<span class="navbar-text">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="../index.php">Logout</a>
+					</li>
+				</ul>
+			</span>
+
+			<!-- </div> -->
+		</nav>
+
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="w-100"><br></div>
+
+				<div class="col-2"></div>
+
+
+				<div class="col-8">
+					<h3>Feedback Form - Academic Committee</h3>
+					<form>
+						<div class="form-group">
+							<label for="exampleFormControlInput1">Email address</label>
+							<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+						</div>
+
+						<div class="form-group">
+							<label for="exampleFormControlTextarea1">Your comments</label>
+							<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary mb-2">Submit</button>
+					</form>
+				</div>
+
+				<div class="col-2"></div>
+
+			</div>
+
+		</div>
+
+		<div class="jumbotron jumbotron-fluid">
+			<div class="container" style="text-align: center;">
+				<h4>Want to receive regular updates?</h4>
+				<p><div class="input-group mb-3">
+					<input type="text" class="form-control" placeholder="Enter your email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+					<div class="input-group-append">
+						<span class="input-group-text bg-warning" id="basic-addon2">Subscribe</span>
 					</div>
-				</li>
-			</ul>
-
-		</div>
-		<span class="navbar-text">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="../index.php">Logout</a>
-				</li>
-			</ul>
-		</span>
-	</nav>
-
-
-	<div class="container">
-
-		<div class="row">
-
-			<div class="w-100">
-
-				<br>
-				
+				</div></p>
 			</div>
-
-			<div class="col-2">
-				
-			</div>
-
-
-			<div class="col-8">
-				<div class="tab-content" id="v-pills-tabContent">
-					<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-						<h3>Feedback Form - Academic Committee</h3>
-						<p class="text-justify">My journey of a thousand miles began with my first step to fill out my Ashesi application form. Today, I stand humbled to be the President of the Ashesi Student Council. This journey continues with a solid and capable team of result-oriented thinkers who stand out with excellence and zeal to lead the executive council. It’s all about the student body and we, the Executive Council of the ASC have made it our sole mission to serve students and create the college experience we all yearn for.
-					That experience will be characterized by an inclusive and vibrant campus which brings to light the beauty of our diverse campus. This same experience will see a very transparent ASC which is open to suggestions and ever ready to engage in a conversation. It is all about US, the student body. It is all about the student’s needs. It is all about our college experience.</p>
-					<p><strong>- Edwin Adatsi '19</strong></p></div>
-
-
-					
-					<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"><h4>Please Visit The Ashesi Websit for the Full <a class="text-secondary" href="http://www.ashesi.edu.gh/student-life-5/student-government/history-of-student-government.html">Ashesi Student Council Government History.</a></h4>
-
-						<h5>Thank You.</h5></div>
-				</div>
-			</div>
-
-
-			<div class="col-2">
-				
-			</div>
-
 		</div>
-		
 
-	</div>
-
-
-	<!-- <div class="jumbotron jumbotron-fluid">
-		<div class="container" style="text-align: center;">
-			<h1 class="display-4">Sure &amp; Reliable Electoral Process</h1>
-			<p class="lead">AshVigil&trade; seeks to bridge the gap between technology and the general elections. Our system will keep users up to date on all matters concerning election candidates and provide a swift means of voting. Results will be efficiently caluclated in real time, with the use of perfectly designed algorithms that are verifiable and accurate.</p>
+		<div class="footer bg-dark text-white">
+			<p class="">&copy; AshVigil. All rights reserved.</p>
+			<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
+			<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
+			<p>Email: <b><i>info@quickbuy.com</i></b></p>
+			<p><b>2018</b></p>
 		</div>
-		<br>
-		<div class="container" style="text-align: center;">
-			<h1 class="display-4">Accountability &amp; Transparency</h1>
-			<p class="lead">AshVigil&trade; goes the extra mile to ensure that our leaders are accountable and transparent in their actions. It creates the platform for discussion and delibration for issues pertaining to student governance and overall administation. </p>
-		</div>
-	</div> -->
-
-	<div class="jumbotron jumbotron-fluid">
-		<div class="container" style="text-align: center;">
-			<h4>Want to receive regular updates?</h4>
-			<p><div class="input-group mb-3">
-				<input type="text" class="form-control" placeholder="Enter your email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-				<div class="input-group-append">
-					<span class="input-group-text bg-warning" id="basic-addon2">Subscribe</span>
-				</div>
-			</div></p>
-		</div>
-	</div>
-
-	<div class="footer bg-dark text-white">
-		<p class="">&copy; AshVigil. All rights reserved.</p>
-		<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
-		<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
-		<p>Email: <b><i>info@quickbuy.com</i></b></p>
-		<p><b>2018</b></p>
-	</div>
 
 
 
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-</body>
-</html>
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+	</body>
+	</html>

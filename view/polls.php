@@ -81,7 +81,7 @@
 
 	<div class="container">
 
-		<h2 class="pollHead">View All Existing Polls <span class="badge badge-secondary">New</span></h2>
+		<h2 class="pollHead">View All Existing Polls <span class="badge badge-secondary">New (2)</span></h2>
 
 		<hr>
 
@@ -109,13 +109,14 @@
 					<div class="card-header" id="headingTwo">
 						<h5 class="mb-0">
 							<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-								Collapsible Group Item #2
+								Thoughts on Overall Student Inclusion
 							</button>
 						</h5>
 					</div>
 					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
 						<div class="card-body">
-							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+							<h6>Description</h6>
+							The main aim of the poll is to assess the level of inclusion of all student, particularly pertaining to events held on campus. For many students, events held by the ASC fail to properly represnet the diversified student community for what it is. Considering that there are both internatiopnal and Ghanaian nationsls here, the ASC must try to create and conducive atmosphere for everyone to co-exist. To take part in this poll, please <a href="inclusionPoll.php">click here</a>.
 						</div>
 					</div>
 				</div>
@@ -123,13 +124,14 @@
 					<div class="card-header" id="headingThree">
 						<h5 class="mb-0">
 							<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-								Collapsible Group Item #3
+								Assess the performance of Class Representatives
 							</button>
 						</h5>
 					</div>
 					<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
 						<div class="card-body">
-							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+							<h6>Description</h6>
+							The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. To take part in this poll, please <a href="classrepPoll.php">click here</a>.
 						</div>
 					</div>
 				</div>

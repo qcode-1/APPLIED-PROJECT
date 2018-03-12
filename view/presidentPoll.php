@@ -15,9 +15,13 @@
 
 	
 
-	<title> Polls - ASCVigil&trade;</title>
+	<title> (<?php  session_start();
+	echo $_SESSION['user'];?>) Polls  - ASCVigil&trade;</title>
 </head>
 <body>
+
+	<p hidden="true" id="phidden"><?php
+	echo $_SESSION['user'];?></p>
 
 	<?php
 
@@ -88,68 +92,15 @@
 		<div class="row">
 
 
-			<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button> -->
-
-<!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<br>
+			<br>
 
 
-<!-- <div class="alert alert-primary" role="alert">
-	This is a primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-</div> -->
+			<div id="surveyContainer"></div>
 
-
-
-
-
-
-<div id="surveyContainer"></div>
-
-
-
-</div>
-
-
-
-
-
-</div>
-
-
-	<!-- <div class="jumbotron jumbotron-fluid">
-		<div class="container" style="text-align: center;">
-			<h1 class="display-4">Sure &amp; Reliable Electoral Process</h1>
-			<p class="lead">AshVigil&trade; seeks to bridge the gap between technology and the general elections. Our system will keep users up to date on all matters concerning election candidates and provide a swift means of voting. Results will be efficiently caluclated in real time, with the use of perfectly designed algorithms that are verifiable and accurate.</p>
 		</div>
-		<br>
-		<div class="container" style="text-align: center;">
-			<h1 class="display-4">Accountability &amp; Transparency</h1>
-			<p class="lead">AshVigil&trade; goes the extra mile to ensure that our leaders are accountable and transparent in their actions. It creates the platform for discussion and delibration for issues pertaining to student governance and overall administation. </p>
-		</div>
-	</div> -->
+
+
+	</div>
 
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container" style="text-align: center;">
@@ -186,21 +137,35 @@
 		Survey.Survey.cssType = "bootstrap";
 		Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
 
+		var currentClientId = document.getElementById('phidden').innerHTML;
 
-		var surveyJSON = { surveyId: 'd34f3597-b28c-4252-be5a-6ee2c7173d62'}
+		function runSurveyCheck() {
+			currentClientId = document
+			.getElementById('clientIdinput')
+			.value || currentClientId;
+    		//surveyId is null - use the previous surveyId
+    		survey.loadSurveyFromService(null, currentClientId);
 
-		function sendDataToServer(survey) {
-			survey.sendResult('c54c7faa-3ce2-48a1-b0c5-a0e6338e8b0a');
-		}
-
-		var survey = new Survey.Model(surveyJSON);
-		$("#surveyContainer").Survey({
-			model: survey,
-			onComplete: sendDataToServer
-		});
+    	}
 
 
-	</script>
+    	var surveyJSON = { 
+    		surveyId: 'd34f3597-b28c-4252-be5a-6ee2c7173d62',
+    		clientId: currentClientId
+    	}
+
+    	function sendDataToServer(survey) {
+    		survey.sendResult('c54c7faa-3ce2-48a1-b0c5-a0e6338e8b0a');
+    	}
+
+    	var survey = new Survey.Model(surveyJSON);
+    	$("#surveyContainer").Survey({
+    		model: survey,
+    		onComplete: sendDataToServer
+    	});
+
+
+    </script>
 
 
 </body>

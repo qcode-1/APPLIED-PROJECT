@@ -10,15 +10,11 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 	<link rel="stylesheet" type="text/css" href="../css/comm.css">
 
-	<link href="https://surveyjs.azureedge.net/1.0.13/survey.css" type="text/css" rel="stylesheet"/>
-	<script src="https://unpkg.com/jquery"></script>
+	<link rel="stylesheet" type="text/css" href="../css/chart.css">
 
-	
-
-	<title> Poll Results - ASCVigil&trade;</title>
+	<title>Poll Results - ASCVigil&trade;</title>
 </head>
 <body>
 
@@ -79,9 +75,6 @@
 	</nav>
 
 
-
-	
-
 	<div class="container">
 
 		<h2 class="pollHead">Assess the Behavior and Attitude of the ASC President and Vice</h2>
@@ -92,32 +85,16 @@
 
 			<br>
 
-			<!-- <div id="surveyContainer"></div> -->
 
-			<div id="surveyResult"></div>
+			<!-- <div id='myChart'></div> -->
+
+			<canvas id="myChart" width="400" height="400"></canvas>
 
 
 
 		</div>
-
-
-
-
 
 	</div>
-
-
-	<!-- <div class="jumbotron jumbotron-fluid">
-		<div class="container" style="text-align: center;">
-			<h1 class="display-4">Sure &amp; Reliable Electoral Process</h1>
-			<p class="lead">AshVigil&trade; seeks to bridge the gap between technology and the general elections. Our system will keep users up to date on all matters concerning election candidates and provide a swift means of voting. Results will be efficiently caluclated in real time, with the use of perfectly designed algorithms that are verifiable and accurate.</p>
-		</div>
-		<br>
-		<div class="container" style="text-align: center;">
-			<h1 class="display-4">Accountability &amp; Transparency</h1>
-			<p class="lead">AshVigil&trade; goes the extra mile to ensure that our leaders are accountable and transparent in their actions. It creates the platform for discussion and delibration for issues pertaining to student governance and overall administation. </p>
-		</div>
-	</div> -->
 
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container" style="text-align: center;">
@@ -144,32 +121,90 @@
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="../js/jquery-3.3.1.min.js"></script>
-	<script src="https://surveyjs.azureedge.net/1.0.13/survey.jquery.min.js"></script>
+	<!-- <script src= "https://cdn.zingchart.com/zingchart.min.js"></script> -->
+
+	<!-- <script> 
+
+		zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+		ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9","ee6b7db5b51705a13dc2339db3edaf6d"];
+
+	</script> -->
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+	<script>
+
+		var ctx = document.getElementById("myChart").getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: ["Red", "Blue", "Yellow",  "Green", "Purple", "Orange"],
+				datasets: [{
+					label: '# of Votes',
+					data: [12, 19, 3, 5, 2, 3],
+					backgroundColor: [
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
+					],
+					borderColor: [
+					'rgba(255,99,132,1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero:true
+						}
+					}]
+				}
+			}
+		});
+	</script>
 
 	<script type="text/javascript">
 
 
-		Survey
-		.StylesManager
-		.applyTheme("default");
+		// Survey
+		// .StylesManager
+		// .applyTheme("default");
 
-		var json = {
-			surveyId: 'c54c7faa-3ce2-48a1-b0c5-a0e6338e8b0a'
-		};
+		// var json = {
+		// 	surveyId: 'c54c7faa-3ce2-48a1-b0c5-a0e6338e8b0a'
+		// };
 
-		window.survey = new Survey.Model(json);
+		// window.survey = new Survey.Model(json);
 
-		survey
-		.onComplete
-		.add(function (result) {
-			document
-			.querySelector('#surveyResult')
-			.innerHTML = "result: " + JSON.stringify(result.data);
-		});
+		// survey
+		// .onComplete
+		// .add(function (result) {
+		// 	document
+		// 	.querySelector('#surveyResult')
+		// 	.innerHTML = "result: " + JSON.stringify(result.data);
+		// });
 
-		$("#surveyElement").Survey({model: survey});
+		// $("#surveyElement").Survey({model: survey});
+
+
+		// zingchart.render({ 
+		// 	id : 'myChart', 
+		// 	output:"svg",
+		// 	dataurl : "//demos.zingchart.com/view/CN1B44PW/chart.json",
+		// 	height : "100%", 
+		// 	width: "100%" 
+		// });
 
 
 	</script>

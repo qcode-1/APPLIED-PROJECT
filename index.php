@@ -60,9 +60,7 @@ if (isset($_POST['register'])) {
 		$pass_error = "<small>Please enter a password</small>";			
 	}
 
-	//if ($fname_error == "" && $lname_error == "" && $email_error == "" && $pass_error = "") {
 		registerStudent();
-	//}
 
 }
 

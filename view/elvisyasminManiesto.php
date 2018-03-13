@@ -15,10 +15,7 @@
 
 	<!-- <link rel="stylesheet" type="text/css" href="../css/manifesto.css"> -->
 
-	
-
-	<title>(<?php  session_start();
-	echo $_SESSION['user'];?>) Manifesto - ASCVigil&trade;</title>
+	<title>Manifesto (Elvis and Yasmin) - ASCVigil&trade;</title>
 
 </head>
 <body>
@@ -95,11 +92,11 @@
 						ASC Aspirants
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
+						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="edwinbenjManifesto.php">Edwin Adatsi &amp; Benjamin Annan</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item disabled" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item disabled" href="elvisyasminManiesto.php">Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
+						<a class="dropdown-item" href="elvisyasminManiesto.php">Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
 					</div>
 				</li>
 
@@ -149,7 +146,7 @@
 			</div>
 
 			<div class="col-8">
-				<h2 class="cand" style="text-align: center;">ASC PRESIDENT &amp; VICE ELECT</h2>
+				<h2 class="cand" style="text-align: center;">ASC ASPIRANTS</h2>
 
 			</div>
 
@@ -260,11 +257,6 @@
 			</div>
 
 			<div class="col-4"></div>
-
-
-
-
-
 
 		</div>
 

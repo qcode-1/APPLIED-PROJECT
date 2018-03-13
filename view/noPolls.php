@@ -37,8 +37,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-
-		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+		<!-- <div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item active">
 					<a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
@@ -47,22 +46,13 @@
 					<a class="nav-link" href="committee.php">Committees</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="polls.php">Polls</a>
-				</li>
-				<!-- <li class="nav-item">
 					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
-				</li> -->
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						ASC Aspirants Manifesto
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="edwinbenjManifesto.php">Edwin Adatsi &amp; Benjamin Annan</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item disabled" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item disabled" href="elvisyasminManiesto.php" >Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
-					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Parliament</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="polls.php">Polls</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -74,9 +64,64 @@
 					</div>
 				</li>
 			</ul>
+
+		</div> -->
+
+		<div class="collapse navbar-collapse" id="navbarNavDropdown">
+			<ul class="navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="committee.php">Committees</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="noPolls.php">Polls</a>
+				</li>
+				<!-- <li class="nav-item">
+					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
+				</li> -->
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						ASC Aspirants Manifesto
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="edwinbenjManifesto.php">Edwin Adatsi &amp; Benjamin Annan</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="elvisyasminManiesto.php">Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
+					</div>
+				</li>
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						JEC Aspirants Manifesto
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="benjnanaManifesto">Benjamin Kusi &amp; Nana Ehoa Acquaye</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="chretonam.php">Christopher Zanu &amp; Etonam Dotse</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="molaud.php">Molife Chaplain &amp; Audrey Mutswiri</a>
+					</div>
+				</li>
+				<!-- <li class="nav-item">
+					<a class="nav-link" href="#">Parliament</a>
+				</li> -->
+				
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						About
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="#">ASCVigil&trade;</a>
+						<a class="dropdown-item" href="#">FAQ's</a>
+					</div>
+				</li>
+			</ul>
 		</div>
-
-
+		
 		<span class="navbar-text">
 			<ul class="navbar-nav">
 				<li class="nav-item">
@@ -92,14 +137,14 @@
 
 	<div class="container">
 
-		<h2 class="pollHead">View All Existing Polls <span class="badge badge-secondary">New (2)</span></h2>
+		<h2 class="pollHead">No Polls Available At This Time <span class="badge badge-secondary">New (0)</span></h2>
 
 		<hr>
 
 		<div class="row">
 
 
-			<div id="accordion">
+			<!-- <div id="accordion">
 				<div class="card">
 					<div class="card-header" id="headingOne">
 						<h5 class="mb-0">
@@ -146,7 +191,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 
 
@@ -200,26 +245,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
-	<script type="text/javascript">
-
-
-		Survey.Survey.cssType = "bootstrap";
-
-		var surveyJSON = {pages:[{name:"page1",elements:[{type:"checkbox",name:"gender",title:"Gender?",isRequired:true,choices:[{value:"M",text:"Male"},{value:"F",text:"Female"}]},{type:"checkbox",name:"class",title:"Year Group?",isRequired:true,choices:[{value:"Senior",text:"2018"},{value:"Junior",text:"2019"},{value:"Sophomore",text:"2020"},{value:"Freshman",text:"2021"}]},{type:"checkbox",name:"major",title:"What is your major?",isRequired:true,choices:[{value:"CS",text:"Computer Science"},{value:"BA",text:"Business Admin"},{value:"MIS",text:"MIS"},{value:"EE",text:"Electrical Engineering"},{value:"CE",text:"Computer Engineering"},{value:"ME",text:"Mechanical Engineering"}]}]},{name:"page2",elements:[{type:"rating",name:"ratePresident",title:"On a scale of 1(poor) - 5(excellent), how would you rate the performance of the incumbent ASC president?",isRequired:true},{type:"rating",name:"rateEntertainment",title:"On a scale of 1(poor) - 5(excellent), how would you rate the performance of the entertainment committee?",isRequired:true},{type:"comment",name:"addComments",title:"Please add any additional comments you may have."}]}]}
-
-		function sendDataToServer(survey) {
-    //send Ajax request to your web server.
-    alert("The results are:" + JSON.stringify(survey.data));
-}
-
-var survey = new Survey.Model(surveyJSON);
-$("#surveyContainer").Survey({
-	model: survey,
-	onComplete: sendDataToServer
-});
-
-
-</script>
 
 
 </body>

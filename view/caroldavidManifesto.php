@@ -17,8 +17,7 @@
 
 	
 
-	<title>(<?php  session_start();
-	echo $_SESSION['user'];?>) Manifesto - ASCVigil&trade;</title>
+	<title>Manifesto (Carol and Sasu) - ASCVigil&trade;</title>
 
 </head>
 <body>
@@ -26,6 +25,8 @@
 	<?php
 
 	require_once("../database/process.php");
+
+	session_start();
 
 	date_default_timezone_set('Europe/London');
 
@@ -76,6 +77,7 @@
 			</ul>
 		</div> -->
 
+
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item active">
@@ -85,14 +87,14 @@
 					<a class="nav-link" href="committee.php">Committees</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="polls.php">Polls</a>
+					<a class="nav-link" href="noPolls.php">Polls</a>
 				</li>
 				<!-- <li class="nav-item">
 					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
 				</li> -->
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						ASC Aspirants
+						ASC Aspirants Manifesto
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="edwinbenjManifesto.php">Edwin Adatsi &amp; Benjamin Annan</a>
@@ -140,8 +142,6 @@
 		</span>
 	</nav>
 
-
-
 	<div class="container">
 		<div class="row">
 			
@@ -149,7 +149,7 @@
 			</div>
 
 			<div class="col-8">
-				<h2 class="cand" style="text-align: center;">ASC PRESIDENT &amp; VICE ELECT</h2>
+				<h2 class="cand" style="text-align: center;">ASC ASPIRANTS</h2>
 
 			</div>
 
@@ -159,7 +159,7 @@
 				
 				<p>
 
-					<h4 class="cand">MANIFESTO FOR EDWIN ADATSI AND BENJAMIN ANNAN</h4>
+					<h4 class="cand">MANIFESTO FOR CAROL ARMAH AND DAVID SASU</h4>
 					<p class="text-justify">Hello Ashesi Community,
 						Before I delve into the details of the plans that are within our manifesto, I would like you to first have at the back of your mind that the plans that have been enlisted below have been carefully crafted and put together with your optimum well-being and success in mind. 
 						Carol and I have spent considerably long periods of time asking ourselves about what would have the most impact on the lives of each and every student and we came up with a host of ideas that have been fine-tuned and polished into policies that we believe would not only enable you to not only excel academically but would also enable you to enjoy your stay on this enthralling campus and achieve your dreams. 
@@ -260,11 +260,6 @@
 			</div>
 
 			<div class="col-4"></div>
-
-
-
-
-
 
 		</div>
 

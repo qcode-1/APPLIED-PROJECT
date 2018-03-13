@@ -53,13 +53,22 @@
 					<a class="nav-link" href="committee.php">Committees</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Parliament</a>
-				</li>
-				<li class="nav-item">
 					<a class="nav-link" href="polls.php">Polls</a>
+				</li>
+				<!-- <li class="nav-item">
+					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
+				</li> -->
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						ASC Aspirants Manifesto
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="edwinbenjManifesto.php">Edwin Adatsi &amp; Benjamin Annan</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item disabled" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item disabled" href="elvisyasminManiesto.php" >Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
+					</div>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,8 +80,9 @@
 					</div>
 				</li>
 			</ul>
-
 		</div>
+
+
 		<span class="navbar-text">
 			<ul class="navbar-nav">
 				<li class="nav-item">
@@ -97,22 +107,22 @@
 			<div class="carousel-item active">
 				<img class="d-block w-100" src="../images/carousel.jpg" title="First slide">
 				<div class="carousel-caption d-none d-md-block">
-					<h4>FIRST</h4>
-					<p>Caption goes here</p>
+					<h4>Student Representatives</h4>
+					<p>Another year round, a new set of executives to be ushered in. Who gets the vote?</p>
 				</div>
 			</div>
 			<div class="carousel-item">
 				<img class="d-block w-100" src="../images/carousel.jpg" title="Second slide">
 				<div class="carousel-caption d-none d-md-block" >
-					<h4>SECOND</h4>
-					<p>Caption goes here</p>
+					<h4>Student Representatives</h4>
+					<p>Another year round, a new set of executives to be ushered in. Who gets the vote?</p>
 				</div>
 			</div>
 			<div class="carousel-item">
 				<img class="d-block w-100" src="../images/carousel.jpg" title="Third slide">
 				<div class="carousel-caption d-none d-md-block ">
-					<h4>THIRD</h4>
-					<p>Caption goes here</p>
+					<h4>Student Representatives</h4>
+					<p>Another year round, a new set of executives to be ushered in. Who gets the vote?</p>
 				</div>
 			</div>
 		</div>
@@ -143,11 +153,11 @@
 		<div class="container" style="text-align: center;">
 			<h4>Want to receive regular updates?</h4>
 			<p><div class="input-group mb-3">
-  <input type="text" class="form-control" placeholder="Enter your email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-  <div class="input-group-append">
-    <span class="input-group-text bg-warning" id="basic-addon2">Subscribe</span>
-  </div>
-</div></p>
+				<input type="text" class="form-control" placeholder="Enter your email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+				<div class="input-group-append">
+					<span class="input-group-text bg-warning" id="basic-addon2">Subscribe</span>
+				</div>
+			</div></p>
 		</div>
 	</div>
 
@@ -173,7 +183,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
-	
+
 
 
 </body>

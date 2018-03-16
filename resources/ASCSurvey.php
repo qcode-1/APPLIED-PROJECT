@@ -13,6 +13,8 @@
 
 	<p id="demo3"></p>
 
+	<p id="demo4"></p>
+
 
 	<?php
 
@@ -21,13 +23,6 @@
 	$wizards = json_decode($data);
 
 	echo $wizards->ResultCount;
-
-	foreach ($wizards as $wizard) {
-	echo $wizard['ResultCount'] . 
-			 $wizard['Data'][0]['academicAssessment'] . ', ' . 
-		   $wizard['Data'][0]['presidentAssessment'] . ', with a ' . 
-		   $wizard['Data'][0]['whatMajor'] . ' core. <br>' ;
-}
 
 
 	?>
@@ -61,14 +56,22 @@
 	var actualData = data_json.Data;
 
 	document.getElementById("demo2").innerHTML = "Total results are: " + JSON.stringify(actualData);
-	document.getElementById("demo3").innerHTML = "An assessment data is: " + actualData.academicAssessment;
+	document.getElementById("demo3").innerHTML = "An assessment data is: " + actualData[4].whatGender;
+
+	var totalAcademic = " ";
 
 
 	for (var i=0; i < data_json.ResultCount; i++) {
 
-		console.log(actualData.academicAssessment);
+		// console.log(actualData[i].academicAssessment);
+
+		// totalAcademic = totalAcademic + actualData[i].academicAssessment; 
+
+			totalAcademic = totalAcademic + actualData[i].whatGender + "\n";
 
 	}
+
+	document.getElementById("demo4").innerHTML = totalAcademic;
 
 </script>
 

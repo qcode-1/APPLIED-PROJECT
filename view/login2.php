@@ -1,5 +1,14 @@
 <?php
 
+
+//don't display errors
+ini_set('display_errors', 0);
+//write errors to log
+ini_set('log_errors', 1);
+//error log file name
+ini_set('log_errors', '../error.log');
+error_reporting(E_ALL);
+
 require_once("../database/process.php");
 
 
@@ -28,9 +37,7 @@ if (isset($_POST['login'])) {
 		$eml = $_POST['email'];
 		$password = $_POST['pass'];
 		loginStudent($eml, $password);
-
 	}
-
 }
 
 ?>
@@ -39,34 +46,33 @@ if (isset($_POST['login'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
 	<link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-	<link rel="stylesheet" type="text/css" href="../css/login.css">
-
 	<style type="text/css">
 
 	.wholeBody{
 		background-image: url('../images/background.jpg');
+		background-color: #343A40;
 		max-height: 600px;
 	}
 
 </style>
+<link rel="stylesheet" type="text/css" href="../css/login2.css">
+
+
 
 <title>Login - ASCVigil&trade;</title>
 </head>
 <body>
-
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -89,7 +95,8 @@ if (isset($_POST['login'])) {
 	</nav>
 
 	<div class="wholeBody">
-		<div class="container">
+
+		<div class="container" id="container">
 
 
 			<div class="row">
@@ -102,8 +109,8 @@ if (isset($_POST['login'])) {
 						<h3 class="head3">Login</h3>
 					</div>
 
-					<form method="POST"  onsubmit="return FormValidation();" onchange="return FormValidation();" >
-
+					<form method="POST" onsubmit="return FormValidation();" onchange="return FormValidation();">
+						
 						<div class="form-group row">
 							<label for="exampleInputEmail1" class="col-sm-2">Email</label>
 							<div class="col-sm-10">
@@ -117,19 +124,17 @@ if (isset($_POST['login'])) {
 						<div class="form-group row">
 							<label for="exampleInputPassword1" class="col-sm-2">Password</label>
 							<div class="col-sm-10">
-								<input type="password" name="pass" class="form-control" id="inputPassword">
+								<input type="password" class="form-control"  name ="pass" id="inputPassword" placeholder="Password">
+								<span class="text-danger"><?php echo $pass_error; ?></span>
 							</div>
 						</div>
-						<span class="text-danger"><?php echo $pass_error; ?></span>
-
-						<div>
-							<a href="fgpass.php"><span class="forgot">Forgot Password?</span></a>
+						<div class="">
+							<a href="fgpass.php" class="text-secondary"><span>Forgot Password?</span></a>
 						</div>
-
 						<div class="subButton">
-							<button type="submit button" class="btn btn-primary" data-toggle="modal" name="login" class="btn btn-primary">Login</button>
+							<button type="submit button" class="btn btn-success" name="login">Login</button>
 						</div>
-						
+
 					</form>
 
 				</div>
@@ -143,7 +148,9 @@ if (isset($_POST['login'])) {
 	</div>
 
 
-	<div class="footer bg-dark text-white fixed-bottom">
+
+
+	<div class="footer bg-dark text-white">
 		<p class="">&copy; AshVigil. All rights reserved.</p>
 		<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
 		<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
@@ -161,6 +168,7 @@ if (isset($_POST['login'])) {
 
 
 	<script type="text/javascript">
+
 
 		function FormValidation(){
 
@@ -180,7 +188,10 @@ if (isset($_POST['login'])) {
 			}else{
 				document.getElementById('inputPassword').style.borderColor = "green";
 			}
-		}	
+		}
+
 	</script>
+
+
 </body>
 </html>

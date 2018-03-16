@@ -168,7 +168,7 @@
 		<p class="">&copy; AshVigil. All rights reserved.</p>
 		<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
 		<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
-		<p>Email: <b><i>info@quickbuy.com</i></b></p>
+		<p>Email: <b><i>ascvigil@ashesi.edu.gh</i></b></p>
 		<p><b>2018</b></p>
 	</div>
 

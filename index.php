@@ -60,7 +60,7 @@ if (isset($_POST['register'])) {
 		$pass_error = "<small>Please enter a password</small>";			
 	}
 
-		registerStudent();
+	registerStudent();
 
 }
 
@@ -81,11 +81,18 @@ if (isset($_POST['register'])) {
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/indexpage.css">
+	<style type="text/css">
 
-	
+	.wholeBody{
+		background-image: url('images/background.jpg');
+		max-height: 600px;
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="css/indexpage.css">
 
-	<title>Sign Up - ASCVigil&trade;</title>
+
+
+<title>Sign Up - ASCVigil&trade;</title>
 </head>
 <body>
 
@@ -103,66 +110,84 @@ if (isset($_POST['register'])) {
 			<ul class="navbar-nav ml-auto">
 
 				<li class="nav-item">
-					<a class="nav-link" href="view/login.php">Login</a>
+					<a class="nav-link" href="view/login2.php">Login</a>
 				</li>
 			</ul>
 		</div>
 	</nav>
 
-	<div class="container">
+	<div class="wholeBody">
+
+		<div class="container" id="container">
 
 
-		<div class="row">
+			<div class="row">
 
-			<div class="col-3"></div>
+				<div class="col-3"></div>
 
-			<div class="col-6">
+				<div class="col-6">
 
-
-				<h3 class="head3">SignUp</h3>
-
-				<form method="POST" onsubmit="return FormValidation();" onchange="return FormValidation();">
-					<div class="form-group">
-						<label for="">Firstname</label>
-						<input type="text" class="form-control"  name="fname" id="inputFirstname"  placeholder="Enter firstname" value="<?php echo isset($_POST['fname']) ? $_POST['fname'] : ''; ?>">
-						<span class="text-danger"><?php echo $fname_error ?></span>
+					<div class="formHead">
+						<h3 class="head3">SignUp</h3>
 					</div>
-					<div class="form-group">
-						<label for="">Lastname</label>
-						<input type="text" class="form-control" id="inputLastname" name="lname" placeholder="Enter lastname" value="<?php echo isset($_POST['lname']) ? $_POST['lname'] : ''; ?>">
-						<span class="text-danger"><?php echo $lname_error; ?></span>
-					</div>
-					<div class="form-group">
-						<label for="">Class</label>
-						<select class="form-control" name="classes" id="inputClass" >
-							<?php
 
-							loadClasses();
+					<form method="POST" onsubmit="return FormValidation();" onchange="return FormValidation();">
+						<div class="form-group row">
+							<label for="" class="col-sm-2 col-form-label">Firstname</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control"  name="fname" id="inputFirstname" value="<?php echo isset($_POST['fname']) ? $_POST['fname'] : ''; ?>">
+							</div>
+							<span class="text-danger"><?php echo $fname_error ?></span>
+						</div>
+						<br>
+						<div class="form-group row">
+							<label for="" class="col-sm-2 col-form-label">Lastname</label>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="inputLastname" name="lname" value="<?php echo isset($_POST['lname']) ? $_POST['lname'] : ''; ?>">
+							</div>
+							<span class="text-danger"><?php echo $lname_error; ?></span>
+						</div>
+						<br>
+						<div class="form-group row">
+							<label for="" class="col-sm-2">Class</label>
+							<div class="col-sm-10">
+								<select class="form-control" name="classes" id="inputClass" >
+									<?php
 
-							?>
-						</select>
-						<span class="text-danger"><?php echo $class_error; ?></span>
-					</div>
-					<div class="form-group">
-						<label for="exampleInputEmail1">Email address</label>
-						<input type="email" class="form-control" name="emladd" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" value="<?php echo isset($_POST['emladd']) ? $_POST['emladd'] : ''; ?>">
-						<span class="text-danger"><?php echo $email_error; ?></span>
-					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Password</label>
-						<input type="password" class="form-control"  name ="passd" id="inputPassword" placeholder="Password">
-						<span class="text-danger"><?php echo $pass_error; ?></span>
-					</div>
-					<div class="">
-						<a href="fgpass.php"><span>Forgot Password?</span></a>
-					</div>
-					<button type="submit" name="register" class="btn btn-primary">Sign Up</button>
-				</form>
+									loadClasses();
 
+									?>
+								</select>
+							</div>
+							<span class="text-danger"><?php echo $class_error; ?></span>
+						</div>
+						<br>
+						<div class="form-group row">
+							<label for="exampleInputEmail1" class="col-sm-2">Email</label>
+							<div class="col-sm-10">
+								<input type="email" class="form-control" name="emladd" id="inputEmail" aria-describedby="emailHelp" value="<?php echo isset($_POST['emladd']) ? $_POST['emladd'] : ''; ?>">
+							</div>
+							<span class="text-danger"><?php echo $email_error; ?></span>
+						</div>
+						<br>
+						<div class="form-group row">
+							<label for="exampleInputPassword1" class="col-sm-2">Password</label>
+							<div class="col-sm-10">
+								<input type="password" class="form-control"  name ="passd" id="inputPassword" placeholder="Password">
+								<span class="text-danger"><?php echo $pass_error; ?></span>
+							</div>
+						</div>
+						<div class="subButton">
+							<button type="submit" name="register" class="btn btn-success">Sign Up</button>
+						</div>
+
+					</form>
+
+				</div>
+
+				<div class="col-3"></div>
 
 			</div>
-
-			<div class="col-3"></div>
 
 		</div>
 
@@ -175,7 +200,7 @@ if (isset($_POST['register'])) {
 		<p class="">&copy; AshVigil. All rights reserved.</p>
 		<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
 		<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
-		<p>Email: <b><i>info@quickbuy.com</i></b></p>
+		<p>Email: <b><i>ascvigil@ashesi.edu.gh</i></b></p>
 		<p><b>2018</b></p>
 	</div>
 

@@ -59,7 +59,7 @@ function registerStudent() {
 		$reg = $database->query($query);
 
 		if ($reg) {
-			header ("Location: view/login.php"); //if successful , return index page
+			header ("Location: view/login2.php"); //if successful , return index page
 			$msg = "Registration successful. \\nTry again.";
 			echo "<script type='text/javascript'>alert('$msg');</script>"; 
 			}

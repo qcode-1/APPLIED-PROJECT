@@ -204,7 +204,7 @@ function loginStudent($email, $pwrd) {
 	}
 
 
-	function insertComment() {
+	function insertComment($pageid) {
 
 		if (isset($_POST['anonCheck'])) {
 			$username = "Anon";
@@ -216,7 +216,7 @@ function loginStudent($email, $pwrd) {
 		$comment = $_POST['commnt'];
 
 		$dbconn = new datbconnection();
-		$query = "INSERT INTO usercomment (user, comment_datetime, comment) VALUES ('$username', '$datetime', '$comment')";
+		$query = "INSERT INTO usercomment (comment_signature, user_id, comment_datetime, comment) VALUES ('$pageid', '$username', '$datetime', '$comment')";
 		$addC = $dbconn->query($query);
 
 		if ($addC) {
@@ -231,11 +231,11 @@ function loginStudent($email, $pwrd) {
 
 
 
-	function displayComments() {
+	function displayComments($pageid) {
 
 
 		$dbconn = new datbconnection();
-		$query = "SELECT user, comment_datetime, comment FROM usercomment";
+		$query = "SELECT user_id, comment_datetime, comment FROM usercomment where comment_signature = '$pageid'";
 		$addC = $dbconn->query($query);
 
 		if ($addC) {
@@ -244,7 +244,7 @@ function loginStudent($email, $pwrd) {
 
 				if ($rows) {
 					echo "<div class=\"commentsection\">
-					<p><span class=\"float-left\"> " .$rows['user']. " </span> <span class=\"font-weight-light float-right\">" .$rows['comment_datetime']. "</span></p>
+					<p><span class=\"float-left\"> " .$rows['user_id']. " </span> <span class=\"font-weight-light float-right\">" .$rows['comment_datetime']. "</span></p>
 					<br>
 					<p class=\"float-left\">" .$rows['comment']. "</p>
 					</div>

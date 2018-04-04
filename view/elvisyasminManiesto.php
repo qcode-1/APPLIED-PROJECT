@@ -26,8 +26,12 @@
 
 	date_default_timezone_set('Europe/London');
 
+	session_start();
+
+	$_SESSION['page_id'] = 'elvisyas17';
+
 	if (isset($_POST['addComment'])) {
-		insertComment();
+		insertComment($_SESSION['page_id']);
 	}
 
 	?>
@@ -43,35 +47,6 @@
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
-		<!-- <div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav">
-				<li class="nav-item active">
-					<a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="committee.php">Committees</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Parliament</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="polls.php">Polls</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						About
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="#">ASCVigil&trade;</a>
-						<a class="dropdown-item" href="#">FAQ's</a>
-					</div>
-				</li>
-			</ul>
-		</div> -->
 
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
@@ -99,23 +74,6 @@
 						<a class="dropdown-item" href="elvisyasminManiesto.php">Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
 					</div>
 				</li>
-
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						JEC Aspirants
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="benjnanaManifesto">Benjamin Kusi &amp; Nana Ehoa Acquaye</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="chretonam.php">Christopher Zanu &amp; Etonam Dotse</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="molaud.php">Molife Chaplain &amp; Audrey Mutswiri</a>
-					</div>
-				</li>
-				<!-- <li class="nav-item">
-					<a class="nav-link" href="#">Parliament</a>
-				</li> -->
-				
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						About
@@ -156,53 +114,76 @@
 				
 				<p>
 
-					<h4 class="cand">MANIFESTO FOR EDWIN ADATSI AND BENJAMIN ANNAN</h4>
-					<p class="text-justify">Hello Ashesi Community,
-						Before I delve into the details of the plans that are within our manifesto, I would like you to first have at the back of your mind that the plans that have been enlisted below have been carefully crafted and put together with your optimum well-being and success in mind. 
-						Carol and I have spent considerably long periods of time asking ourselves about what would have the most impact on the lives of each and every student and we came up with a host of ideas that have been fine-tuned and polished into policies that we believe would not only enable you to not only excel academically but would also enable you to enjoy your stay on this enthralling campus and achieve your dreams. 
-					It is our hope that as you read about the wonderful and thoughtful plans that we have for you, you would share in our vision and join us on this wonderful journey towards the realisation of these plans.</p>
-
-					<h5>POLICIES FOR ACADEMICS:</h5>
-
-					<p class="text-justify">Carol and I have been made aware of the continuous and unabating work load that is being placed on the Ashesi student on a daily basis. To address this problem and help the Ashesi student to manage this work load, Carol and I have come up with two solutions for this problem. They are:
-						"	The "I made it" campaign
-						The "I made it" campaign is an new initiative being introduced by Carol and I whereby at the beginning of every new semester, a drop-box folder containing video interviews of the top students of the courses that are about to be taken in that semester will be sent to the entire student body. In these videos, these top students would share their experiences, study tips and exam preparation strategies so that all the students that are now about to take the course would benefit from these experiences and advice and tailor their own learning strategies accordingly.  
-						"	The establishment of permanent quiet study places on campus.
-					This idea was inspired from the 'No phone study zone" that organized by the Academic Committee this semester. In this policy, certain specific classrooms would be designated as permanent quiet study spaces after lectures so that you can get all of your work done without noise. Just imagine! , no more roaming around to get a quiet place to study.</p>
-
-					<h5>POLICIES FOR THE ASHESI STUDENT SCHOLARSHIP FUND:</h5>
-					<p class="text-justify">
-						Carol and I realised that there are entrepreneurial ventures on campus that are generating so much profit and are not necessarily being supported or utilized in any way. In light of this realization, one of our policies is to invest into these profitable student entrepreneurial ventures and cover part of their cost of operations. In doing this, the student council would be able to obtain a part of the profit obtained from these businesses and all of this profit obtained would be ploughed back into the Ashesi Student Scholarship fund. 
-					In doing this, we not only encourage student entrepreneurial activities but we also ensure the continuous flourishing of the Student Scholarship Fund to ensure that students who are experiencing difficulty in paying their school fees would have something substantial to fall back on. Carol and I think that this is a much more effective, sustainable and cost-effective solution to the growth of the student scholarship fund than old way of utilizing fundraisers and other programs to raise funds for the scholarship fund.</p>
-
-					<h5>POLICIES FOR THE MAXIMUM UTILIZATION ALUMNI NETWORKS</h5>
-
-					<p class="text-justify">Upon deep thought and introspection, Carol and I realised that the Alumni Networks of this school is not being utilized in anyway. We discovered that the student body has no relationship with the alumni. This is a problem because the entire student body is missing out on an untapped resource of mentorship and career opportunities. In light of this realisation, we have decided to organize a broad range of activities and talks with influential alumni to enable them to know us and also to enable us to expand on our professional network and knowledge.</p>
-
-					<h5>POLICIES FOR THE FULL EXPRESSION OF THE ASHESI STUDENT</h5>
-					<p class="text-justify">
-						Over the course of our stay on the Ashesi Campus, we have realised that students who wish fully and freely express themselves refrain from doing so because they believe that they would be victimized or judged for their views. However those who are brave enough to air their views through public emails become frustrated because not only are they judged but they also feel as if their views have not had any sort of impact. To help solve this problem, Carol and I have come up with an idea called "The State of Innovation". 
-						With this idea, a form would be sent to entire student body every week to receive concerns and views about the various happenings on campus. The views and thoughts collected would then be formed into a formal document which would be presented to the school authorities to ensure that the student views and thoughts are heard and addressed. 
-					The student body would also be given frequent updates on the communication between the Ashesi Student Council and the School administration on these views.</p>
-
-					<h5>POLICIES ON ENTERTAINMENT</h5>
+					<h4 class="cand">MANIFESTO FOR ELVIS OKOH-ASRIFI &amp; YESMIN ALHASSAN</h4>
+					<p class="text-justify">Good evening ladies and gentlemen of this wonderful community,</p>
 
 					<p class="text-justify">
-						Carol and I realised that at the end of every final exams, activities on campus die down and the entire campus assumes a very boring atmosphere. In light of this, we intend to throw the biggest end of semester party you have ever seen every semester!! Just imagine how hard you would be able to party at the end of the semester when you know that you have no assignment or quiz to worry about!! We know that this would make the campus very vibrant and would give everyone something to look forward to at the end of the semester. 😊
-					Aside this we have a host of other fun activities lined up every semester, with every activity contributing to a particular theme for the semester.</p>
+						We are here as team to present to you what we have to give to the student body when we voted
+						into power. Our aim as a team is to foster healthy and a strong sense of togetherness among
+						the student body as well as the relationship between staff and the student body.
+						First of the all, we want to look into the issue of Ashesi Student Scholarship Fund. We want to
+						increase scholarship fund by raising funds at the beginning of every semester in addition to the
+						boxes that are made available at Akornor. We aim to get revenue from student ventures which
+					we hope to promote during our tenure of office.</p>
 
-					<h5>POLICIES FOR INTERNATIONAL STUDENTS</h5>
 					<p class="text-justify">
-						Upon interacting with several international students, they made know to us that when they arrived in Ghana to study, they wished that they had the opportunity to have Ghanaian host families so that they could better understand and enjoy the Ghanaian culture. To address this need we are working with the ODIP to formulate a Ghanaian family host program for the incoming freshmen who are international students to enable them to better integrate into the Ghanaian society.
-					We would also ensure that international students are indeed represented on the Ashesi Student Council to guarantee that their voice is represented in any major decision process.</p>
+						To promote student businesses on campus, we will use rooftop to encourage student
+						entrepreneurs to sell their products and they are given contracts to supply items during ASC
+						events, as well as the ASC organising events to promote these businesses, aside the venture
+					accelerator that provides funding and ideas</p>
 
-					<p class="text-justify">We hope that as you have read through our policies you are now convinced that we are indeed the best pair for the job. Just imagine all of the wonderful things that you will be missing out on if you don't vote us into power. 
-						We love you that is why we put so much thought and energy into forming these policies. 
-					Allow us to serve you and express our love and gratitude to you.</p>
+					<p class="text-justify">Secondly, we want to Get wheeled chairs to carry people who faint in class or get injured during
+					a sporting activity</p>
+
+					<p class="text-justify">
+						Also, due to his turnover rate of students on campus we will organise end of semester
+						conversations about courses that will be running, their prerequisites and which ones students
+						will be encouraged to choose based on their abilities, interests and career paths to reduce
+					turnover of students.</p>
+
+					<p class="text-justify">
+						To get the ASC on their toes we will have monthly evaluation of officers and presidents as to
+					what they are doing right and wrong and how they can get better.</p>
+
+					<p class="text-justify">
+						Again, getting student to be solutions to problems on campus is one thing we want to promote
+						and we will do this by giving students the opportunity to own their experience. We will get
+						students to develop apps and equipment that can solve their own problems, creating a
+						convenient environment on campus and also on the Ashesi farm to increase productivity and
+					hence income.</p>
+
+					<p class="text-justify">Transparency is one key thing that our tenure our office will do it to make students aware of
+						everything that happens, every decision that will affect them and why those things happen.
+					Students also get to voice their opinions and complaints.</p>
+
+					<p class="text-justify">Also, we have realized that the ASC spends thousands of ghana cedis in a semester on sound
+						which is very expensive we therefore plan to get assets for the ASC -- speakers, and a vehicle
+						for a start.
+						Bearing in mind that we are in diversified community of people from Africa, we cannot read can
+						leave this stay without saying the international community is one of our top most priorities as
+						well. In our vision, we are going to show great interest in International student activities and
+						hyping them the same way ASC activities will be hyped. A percentage of international students
+					to be represented in government.</p>
+
+					<p class="text-justify">The Keche league is coming… Students get to display what they can do during events --
+						cooking skills, eating competitions, dances etc. They should not be limited to only the talent
+					shows.</p>
+
+					<p class="text-justify">Redefining code fair to solve students problems rather than making them write code that might
+					never be used again.</p>
+
+					<p class="text-justify">Promote more outreach activities that will be shown on the website. We will also leverage on the
+					website to raise funds for projects. Students businesses will also be marketed on the websites.</p>
+
+					<p class="text-justify">We all know that there are too many things that holds us together and sometimes put factions
+						that we have to look into because they divide us a student body here in Ashesi University.
+						Coming elections on Monday, consider voting for no other team that YesSir with Yes for Yesmin
+						and Sir for Sir Elvis for the student council. We will make it our topmost priority to make students
+					a part of every milestone in the student journey.</p>
 					<br>
 
-					<p>-Your aspiring humble servant leaders,
-					Carol and Sasu (C.S).</p>
+					<p>-
+					Elvis &amp; Yesmin</p>
 
 				</p>
 			</div>
@@ -222,7 +203,7 @@
 
 				<?php 
 
-				displayComments();
+				displayComments($_SESSION['page_id']);
 
 				?>
 				

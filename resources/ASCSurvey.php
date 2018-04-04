@@ -15,17 +15,75 @@
 
 	<p id="demo4"></p>
 
+	<p>
 
-	<?php
+		<?php
 
-	$url = 'ASCSurveymain.json'; // path to your JSON file
-	$data = file_get_contents($url); // put the contents of the file into a variable
-	$wizards = json_decode($data);
+		function getUserIpAddr(){
+			if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+        //ip from share internet
+				$ip = $_SERVER['HTTP_CLIENT_IP'];
+			}elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        //ip pass from proxy
+				$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+			}else{
+				$ip = $_SERVER['REMOTE_ADDR'];
+			}
+			return $ip;
+		}
 
-	echo $wizards->ResultCount;
+		echo 'User Real IP - '.getUserIpAddr();
 
 
-	?>
+
+		?>
+		
+	</p>
+
+	<div style="max-height: 500px; max-width: 500px;">
+
+	<canvas id="myChart" width="400" height="400"></canvas>
+
+	</div>
+
+
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script> -->
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script> -->
+
+
+	<script>
+		var ctx = document.getElementById("myChart").getContext('2d');
+		var myChart = new Chart(ctx, {
+			type: 'bar',
+			data: {
+				labels: ["ASC President", "Academic Committee"],
+				datasets: [{
+					label: 'Assessment of President and Academic Committee',
+					data: [12, 19],
+					backgroundColor: [
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)'
+					],
+					borderColor: [
+					'rgba(255,99,132,1)',
+					'rgba(54, 162, 235, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero:true
+						}
+					}]
+				}
+			}
+		});
+	</script>
 
 
 
@@ -67,7 +125,7 @@
 
 		// totalAcademic = totalAcademic + actualData[i].academicAssessment; 
 
-			totalAcademic = totalAcademic + actualData[i].whatGender + "\n";
+		totalAcademic = totalAcademic + actualData[i].whatGender + "\n";
 
 	}
 

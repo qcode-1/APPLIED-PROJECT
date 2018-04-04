@@ -65,9 +65,9 @@
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="edwinbenjManifesto.php">Edwin Adatsi &amp; Benjamin Annan</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item disabled" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
+						<a class="dropdown-item" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item disabled" href="elvisyasminManiesto.php" >Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
+						<a class="dropdown-item" href="elvisyasminManiesto.php" >Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
 					</div>
 				</li>
 				<li class="nav-item dropdown">
@@ -76,7 +76,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="#">ASCVigil&trade;</a>
-						<a class="dropdown-item" href="#">FAQ's</a>
+						<a class="dropdown-item" href="faq.php">FAQ's</a>
 					</div>
 				</li>
 			</ul>

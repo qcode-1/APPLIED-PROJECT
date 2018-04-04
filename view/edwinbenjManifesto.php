@@ -28,8 +28,12 @@
 
 	date_default_timezone_set('Europe/London');
 
+	session_start();
+
+	$_SESSION['page_id'] = 'edwinbenj17';
+
 	if (isset($_POST['addComment'])) {
-		insertComment();
+		insertComment($_SESSION['page_id']);
 	}
 
 	?>
@@ -46,36 +50,6 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<!-- <div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav">
-				<li class="nav-item active">
-					<a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="committee.php">Committees</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Parliament</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="polls.php">Polls</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						About
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="#">ASCVigil&trade;</a>
-						<a class="dropdown-item" href="#">FAQ's</a>
-					</div>
-				</li>
-			</ul>
-
-		</div> -->
-
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
 				<li class="nav-item active">
@@ -85,7 +59,7 @@
 					<a class="nav-link" href="committee.php">Committees</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="noPolls.php">Polls</a>
+					<a class="nav-link" href="polls.php">Polls</a>
 				</li>
 				<!-- <li class="nav-item">
 					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
@@ -97,35 +71,18 @@
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="edwinbenjManifesto.php">Edwin Adatsi &amp; Benjamin Annan</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item disabled" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
+						<a class="dropdown-item" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item disabled" href="elvisyasminManiesto.php">Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
+						<a class="dropdown-item" href="elvisyasminManiesto.php">Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
 					</div>
 				</li>
-
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						JEC Aspirants Manifesto
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="benjnanaManifesto">Benjamin Kusi &amp; Nana Ehoa Acquaye</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="chretonam.php">Christopher Zanu &amp; Etonam Dotse</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="molaud.php">Molife Chaplain &amp; Audrey Mutswiri</a>
-					</div>
-				</li>
-				<!-- <li class="nav-item">
-					<a class="nav-link" href="#">Parliament</a>
-				</li> -->
-				
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						About
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="#">ASCVigil&trade;</a>
-						<a class="dropdown-item" href="#">FAQ's</a>
+						<a class="dropdown-item" href="faq.php">FAQ's</a>
 					</div>
 				</li>
 			</ul>
@@ -167,7 +124,7 @@
 
 					<p class="text-justify">
 						We need a campus life that never sees a dull moment. In light of this, the task of bringing fun and engaging events will not be left on the shoulders of just the Entertainment committee. There will be a structure in place where committees come together to organize engaging fun campus-wide activities.
-With respect to the different committees present in the student government, kindly find the outlined vision for these various committees below.</p>
+					With respect to the different committees present in the student government, kindly find the outlined vision for these various committees below.</p>
 
 					<p><strong>Ad Hoc International Community Committee</strong></p>
 					<ul>
@@ -268,7 +225,7 @@ With respect to the different committees present in the student government, kind
 
 				<?php 
 
-				displayComments();
+				displayComments($_SESSION['page_id']);
 
 				?>
 				

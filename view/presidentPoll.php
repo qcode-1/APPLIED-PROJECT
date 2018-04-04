@@ -15,8 +15,9 @@
 
 	
 
-	<title> (<?php  session_start();
-	echo $_SESSION['user'];?>) Polls  - ASCVigil&trade;</title>
+	<title>
+		<?php  session_start(); ?>
+	Polls  - ASCVigil&trade;</title>
 </head>
 <body>
 
@@ -32,7 +33,9 @@
 
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+		
 
 		<a class="navbar-brand" href="home.php">
 			<img src="../images/logo.jpg">ASCVigil&trade;
@@ -50,13 +53,22 @@
 					<a class="nav-link" href="committee.php">Committees</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Parliament</a>
-				</li>
-				<li class="nav-item">
 					<a class="nav-link" href="polls.php">Polls</a>
+				</li>
+				<!-- <li class="nav-item">
+					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
+				</li> -->
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						ASC Aspirants Manifesto
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="edwinbenjManifesto.php">Edwin Adatsi &amp; Benjamin Annan</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="elvisyasminManiesto.php" >Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
+					</div>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -64,16 +76,25 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="#">ASCVigil&trade;</a>
-						<a class="dropdown-item" href="#">FAQ's</a>
+						<a class="dropdown-item" href="faq.php">FAQ's</a>
 					</div>
 				</li>
 			</ul>
-
 		</div>
+
+
 		<span class="navbar-text">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="../index.php">Logout</a>
+					<a class="nav-link" href="../index.php?logout">Logout</a>
+
+					<?php
+					if (isset($_GET['logout'])) {
+						session_start();
+						session_destroy();
+					}
+					?>
+
 				</li>
 			</ul>
 		</span>
@@ -84,22 +105,17 @@
 	
 
 	<div class="container">
-
 		<h2 class="pollHead">Assess the Behavior and Attitude of the ASC President and Vice</h2>
-
 		<hr>
-
 		<div class="row">
-
-
 			<br>
-
-
+			<div id="chartContainer"></div>
 			<div id="surveyContainer"></div>
+			<div id="surveyResult"></div>
 
+			<small  id="ac"></small>
+			<small  id="pr"></small>
 		</div>
-
-
 	</div>
 
 	<div class="jumbotron jumbotron-fluid">
@@ -127,46 +143,87 @@
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="../js/jquery-3.3.1.min.js"></script>
+	<script src="https://cdn3.devexpress.com/jslib/17.2.5/js/dx.all.js"></script>
 	<script src="https://surveyjs.azureedge.net/1.0.13/survey.jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-
-	<script type="text/javascript">
-
-
-		Survey.Survey.cssType = "bootstrap";
-		Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
-
-		var currentClientId = document.getElementById('phidden').innerHTML;
-
-		function runSurveyCheck() {
-			currentClientId = document
-			.getElementById('clientIdinput')
-			.value || currentClientId;
-    		//surveyId is null - use the previous surveyId
-    		survey.loadSurveyFromService(null, currentClientId);
-
-    	}
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+	<script type="text/javaScript">
+	  // Initialize Firebase
+	  var config = {
+	  	apiKey: "AIzaSyA3Az4iL6IQ7njPUfGiG5WLbpTf4zwvid0",
+	  	authDomain: "final-45892.firebaseapp.com",
+	  	databaseURL: "https://final-45892.firebaseio.com",
+	  	projectId: "final-45892",
+	  	storageBucket: "final-45892.appspot.com",
+	  	messagingSenderId: "839340408240"
+	  };
 
 
-    	var surveyJSON = { 
-    		surveyId: 'd34f3597-b28c-4252-be5a-6ee2c7173d62',
-    		clientId: currentClientId
-    	}
+	  firebase.initializeApp(config);
+	  function runSurveyCheck() {
+	  	currentClientId = document.getElementById('clientIdinput').value || currentClientId;
+	    		//surveyId is null - use the previous surveyId
+	    		survey.loadSurveyFromService(null, currentClientId);
+	    	}
 
-    	function sendDataToServer(survey) {
-    		survey.sendResult('c54c7faa-3ce2-48a1-b0c5-a0e6338e8b0a');
-    	}
+	    	Survey.Survey.cssType = "bootstrap";
+	    	Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
+	    	var currentClientId = document.getElementById('phidden').innerHTML;
 
-    	var survey = new Survey.Model(surveyJSON);
-    	$("#surveyContainer").Survey({
-    		model: survey,
-    		onComplete: sendDataToServer
-    	});
+	    	var surveyJSON = { 
+	    		surveyId: 'd34f3597-b28c-4252-be5a-6ee2c7173d62',
+	    		clientId: currentClientId
+	    	}
 
-
-    </script>
+	    	window.survey = new Survey.Model(surveyJSON);
 
 
-</body>
-</html>
+	    	survey
+	    	.onComplete
+	    	.add(function (result) {
+	    		survey.sendResult('c54c7faa-3ce2-48a1-b0c5-a0e6338e8b0a')
+	    		firebase.database().ref("survey").push(result.data)
+	    		.then(() =>console.log("success"))
+	    		.catch(err=> console.log(err))
+	    	});
+
+	    	$("#surveyContainer").Survey({model: survey});
+
+	    </script>
+
+	    <script>
+
+	    	var acad = 0;
+	    	var press = 0;
+	    	var rootRef = firebase.database().ref().child('survey');
+
+	    	function getValues() {
+
+	    		rootRef.on("child_added", snap => {
+
+	    			var acadAssess = snap.child('academicAssessment').val();
+	    			acad = acad + Number(acadAssess);
+
+	    			var presAssess = snap.child('presidentAssessment').val();
+	    			press = press + Number(presAssess);
+	    			// count ++;
+
+	    			console.log(acad);
+	    			console.log(press);
+	    			// alert(acad + " AND " + press);
+	    			// console.log("Total results number is " + count);
+	    		});
+
+	    	}
+
+	    	getValues();
+	    	alert(acad + " AND " + press);
+
+	    	
+
+	    </script>
+
+
+	</body>
+	</html>

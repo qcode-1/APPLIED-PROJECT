@@ -42,7 +42,7 @@
 
 	<div style="max-height: 500px; max-width: 500px;">
 
-	<canvas id="myChart" width="400" height="400"></canvas>
+		<canvas id="pieChart" width="500" height="500"></canvas>
 
 	</div>
 
@@ -54,72 +54,71 @@
 
 
 	<script>
-		var ctx = document.getElementById("myChart").getContext('2d');
-		var myChart = new Chart(ctx, {
-			type: 'bar',
-			data: {
-				labels: ["ASC President", "Academic Committee"],
-				datasets: [{
-					label: 'Assessment of President and Academic Committee',
-					data: [12, 19],
-					backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)'
-					],
-					borderColor: [
-					'rgba(255,99,132,1)',
-					'rgba(54, 162, 235, 1)'
-					],
-					borderWidth: 1
-				}]
-			},
-			options: {
-				scales: {
-					yAxes: [{
-						ticks: {
-							beginAtZero:true
-						}
-					}]
-				}
-			}
+
+		var oilCanvas = document.getElementById("pieChart");
+
+		Chart.defaults.global.defaultFontFamily = "Lato";
+		Chart.defaults.global.defaultFontSize = 18;
+
+		var oilData = {
+			labels: [
+			"Male",
+			"Female"
+			],
+			datasets: [
+			{
+				data: [133.3, 86.2],
+				backgroundColor: [
+				
+				"#63FF84",
+				
+				"#8463FF"
+				]
+			}]
+		};
+
+		var pieChart = new Chart(oilCanvas, {
+			type: 'pie',
+			data: oilData
 		});
+
 	</script>
 
 
 
-	<script type="text/javascript">
+<script type="text/javascript">
 
 
-		var data_json = {"ResultCount":13,"Data":[
-		{"whatGender":["M"],"Class":["Sophomore"],"whatMajor":["CE"],"academicAssessment":1,"presidentAssessment":5,"HappendAt":"\/Date(1520813198182)\/","IPAddress":"41.79.97.5"},
-		{"whatGender":["M"],"Class":["Freshman"],"whatMajor":["MIS"],"academicAssessment":3,"presidentAssessment":5,"HappendAt":"\/Date(1520813090771)\/","IPAddress":"41.79.97.5"},
-		{"Class":["Sophomore"],"whatGender":["F"],"whatMajor":["CE"],"academicAssessment":1,"presidentAssessment":5,"HappendAt":"\/Date(1520813060044)\/","IPAddress":"41.79.97.5"},
-		{"whatGender":["M"],"Class":["Sophomore"],"whatMajor":["CE"],"academicAssessment":3,"presidentAssessment":4,"HappendAt":"\/Date(1520813271098)\/","IPAddress":"41.79.97.5"},
-		{"whatGender":["F"],"Class":["Junior"],"whatMajor":["BA"],"presidentAssessment":4,"academicAssessment":5,"HappendAt":"\/Date(1520813171836)\/","IPAddress":"41.79.97.5"},
-		{"whatGender":["F"],"Class":["Sophomore"],"whatMajor":["BA"],"academicAssessment":2,"presidentAssessment":5,"HappendAt":"\/Date(1520813029239)\/","IPAddress":"41.79.97.5"},
-		{"whatGender":["M"],"Class":["Sophomore"],"whatMajor":["ME"],"presidentAssessment":3,"academicAssessment":5,"HappendAt":"\/Date(1520813179541)\/","IPAddress":"41.79.97.5"},
-		{"whatGender":["M"],"Class":["Sophomore"],"whatMajor":["ME"],"academicAssessment":3,"presidentAssessment":4,"HappendAt":"\/Date(1520813599385)\/","IPAddress":"41.79.97.5"},
-		{"whatGender":["F"],"Class":["Sophomore"],"whatMajor":["MIS"],"presidentAssessment":4,"academicAssessment":4,"HappendAt":"\/Date(1520813772334)\/","IPAddress":"41.79.97.5"},
-		{"whatGender":["F"],"Class":["Junior"],"whatMajor":["CE"],"academicAssessment":4,"presidentAssessment":5,"HappendAt":"\/Date(1520813484998)\/","IPAddress":"41.79.97.5"},
-		{"whatGender":["M"],"Class":["Junior"],"whatMajor":["ME"],"academicAssessment":3,"presidentAssessment":5,"HappendAt":"\/Date(1520813694891)\/","IPAddress":"41.79.97.5"},
-		{"Class":["Senior"],"whatGender":["M"],"whatMajor":["CS"],"academicAssessment":2,"presidentAssessment":5,"HappendAt":"\/Date(1520813050114)\/","IPAddress":"41.79.97.5"},
-		{"whatGender":["F"],"Class":["Freshman"],"whatMajor":["CS"],"presidentAssessment":3,"academicAssessment":5,"HappendAt":"\/Date(1520813120669)\/","IPAddress":"41.79.97.5"}]
-	}
+	var data_json = {"ResultCount":13,"Data":[
+	{"whatGender":["M"],"Class":["Sophomore"],"whatMajor":["CE"],"academicAssessment":1,"presidentAssessment":5,"HappendAt":"\/Date(1520813198182)\/","IPAddress":"41.79.97.5"},
+	{"whatGender":["M"],"Class":["Freshman"],"whatMajor":["MIS"],"academicAssessment":3,"presidentAssessment":5,"HappendAt":"\/Date(1520813090771)\/","IPAddress":"41.79.97.5"},
+	{"Class":["Sophomore"],"whatGender":["F"],"whatMajor":["CE"],"academicAssessment":1,"presidentAssessment":5,"HappendAt":"\/Date(1520813060044)\/","IPAddress":"41.79.97.5"},
+	{"whatGender":["M"],"Class":["Sophomore"],"whatMajor":["CE"],"academicAssessment":3,"presidentAssessment":4,"HappendAt":"\/Date(1520813271098)\/","IPAddress":"41.79.97.5"},
+	{"whatGender":["F"],"Class":["Junior"],"whatMajor":["BA"],"presidentAssessment":4,"academicAssessment":5,"HappendAt":"\/Date(1520813171836)\/","IPAddress":"41.79.97.5"},
+	{"whatGender":["F"],"Class":["Sophomore"],"whatMajor":["BA"],"academicAssessment":2,"presidentAssessment":5,"HappendAt":"\/Date(1520813029239)\/","IPAddress":"41.79.97.5"},
+	{"whatGender":["M"],"Class":["Sophomore"],"whatMajor":["ME"],"presidentAssessment":3,"academicAssessment":5,"HappendAt":"\/Date(1520813179541)\/","IPAddress":"41.79.97.5"},
+	{"whatGender":["M"],"Class":["Sophomore"],"whatMajor":["ME"],"academicAssessment":3,"presidentAssessment":4,"HappendAt":"\/Date(1520813599385)\/","IPAddress":"41.79.97.5"},
+	{"whatGender":["F"],"Class":["Sophomore"],"whatMajor":["MIS"],"presidentAssessment":4,"academicAssessment":4,"HappendAt":"\/Date(1520813772334)\/","IPAddress":"41.79.97.5"},
+	{"whatGender":["F"],"Class":["Junior"],"whatMajor":["CE"],"academicAssessment":4,"presidentAssessment":5,"HappendAt":"\/Date(1520813484998)\/","IPAddress":"41.79.97.5"},
+	{"whatGender":["M"],"Class":["Junior"],"whatMajor":["ME"],"academicAssessment":3,"presidentAssessment":5,"HappendAt":"\/Date(1520813694891)\/","IPAddress":"41.79.97.5"},
+	{"Class":["Senior"],"whatGender":["M"],"whatMajor":["CS"],"academicAssessment":2,"presidentAssessment":5,"HappendAt":"\/Date(1520813050114)\/","IPAddress":"41.79.97.5"},
+	{"whatGender":["F"],"Class":["Freshman"],"whatMajor":["CS"],"presidentAssessment":3,"academicAssessment":5,"HappendAt":"\/Date(1520813120669)\/","IPAddress":"41.79.97.5"}]
+}
 
 
 
 
-	document.getElementById("demo").innerHTML = "Total results are: " + data_json.ResultCount;
+document.getElementById("demo").innerHTML = "Total results are: " + data_json.ResultCount;
 
-	var actualData = data_json.Data;
+var actualData = data_json.Data;
 
-	document.getElementById("demo2").innerHTML = "Total results are: " + JSON.stringify(actualData);
-	document.getElementById("demo3").innerHTML = "An assessment data is: " + actualData[4].whatGender;
+document.getElementById("demo2").innerHTML = "Total results are: " + JSON.stringify(actualData);
+document.getElementById("demo3").innerHTML = "An assessment data is: " + actualData[4].whatGender;
 
-	var totalAcademic = " ";
+var totalAcademic = " ";
 
 
-	for (var i=0; i < data_json.ResultCount; i++) {
+for (var i=0; i < data_json.ResultCount; i++) {
 
 		// console.log(actualData[i].academicAssessment);
 

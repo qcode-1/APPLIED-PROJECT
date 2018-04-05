@@ -48,6 +48,8 @@ function registerStudent() {
 		$yr = $_POST["classes"];
 		$email = $_POST["emladd"];
 		$passwrd = $_POST["passd"];
+		$fn = str_replace(' ', '', $fname);
+		$usn = strtolower($fn . "." . $lname);
 
 		test_input($fname);
 		test_input($lname);
@@ -55,16 +57,16 @@ function registerStudent() {
 		//inserts data in db with query parameters
 		$database = new datbconnection();
 		$passhash = password_hash($passwrd, PASSWORD_BCRYPT);
-		$query = "INSERT INTO student(firstname,lastname,year_group,email,password) VALUES('$fname','$lname','$yr', '$email', '$passhash')";
+		$query = "INSERT INTO student(firstname,lastname,username,year_group,email,password) VALUES('$fname','$lname','$usn','$yr', '$email', '$passhash')";
 		$reg = $database->query($query);
 
 		if ($reg) {
 			header ("Location: view/login2.php"); //if successful , return index page
 			$msg = "Registration successful. \\nTry again.";
 			echo "<script type='text/javascript'>alert('$msg');</script>"; 
-			}
-			else {
-				$msg = "Registration could not be completed. \\nTry again.";
+		}
+		else {
+			$msg = "Registration could not be completed. \\nTry again.";
 				echo "<script type='text/javascript'>alert('$msg');</script>"; //return an alert message if unsuccessful
 			}
 		}
@@ -159,6 +161,8 @@ function changePassword($email, $pass) {
 	}
 }
 
+// randomNumber();
+
 
 //function to verify user details before login
 function loginStudent($email, $pwrd) {
@@ -176,8 +180,12 @@ function loginStudent($email, $pwrd) {
 			if(password_verify($pwrd, $passd)){ 					//verifies string password against hashed password in db
 				session_start();
 				$_SESSION['id'] = $row['student_id'];
-				$fn = str_replace(' ', '', $row['firstname']);
-				$_SESSION['user'] = strtolower($fn . "." . $row['lastname']);
+
+				// $fn = str_replace(' ', '', $row['firstname']);
+				// $_SESSION['user'] = strtolower($fn . "." . $row['lastname']);
+
+				$_SESSION['user'] = $row['username'];
+				$_SESSION['pollID'] = randomNumber();
 				header ("Location: home.php");  				//starts a session and returns homepage
 			}
 			else {
@@ -227,6 +235,16 @@ function loginStudent($email, $pwrd) {
 			echo "<script type='text/javascript'> alert(\"COULD NOT BE ADDED\"); </script>";
 		}		
 
+	}
+
+	function randomNumber() {
+		$result = '';
+
+		for($i = 0; $i < 4; $i++) {
+			$result .= mt_rand(0, 10);
+		}
+
+		echo "stu".$result;
 	}
 
 

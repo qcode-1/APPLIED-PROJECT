@@ -16,17 +16,17 @@
 	
 
 	<title>
-		<?php  session_start(); ?>
+		
 	Polls  - ASCVigil&trade;</title>
 </head>
 <body>
+	<?php  
 
-	<p hidden="true" id="phidden"><?php
-	echo $_SESSION['user'];?></p>
-
-	<?php
-
+	session_start();
 	require_once("../database/process.php");
+	echo "<small  id=\"phidden\">";
+	echo $_SESSION['pollID'];  
+	echo "</small>";
 
 	?>
 
@@ -115,6 +115,17 @@
 
 			<small  id="ac"></small>
 			<small  id="pr"></small>
+
+
+			<div style="max-height: 800px; max-width: 800px;">
+				<canvas id="myChart" width="500" height="500"></canvas>
+			</div>
+
+
+			<div style="max-height: 800px; max-width: 800px;">
+				<canvas id="pieChart" width="500" height="500"></canvas>
+			</div>
+
 		</div>
 	</div>
 
@@ -147,6 +158,7 @@
 	<script src="https://surveyjs.azureedge.net/1.0.13/survey.jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 	<script type="text/javaScript">
 	  // Initialize Firebase
@@ -188,41 +200,106 @@
 	    		.catch(err=> console.log(err))
 	    	});
 
+
 	    	$("#surveyContainer").Survey({model: survey});
 
-	    </script>
-
-	    <script>
 
 	    	var acad = 0;
 	    	var press = 0;
-	    	var rootRef = firebase.database().ref().child('survey');
+	    	var getReslt = firebase.database().ref().child('survey');
 
-	    	function getValues() {
+	    	getReslt.on("child_added", snap => {
 
-	    		rootRef.on("child_added", snap => {
+	    		var acadAssess = snap.child('academicAssessment').val();
+	    		acad = acad + Number(acadAssess);
+	    		var presAssess = snap.child('presidentAssessment').val();
+	    		press = press + Number(presAssess);
 
-	    			var acadAssess = snap.child('academicAssessment').val();
-	    			acad = acad + Number(acadAssess);
 
-	    			var presAssess = snap.child('presidentAssessment').val();
-	    			press = press + Number(presAssess);
-	    			// count ++;
+	    		function getCount() {
+	    			var count = 0;
 
-	    			console.log(acad);
-	    			console.log(press);
-	    			// alert(acad + " AND " + press);
-	    			// console.log("Total results number is " + count);
+		    		getReslt.on('value', function(snapshot) {
+		    			snapshot.forEach(function() {
+		    				count++;
+		    			});
+		    		});
+		    		return count;
+		    	}
+
+
+	    		var ctx = document.getElementById("myChart").getContext('2d');
+	    		var myChart = new Chart(ctx, {
+	    			type: 'bar',
+	    			data: {
+	    				labels: ["ASC President", "Academic Committee"],
+	    				datasets: [{
+	    					label: 'Assessment of President and Academic Committee (Max rating: ' +(getCount()*5) +')',
+	    					data: [acad, press],
+	    					backgroundColor: [
+	    					'rgba(255, 99, 132, 0.2)',
+	    					'rgba(54, 162, 235, 0.2)'
+	    					],
+	    					borderColor: [
+	    					'rgba(255,99,132,1)',
+	    					'rgba(54, 162, 235, 1)'
+	    					],
+	    					borderWidth: 1
+	    				}]
+	    			},
+	    			options: {
+	    				scales: {
+	    					yAxes: [{
+	    						ticks: {
+	    							beginAtZero:true
+	    						}
+	    					}]
+	    				}
+	    			}
 	    		});
-
-	    	}
-
-	    	getValues();
-	    	alert(acad + " AND " + press);
-
-	    	
+	    	});
 
 	    </script>
+
+
+	    <script>
+
+	    	var config = {
+	  	apiKey: "AIzaSyA3Az4iL6IQ7njPUfGiG5WLbpTf4zwvid0",
+	  	authDomain: "final-45892.firebaseapp.com",
+	  	databaseURL: "https://final-45892.firebaseio.com",
+	  	projectId: "final-45892",
+	  	storageBucket: "final-45892.appspot.com",
+	  	messagingSenderId: "839340408240"
+	  };
+
+	  firebase.initializeApp(config);
+
+		var oilCanvas = document.getElementById("pieChart");
+
+
+		var oilData = {
+			labels: [
+			"Male",
+			"Female"
+			],
+			datasets: [
+			{
+				data: [133.3, 86.2],
+				backgroundColor: [
+				
+				"#63FF84",
+				"#8463FF"
+				]
+			}]
+		};
+
+		var pieChart = new Chart(oilCanvas, {
+			type: 'pie',
+			data: oilData
+		});
+
+	</script>
 
 
 	</body>

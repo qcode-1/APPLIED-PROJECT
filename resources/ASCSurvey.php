@@ -34,6 +34,11 @@
 
 		echo 'User Real IP - '.getUserIpAddr();
 
+		
+    // header('X-Frame-Options: GOFORIT');
+		// $response->headers->set('X-Frame-Options', 'SAMEORIGIN', false);
+
+
 
 
 		?>
@@ -45,6 +50,19 @@
 		<canvas id="pieChart" width="500" height="500"></canvas>
 
 	</div>
+
+
+	<iframe src="http://google.com/" width="auto" height="auto">
+</iframe>
+
+<webview src="http://google.com/" width="640" height="480"></webview>
+
+
+<iframe name="targetframe" width="80%" height="500px"  >
+	<embed src="http://www.google.com" style="width:500px; height: 300px;">
+    </iframe>
+
+    <embed src="http://www.google.com" style="width:500px; height: 300px;">
 
 
 	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script> -->
@@ -87,6 +105,7 @@
 
 
 <script type="text/javascript">
+
 
 
 	var data_json = {"ResultCount":13,"Data":[

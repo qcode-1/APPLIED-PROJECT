@@ -112,7 +112,8 @@
 					<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
 						<div class="card-body">
 							<h6>Description</h6>
-							The main aim of the poll is to assess the behaviour of the ASC president and his vice. By popular request, this poll is to acertain whether the right decion was made in voting for these particular candidates. It has come to a section of students in the student body that, the ASC president and vice are not acting acccordingly, taking into account the constitution. To take part in this poll, please <a href="presidentPoll.php">click here</a>.
+							<p>The main aim of the poll is to assess the behaviour of the ASC president and his vice. By popular request, this poll is to acertain whether the right decion was made in voting for these particular candidates. It has come to a section of students in the student body that, the ASC president and vice are not acting acccordingly, taking into account the constitution. To take part in this poll, please <a href="presidentPoll.php">click here</a>.</p>
+							<p>To view poll results, <a href="prespollresult.php">click here</a></p>
 						</div>
 					</div>
 				</div>
@@ -127,7 +128,8 @@
 					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
 						<div class="card-body">
 							<h6>Description</h6>
-							The main aim of the poll is to assess the level of inclusion of all student, particularly pertaining to events held on campus. For many students, events held by the ASC fail to properly represnet the diversified student community for what it is. Considering that there are both internatiopnal and Ghanaian nationsls here, the ASC must try to create and conducive atmosphere for everyone to co-exist. To take part in this poll, please <a href="inclusionPoll.php">click here</a>.
+							<p>The main aim of the poll is to assess the level of inclusion of all student, particularly pertaining to events held on campus. For many students, events held by the ASC fail to properly represnet the diversified student community for what it is. Considering that there are both internatiopnal and Ghanaian nationsls here, the ASC must try to create and conducive atmosphere for everyone to co-exist. To take part in this poll, please <a href="inclusionPoll.php">click here</a>.</p>
+							<p>To view poll results, <a href="prespollresult.php">click here</a></p>
 						</div>
 					</div>
 				</div>
@@ -142,7 +144,8 @@
 					<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
 						<div class="card-body">
 							<h6>Description</h6>
-							The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. To take part in this poll, please <a href="classrepPoll.php">click here</a>.
+							<p>The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. To take part in this poll, please <a href="classrepPoll.php">click here</a>.</p>
+							<p>To view poll results, <a href="prespollresult.php">click here</a></p>
 						</div>
 					</div>
 				</div>

@@ -38,6 +38,8 @@ function loadClasses() {
 }
 
 
+
+
 //reisters new admin
 function registerStudent() {
 
@@ -85,47 +87,46 @@ function registerStudent() {
 
 		if ($result && $datbconn->getNumRows() > 0) {
 
-    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-    try {
-    //Server settings
-    //$mail->SMTPDebug = 1;                                 // Enable verbose debug output
-    $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'nii.quartey19@gmail.com';                 // SMTP username
-    $mail->Password = 'Marktwain@1';                           // SMTP password
-    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-    $mail->Port = 587;                                    // TCP port to connect to
+	    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+	    try {
+	    //Server settings
+	    //$mail->SMTPDebug = 1;                                 // Enable verbose debug output
+	    $mail->isSMTP();                                      // Set mailer to use SMTP
+	    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+	    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+	    $mail->Username = 'nii.quartey19@gmail.com';                 // SMTP username
+	    $mail->Password = 'Marktwain@1';                           // SMTP password
+	    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+	    $mail->Port = 587;                                    // TCP port to connect to
 
-    //Recipients
-    $mail->setFrom('nii.quartey19@gmail.com', 'ASCVigil');
-    $mail->addAddress($email, '');     // Add a recipient
+	    //Recipients
+	    $mail->setFrom('nii.quartey19@gmail.com', 'ASCVigil');
+	    $mail->addAddress($email, '');     // Add a recipient
 
-    $body = "<p><h4> Thank You for Using ASCVigil&trade;</h4></p>
-    <p>You have requested to chnage your password. Please follow this link to <a href=\"http://localhost/Github/APPLIED-PROJECT/view/changePassword.php\">change your password</a>.</p>
-    <p>Any Questions? Please login and leave your comments. Your feedback will be much appreciated.</p>
+	    $body = "<p><h4> Thank You for Using ASCVigil&trade;</h4></p>
+	    <p>You have requested to chnage your password. Please follow this link to <a href=\"http://localhost/Github/APPLIED-PROJECT/view/changePassword.php\">change your password</a>.</p>
+	    <p>Any Questions? Please login and leave your comments. Your feedback will be much appreciated.</p>
 
-    <p>Kind Regards,</p>
-    <p>The ASCVigil&trade; Support Team</p>";
+	    <p>Kind Regards,</p>
+	    <p>The ASCVigil&trade; Support Team</p>";
 
-    //Content
-    $mail->isHTML(true);                                  // Set email format to HTML
-    $mail->Subject = 'Change Your Password';
-    $mail->Body    = $body;
-    $mail->AltBody = strip_tags($body);
+	    //Content
+	    $mail->isHTML(true);                                  // Set email format to HTML
+	    $mail->Subject = 'Change Your Password';
+	    $mail->Body    = $body;
+	    $mail->AltBody = strip_tags($body);
 
-    $mail->send();
-    //echo 'Message has been sent';
-    header("Location: login.php");
+	    $mail->send();
+	    //echo 'Message has been sent';
+	    header("Location: login.php");
+	}
 
-} 
 
-
-catch (Exception $e) {
+	catch (Exception $e) {
     //echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-	echo "<script type='text/javascript'>alert('UNSUCCESSFUL');</script>";
+		echo "<script type='text/javascript'>alert('UNSUCCESSFUL');</script>";
 
-}
+	}
 
 }
 
@@ -185,7 +186,8 @@ function loginStudent($email, $pwrd) {
 				// $_SESSION['user'] = strtolower($fn . "." . $row['lastname']);
 
 				$_SESSION['user'] = $row['username'];
-				$_SESSION['pollID'] = randomNumber();
+
+				$_SESSION['pollID'] = $row['student_id'];
 				header ("Location: home.php");  				//starts a session and returns homepage
 			}
 			else {
@@ -241,7 +243,7 @@ function loginStudent($email, $pwrd) {
 		$result = '';
 
 		for($i = 0; $i < 4; $i++) {
-			$result .= mt_rand(0, 10);
+			$result .= mt_rand(0, 9);
 		}
 
 		echo "stu".$result;

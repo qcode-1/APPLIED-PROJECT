@@ -181,12 +181,7 @@ function loginStudent($email, $pwrd) {
 			if(password_verify($pwrd, $passd)){ 					//verifies string password against hashed password in db
 				session_start();
 				$_SESSION['id'] = $row['student_id'];
-
-				// $fn = str_replace(' ', '', $row['firstname']);
-				// $_SESSION['user'] = strtolower($fn . "." . $row['lastname']);
-
 				$_SESSION['user'] = $row['username'];
-
 				$_SESSION['pollID'] = $row['student_id'];
 				header ("Location: home.php");  				//starts a session and returns homepage
 			}
@@ -226,7 +221,7 @@ function loginStudent($email, $pwrd) {
 		$comment = $_POST['commnt'];
 
 		$dbconn = new datbconnection();
-		$query = "INSERT INTO usercomment (comment_signature, user_id, comment_datetime, comment) VALUES ('$pageid', '$username', '$datetime', '$comment')";
+		$query = "INSERT INTO usercomment (comment_signature, user_id, comment_datetime, comments) VALUES ('$pageid', '$username', '$datetime', '$comment')";
 		$addC = $dbconn->query($query);
 
 		if ($addC) {
@@ -253,9 +248,8 @@ function loginStudent($email, $pwrd) {
 
 	function displayComments($pageid) {
 
-
 		$dbconn = new datbconnection();
-		$query = "SELECT user_id, comment_datetime, comment FROM usercomment where comment_signature = '$pageid'";
+		$query = "SELECT user_id, comment_datetime, comments FROM usercomment where comment_signature = '$pageid'";
 		$addC = $dbconn->query($query);
 
 		if ($addC) {
@@ -266,7 +260,7 @@ function loginStudent($email, $pwrd) {
 					echo "<div class=\"commentsection\">
 					<p><span class=\"float-left\"> " .$rows['user_id']. " </span> <span class=\"font-weight-light float-right\">" .$rows['comment_datetime']. "</span></p>
 					<br>
-					<p class=\"float-left\">" .$rows['comment']. "</p>
+					<p class=\"float-left\">" .$rows['comments']. "</p>
 					</div>
 
 					<br>

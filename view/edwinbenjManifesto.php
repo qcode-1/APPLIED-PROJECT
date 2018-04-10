@@ -127,7 +127,7 @@
 					With respect to the different committees present in the student government, kindly find the outlined vision for these various committees below.</p>
 
 					<p><strong>Ad Hoc International Community Committee</strong></p>
-					<ul>
+					<ul class="text-justify">
 						<li>A committee which is representative of every country in the Ashesi community</li>
 						<li>This committee will be tasked with recognizing all international events for every semester and will plan towards these events each semester</li>
 						<li>The President of the International Student Association automatically becomes the chairperson of the committee</li>
@@ -135,14 +135,14 @@
 					</ul>
 
 					<p><strong>Ashesi Student Scholarship Fund Managers</strong></p>
-					<ul>
+					<ul class="text-justify">
 						<li>A vibrant group of members from every year group to actively raise funds for the ASSF and coordinate all activities of the Fund in regard to investments and growth</li>
 						<li>Organizing one fundraiser each semester</li>
 						<li>Making ASC paraphernalia to help raise funds to grow the fund</li>
 					</ul>
 
 					<p><strong>Welfare Committee</strong></p>
-					<ul>
+					<ul class="text-justify">
 						<li>Liaising with the ASC cafeteria to organize some International food at least once every other week directed by the Ad-Hoc International Community Committee</li>
 						<li>Improving on the variety of food in the cafeteria</li>
 						<li>Conduct periodic (twice a semester) meeting to talk over student welfare with the stakeholders eg OSCA ,ARKONOR , OPERATIONS</li>
@@ -150,7 +150,7 @@
 					</ul>
 
 					<p><strong>Sports Committee</strong></p>
-					<ul>
+					<ul class="text-justify">
 						<li>Ashesi Marathon (Sponsored Run)</li>
 						<li>Beginning talks to establish a “Student athlete program” in light of the upcoming sports complex. A student athlete program is a program for sports athletes on teams who combine their commitment to a sports team(s) as well as their academics and as such have one or a mix of these sports earn a that student either a full credit or a half credit</li>
 						<li>AFA awards night: Ballon D’’or with invited guests, sports personality to be a guest speaker. Collaborate with the stakeholders in the industry eg.Kwaku Arhin concerning sports in general in Ashesi</li>
@@ -159,7 +159,7 @@
 					</ul>
 
 					<p><strong>Off-Campus Committee</strong></p>
-					<ul>
+					<ul class="text-justify">
 						<li>Partnering with FDE student led venture Usafiri to reduce the cost of leaving school to town by paying a portion of it for students on certain weekends</li>
 						<li>Collaborate with the academic committee and CS department to create a low-cost app that allows students to carpool to go out of town with a sizeable money.</li>
 						<li>"KEEP YOUR CAMPUS TIDY" initiative to ensure that the roads Off-Campus are neat at all times</li>
@@ -169,7 +169,7 @@
 					</ul>
 
 					<p><strong>Public Relations</strong></p>
-					<ul>
+					<ul class="text-justify">
 						<li>Use the PR Committee as an avenue to grow skills of those interested, e.g. use their skills in showcasing student life on campus through photography, videography, blog posts, etc</li>
 						<li>A well-structured PR Committee where each and every member will have a designated role and deliverables to ensure efficiency</li>
 						<li>Use the social media platforms to provide “ASC News” which would outline upcoming events prior to the dates</li>
@@ -180,7 +180,7 @@
 
 
 					<p><strong>Outreach Committee</strong></p>
-					<ul>
+					<ul class="text-justify">
 						<li>Publish a booklet (either hardcopy or softcopy) on all Civic engagement groups on campus, their current heads and other relevant information.</li>
 						<li>A well-structured PR Committee where each and every member will have a designated role and deliverables to ensure efficiency</li>
 						<li>Civic Engagement Day, a day where civic engagement groups would set up stations all over campus to show what they do as a group and not just talk about them.</li>
@@ -190,22 +190,36 @@
 
 
 					<p><strong>Entertainment Committee</strong></p>
-					<ul>
+					<ul class="text-justify">
 						<li>Movie night-instead of regular parties where a survey is sent and the most voted for movies are projected in the perfect movie night setting. Cushions, pillows, Cotton candy, popcorn, hot dogs, drinks and many more.</li>
 						<li>Hanging L’s to promote inclusivity. literally every student and staff’s names are hanged throughout the school and once a person’s name is found, he or she earns a prize. It’s a game of chance where prizes range from pizza, cupcakes, pencils, sharpeners.</li>
 						<li>Merge with another school’s entertainment committee and see how the entertainment life between schools vary or are similar. Again, a survey to know if they want to go to these schools in question or want them to come to us.</li>
 						<li>Merge with Sports Committee to have a grand aerobics and dance session with both a professional aerobics instructor and dance instructor. To help break the boredom in trying to keep fit while learning new dance skills in the process.</li>
 						<li>More Lively ASC Week: The introduction of an Animated Monday - dressing like your favorite cartoon character. Hellenistic Day (Days of Moses) and many more</li>
+						<li>This time around, Applications to be part of the entertainment committee would be made available to give a fair opportunity to the entire Ashesi Family.</li>
+						<li><strong>Bring Ubora back to a time when it’s not about popularity and glamour of the event but celebrating true excellence</strong></li>
 					</ul>
 
+					<p><strong>Academic Committee</strong></p>
+					<ul class="text-justify">
+						<li>Educating the Student body about various learning methods/Study tips</li>
+						<li>Plagiarism awareness campaigns</li>
+						<li>Weekly assignment reminders from our Student Academic Representatives</li>
+					</ul>
+
+					<p><strong>Finance Committee</strong></p>
+					<ul class="text-justify">
+						<li>In the first week of school, a detailed breakdown of the budget is displayed on stands for students to engage and clarify issues they may have</li>
+						<li>Other fundraising activities to fund student activities on and off campus; not depending on student dues as the only source of revenue for funding programs.</li>
+					</ul>
 					
 					<br>
 
 					<p class="text-justify">
 						Finally, we believe in engaging in healthy discourse since we all aim for a better Ashesi. We encourage the entire student body to be free to voice out your opinions to us, and to any of the other ASC executives or committee members. In light of that, there will be an open half semester review of the committees to the entire student body and budget reallocation where necessary. There would also be Ashesi “Decaf & Sandwich” sessions where students praise, complain and brainstorm ways to fix issues raised.</p>
 
-						<p class="text-justify">
-						It is time to realize it is all about YOU! if this is what you want, if this is what you believe in, you must Vote Edwin Adatsi and Benjamin Annan for the Ashesi community we ALL envision.</p>
+						<p class="text-justify"><strong>
+						It is time to realize it is all about YOU! if this is what you want, if this is what you believe in, you must Vote Edwin Adatsi and Benjamin Annan for the Ashesi community we ALL envision.</strong></p>
 
 				</p>
 			</div>

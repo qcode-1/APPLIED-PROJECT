@@ -87,6 +87,7 @@ if (isset($_POST['register'])) {
 		background-image: url('images/background.jpg');
 		max-height: 600px;
 	}
+
 </style>
 <link rel="stylesheet" type="text/css" href="css/indexpage.css">
 
@@ -192,8 +193,6 @@ if (isset($_POST['register'])) {
 		</div>
 
 	</div>
-
-
 
 
 	<div class="footer bg-dark text-white">

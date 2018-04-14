@@ -15,27 +15,21 @@
 
 	
 
-	<title>
-		
-	Poll Result  - ASCVigil&trade;</title>
+	<title>Feedback Form - ASCVigil&trade;</title>
 </head>
 <body>
-	<?php  
+
+	<?php
 
 	session_start();
 	require_once("../database/process.php");
-	echo "<small hidden  id=\"phidden\">";
-	echo $_SESSION['pollID'];  
-	echo "</small>";
 
 	?>
 
 
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-
-		
+	<nav class="navbar navbar-expand-lg navbar-light bg-light ">
 
 		<a class="navbar-brand" href="home.php">
 			<img src="../images/logo.jpg">ASCVigil&trade;
@@ -81,52 +75,47 @@
 				</li>
 			</ul>
 		</div>
-
-
 		<span class="navbar-text">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="../index.php?logout">Logout</a>
-
-					<?php
-					if (isset($_GET['logout'])) {
-						session_start();
-						session_destroy();
-					}
-					?>
-
+					<a class="nav-link" href="../index.php">Logout</a>
 				</li>
 			</ul>
 		</span>
 	</nav>
 
 
-
-	
-
 	<div class="container">
-		<h2 class="pollHead">Assess the Behavior and Attitude of the ASC President and Vice - Results</h2>
-		<hr>
+
 		<div class="row">
-			<br>
-			<div id="chartContainer"></div>
-			<div id="surveyContainer"></div>
-			<div id="surveyResult"></div>
 
-			<small  id="ac"></small>
-			<small  id="pr"></small>
+			<div class="w-100"><br></div>
+
+			<div class="col-2"></div>
 
 
-			<div style="max-height: 800px; max-width: 800px;">
-				<canvas id="myChart" width="500" height="500"></canvas>
+			<div class="col-8">
+				<?php
+
+				$pid = $_GET['pgID'];
+
+				if (isset($_POST['addfeed'])) {
+					addFeedback($pid);
+				}
+				else{
+					loadFeedbackForm($pid);
+				}
+
+
+				
+
+				?>
 			</div>
 
-
-			<div style="max-height: 800px; max-width: 800px;">
-				<canvas id="pieChart" width="500" height="500"></canvas>
-			</div>
+			<div class="col-2"></div>
 
 		</div>
+
 	</div>
 
 	<div class="jumbotron jumbotron-fluid">
@@ -153,17 +142,8 @@
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="../js/jquery-3.3.1.min.js"></script>
-	<script src="https://cdn3.devexpress.com/jslib/17.2.5/js/dx.all.js"></script>
-	<script src="https://surveyjs.azureedge.net/1.0.13/survey.jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-
-
-	<script type="text/javaScript" src="../js/prespoll.js"></script>
-
-
-	</body>
-	</html>
+</body>
+</html>

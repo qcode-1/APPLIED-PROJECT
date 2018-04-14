@@ -112,7 +112,7 @@ function registerStudent() {
 
 	    //Content
 	    $mail->isHTML(true);                                  // Set email format to HTML
-	    $mail->Subject = 'Change Your Password';
+	    $mail->Subject = 'ASCVigil | Change Your Password';
 	    $mail->Body    = $body;
 	    $mail->AltBody = strip_tags($body);
 
@@ -162,15 +162,12 @@ function changePassword($email, $pass) {
 	}
 }
 
-// randomNumber();
-
 
 //function to verify user details before login
 function loginStudent($email, $pwrd) {
 
 	$dbconn = new datbconnection();
 	$query = "SELECT * FROM student WHERE ( email = '$email' OR password = '$pwrd')";
-
 
 	$result = $dbconn->query($query);
 	$row = $dbconn->fetchArray();
@@ -183,6 +180,7 @@ function loginStudent($email, $pwrd) {
 				$_SESSION['id'] = $row['student_id'];
 				$_SESSION['user'] = $row['username'];
 				$_SESSION['pollID'] = $row['student_id'];
+				$_SESSION['usremail'] = $email;
 				header ("Location: home.php");  				//starts a session and returns homepage
 			}
 			else {
@@ -192,7 +190,6 @@ function loginStudent($email, $pwrd) {
 		}
 
 		else {
-
 			$message = "Connection could not be established!\\nTry again.";
 			echo "<script type='text/javascript'>alert('$message');</script>";
 		}
@@ -209,10 +206,94 @@ function loginStudent($email, $pwrd) {
 	}
 
 
+	function loadFeedbackPage() {
+
+		$dbconn = new datbconnection();
+		$query = "SELECT * FROM committee";
+		$result = $dbconn->query($query);
+
+		if ($result) {
+			while ($row = $dbconn->fetchArray()) {
+				$_SESSION['cmid'] = $row['comm_id'];
+				echo "<p><strong>" . $row['comm_headName'] . "</strong></p>
+				<span>" . $row['comm_name'] . "</span>
+				<hr>
+				<p class=\"text-justify\">" . $row['comm_desc'] . "</p>
+				<p>
+				<span><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i><a href=\"feedbackform.php?pgID=" . $row['comm_id'] . "\">Write Feedback</a></span>
+				</p>
+				<br>";
+			}
+		}
+		else {
+			echo "<script type='text/javascript'> alert(\"Please Reload Page.\"); </script>";
+		}
+	}
+
+
+
+	function loadFeedbackForm($id) {
+
+		$dbconn = new datbconnection();
+		$qry = "SELECT comm_name, comm_id FROM committee where comm_id = '$id' ";
+		$result = $dbconn->query($qry);
+
+		if ($result) {
+
+			while ($row = $dbconn->fetchArray()) {
+				echo '<h3>Feedback Form - ' . $row['comm_name'] .'</h3>
+				<form method="POST">
+				<div class="form-group">
+				<label for="exampleFormControlInput1">Email address</label>
+				<input type="email" class="form-control" name="userEmail" id="exampleFormControlInput1" value="' . $_SESSION['usremail'] . '" placeholder="your email address">
+				</div>
+
+				<div class="form-group">
+				<label for="exampleFormControlTextarea1">Your comments</label>
+				<textarea class="form-control" id="exampleFormControlTextarea1" name="response" rows="3" placeholder="add comments.."></textarea>
+				</div>
+				<button type="submit" name="addfeed" class="btn btn-primary mb-2">Submit</button>
+				</form>';
+			}
+		}
+		else {
+			echo "<script type='text/javascript'> alert(\"Please Reload Page.\"); </script>";
+		}
+	}
+
+
+	function addFeedback($comt_id) {
+
+		$fid = '';
+		for($i = 0; $i < 3; $i++) {
+			$fid .= mt_rand(0, 9);
+		}
+		$fid = "fb".$fid;
+
+		$eml = $_POST['userEmail'];
+		$resp = $_POST['response'];
+		
+		$db = new datbconnection();
+		$query = "INSERT INTO feedback (feedback_id, email_address, commt_id, feedback_text) VALUES ('$fid', '$eml', '$comt_id', '$resp')";
+		$result = $db->query($query);
+
+		if ($result) {
+			echo "<script>alert(\"Feedback Sent.\"); </script>";
+			header("Location: committee.php");
+			exit();
+		}
+
+		else {
+			echo "<script type='text/javascript'> alert(\"Failed. Try Again\"); </script>";
+		}
+	}
+
+
+
 	function insertComment($pageid) {
 
 		if (isset($_POST['anonCheck'])) {
-			$username = "Anon";
+			$username = "anon";
 		}
 		else {
 			$username = $_POST['user'];
@@ -242,6 +323,17 @@ function loginStudent($email, $pwrd) {
 		}
 
 		echo "stu".$result;
+	}
+
+
+	function feedbackID() {
+		$result = '';
+
+		for($i = 0; $i < 3; $i++) {
+			$result .= mt_rand(0, 9);
+		}
+
+		echo "fb".$result;
 	}
 
 

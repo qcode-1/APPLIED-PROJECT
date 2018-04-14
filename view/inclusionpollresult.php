@@ -15,20 +15,27 @@
 
 	
 
-	<title>Polls - ASCVigil&trade;</title>
+	<title>
+		
+	Poll Result  - ASCVigil&trade;</title>
 </head>
 <body>
+	<?php  
 
-	<?php
-
+	session_start();
 	require_once("../database/process.php");
+	echo "<small hidden  id=\"phidden\">";
+	echo $_SESSION['pollID'];  
+	echo "</small>";
 
 	?>
 
 
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+		
 
 		<a class="navbar-brand" href="home.php">
 			<img src="../images/logo.jpg">ASCVigil&trade;
@@ -36,7 +43,6 @@
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
 
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
@@ -80,7 +86,15 @@
 		<span class="navbar-text">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="../index.php">Logout</a>
+					<a class="nav-link" href="../index.php?logout">Logout</a>
+
+					<?php
+					if (isset($_GET['logout'])) {
+						session_start();
+						session_destroy();
+					}
+					?>
+
 				</li>
 			</ul>
 		</span>
@@ -91,74 +105,44 @@
 	
 
 	<div class="container">
-
-		<h2 class="pollHead">View All Existing Polls <span class="badge badge-secondary">New (2)</span></h2>
-
+		<h2 class="pollHead">Assess the Behavior and Attitude of the ASC President and Vice - Results</h2>
 		<hr>
-
 		<div class="row">
+			<br>
+			<div id="chartContainer"></div>
+			<div id="surveyContainer"></div>
+			<div id="surveyResult"></div>
+
+			<small  id="ac"></small>
+			<small  id="pr"></small>
 
 
-			<div id="accordion">
-				<div class="card">
-					<div class="card-header" id="headingOne">
-						<h5 class="mb-0">
-							<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								Assess the Behavior and Attitude of the ASC President and Vice
-							</button>
-						</h5>
-					</div>
-
-					<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-						<div class="card-body">
-							<h6>Description</h6>
-							<p>The main aim of the poll is to assess the behaviour of the ASC president and his vice. By popular request, this poll is to acertain whether the right decion was made in voting for these particular candidates. It has come to a section of students in the student body that, the ASC president and vice are not acting acccordingly, taking into account the constitution. To take part in this poll, please <a href="presidentPoll.php">click here</a>.</p>
-							<p>To view poll results, <a href="prespollresult.php">click here</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-header" id="headingTwo">
-						<h5 class="mb-0">
-							<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-								Thoughts on ASC Outreach Activity
-							</button>
-						</h5>
-					</div>
-					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-						<div class="card-body">
-							<h6>Description</h6>
-							<p>The main aim of the poll is to assess the level of inclusion of all student, particularly pertaining to events held on campus. For many students, events held by the ASC fail to properly represnet the diversified student community for what it is. Considering that there are both internatiopnal and Ghanaian nationsls here, the ASC must try to create and conducive atmosphere for everyone to co-exist. To take part in this poll, please <a href="inclusionPoll.php">click here</a>.</p>
-							<p>To view poll results, <a href="inclusionpollresult.php">click here</a></p>
-						</div>
-					</div>
-				</div>
-				<div class="card">
-					<div class="card-header" id="headingThree">
-						<h5 class="mb-0">
-							<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-								Assess the performance of Class Representatives
-							</button>
-						</h5>
-					</div>
-					<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-						<div class="card-body">
-							<h6>Description</h6>
-							<p>The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. To take part in this poll, please <a href="classrepPoll.php">click here</a>.</p>
-							<p>To view poll results, <a href="prespollresult.php">click here</a></p>
-						</div>
-					</div>
-				</div>
+			<div style="max-height: 800px; max-width: 800px;">
+				<canvas id="histChart" width="500" height="500"></canvas>
+				<p style="text-align: center;">How effective ASC has been in terms of outreach?</p>
 			</div>
 
 
+			<div style="max-height: 800px; max-width: 800px;">
+				<canvas id="pieChart" width="500" height="500"></canvas>
+				<p style="text-align: center;">Number of students who have taken part in outreach activity</p>
+			</div>
 
+			<div>
+				<hr>
+			</div>
 
-			<br>
+			<div style="max-height: 800px; max-width: 800px;">
+				<canvas id="freqChart" width="500" height="500"></canvas>
+				<p style="text-align: center;">Frequency of participation in outreach activity</p>
+			</div>
 
+			<div style="max-height: 800px; max-width: 800px;">
+				<canvas id="classChart" width="500" height="500"></canvas>
+				<p style="text-align: center;">Classes of students</p>
+			</div>
 
 		</div>
-
 	</div>
 
 	<div class="jumbotron jumbotron-fluid">
@@ -177,7 +161,7 @@
 		<p class="">&copy; AshVigil. All rights reserved.</p>
 		<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
 		<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
-		<p>Email: <b><i>ascvigil@ashesi.edu.gh</i></b></p>
+		<p>Email: <b><i>info@quickbuy.com</i></b></p>
 		<p><b>2018</b></p>
 	</div>
 
@@ -186,18 +170,15 @@
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="../js/jquery-3.3.1.min.js"></script>
+	<script src="https://cdn3.devexpress.com/jslib/17.2.5/js/dx.all.js"></script>
 	<script src="https://surveyjs.azureedge.net/1.0.13/survey.jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-
-	<script type="text/javascript">
-
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 
 
+	<script type="text/javaScript" src="../js/inclusionpoll.js"></script>
 
-	</script>
-
-
-</body>
-</html>
+	</body>
+	</html>

@@ -76,6 +76,11 @@ function registerStudent() {
 
 
 
+	$passhash = password_hash('restrcitedaccess', PASSWORD_BCRYPT);
+	// echo $passhash;
+
+
+
 	function checkValidEmail($email) {
 
 		include('../mailer/vendor/autoload.php');
@@ -175,6 +180,24 @@ function loginStudent($email, $pwrd) {
 
 	if ($result) {
 
+		if ($email == 'admin@ascvigil.com') {
+
+			if(password_verify($pwrd, $passd)){ 					//verifies string password against hashed password in db
+				session_start();
+				$_SESSION['id'] = $row['student_id'];
+				$_SESSION['user'] = $row['username'];
+				$_SESSION['pollID'] = $row['student_id'];
+				$_SESSION['usremail'] = $email;
+				header ("Location: adminhome.php");  				//starts a session and returns homepage
+			}
+
+			else {
+				$message = "Username and/or Password incorrect.\\nTry again.";
+				echo "<script type='text/javascript'>alert('$message');</script>";
+			}
+		}
+
+		else {
 			if(password_verify($pwrd, $passd)){ 					//verifies string password against hashed password in db
 				session_start();
 				$_SESSION['id'] = $row['student_id'];
@@ -188,11 +211,13 @@ function loginStudent($email, $pwrd) {
 				echo "<script type='text/javascript'>alert('$message');</script>";
 			}
 		}
+	}
 
-		else {
+	else {
 			$message = "Connection could not be established!\\nTry again.";
 			echo "<script type='text/javascript'>alert('$message');</script>";
 		}
+
 	}
 
 
@@ -289,6 +314,79 @@ function loginStudent($email, $pwrd) {
 	}
 
 
+	function loadCommittees() {
+
+		$db = new datbconnection();
+		$query = "SELECT * FROM committee";
+		$result = $db->query($query);
+
+		if ($result) {
+
+			while ($row = $db->fetchArray()) {
+				echo "<option value=" . $row['comm_id'] . ">" . $row['comm_name'] ."</option>";
+			}
+
+		}
+
+		else {
+			echo "<script type='text/javascript'> alert(\"Failed to load. Reload page.\"); </script>";
+		}
+
+
+	}
+
+
+	function committeeCount(){
+
+		$db = new datbconnection();
+		$query = "SELECT * FROM committee";
+		$result = $db->query($query);
+		$numResults = $db->getRows();
+
+		return $numResults;
+	}
+
+
+	function addCommittee() {
+
+		$cm_name = $_POST['comm_name'];
+		$cm_head = $_POST['comm_head'];
+		$cm_descrip = $_POST['comm_text'];
+
+		$db = new datbconnection();
+		$query = "INSERT INTO committee (comm_name, comm_headName, comm_desc) VALUES ('$cm_name', '$cm_head', '$cm_descrip')";
+		$result = $db->query($query);
+
+		if ($result) {
+			echo "<script type='text/javascript'>alert(\"New Committee Added. \"); </script>";
+		}
+		else {
+			echo "<script type='text/javascript'> alert(\"Failed. Try Again\"); </script>";
+		}
+	}
+
+
+	function updateCommData() {
+
+		$cm_id = $_POST['cmID'];
+		$cm_name = $_POST['comm_name'];
+		$cm_head = $_POST['comm_head'];
+		$cm_desc = $_POST['comm_descp'];
+
+		
+
+		$dbconn = new datbconnection();
+		$query = "UPDATE committee SET comm_name = '$cm_name', comm_headName = '$cm_head', comm_desc = '$cm_desc' WHERE comm_id = '$cm_id' ";
+		$success = $dbconn->query($query);
+		echo "<script type='text/javascript'>alert('Committee Details Edited.');</script>";
+
+		if ($success) {
+			echo "<script type='text/javascript'>alert('Committee Details Edited.');</script>";
+		}
+
+	}
+
+
 
 	function insertComment($pageid) {
 
@@ -326,18 +424,6 @@ function loginStudent($email, $pwrd) {
 	}
 
 
-	function feedbackID() {
-		$result = '';
-
-		for($i = 0; $i < 3; $i++) {
-			$result .= mt_rand(0, 9);
-		}
-
-		echo "fb".$result;
-	}
-
-
-
 	function displayComments($pageid) {
 
 		$dbconn = new datbconnection();
@@ -345,9 +431,7 @@ function loginStudent($email, $pwrd) {
 		$addC = $dbconn->query($query);
 
 		if ($addC) {
-
 			while ($rows = $dbconn->fetchArray()) {
-
 				if ($rows) {
 					echo "<div class=\"commentsection\">
 					<p><span class=\"float-left\"> " .$rows['user_id']. " </span> <span class=\"font-weight-light float-right\">" .$rows['comment_datetime']. "</span></p>
@@ -358,10 +442,8 @@ function loginStudent($email, $pwrd) {
 					<br>
 					<br>";
 				}
-
 			}
 		}
-
 	}
 
 	?>

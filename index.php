@@ -181,17 +181,13 @@ if (isset($_POST['register'])) {
 						<div class="subButton">
 							<button type="submit" name="register" class="btn btn-success">Sign Up</button>
 						</div>
-
 					</form>
+					<small>I am already a member. <a class="text-secondary font-italic" href="view/login2.php">Login</a></small>
 
 				</div>
-
 				<div class="col-3"></div>
-
 			</div>
-
 		</div>
-
 	</div>
 
 

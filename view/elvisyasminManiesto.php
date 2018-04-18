@@ -64,12 +64,12 @@
 				</li> -->
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						ASC Aspirants
+						ASC Aspirants Manifesto
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
-						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="edwinbenjManifesto.php">Edwin Adatsi &amp; Benjamin Annan</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="elvisyasminManiesto.php">Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
 					</div>
@@ -199,7 +199,7 @@
 
 			<div class="col-8">
 				
-				<h4>Comments Section</h4>
+				<!-- <h4>Comments Section</h4> -->
 
 				<?php 
 

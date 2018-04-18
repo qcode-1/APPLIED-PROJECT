@@ -55,9 +55,6 @@
 				<li class="nav-item">
 					<a class="nav-link" href="polls.php">Polls</a>
 				</li>
-				<!-- <li class="nav-item">
-					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
-				</li> -->
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						ASC Aspirants Manifesto
@@ -69,6 +66,9 @@
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="elvisyasminManiesto.php" >Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
 					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="manifesto.php">Forums</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -137,14 +137,15 @@
 
 
 	<div class="jumbotron jumbotron-fluid">
+		
 		<div class="container" style="text-align: center;">
-			<h1 class="display-4">Secure &amp; Reliable Electoral Process</h1>
-			<p class="lead">AshVigil&trade; seeks to bridge the gap between technology and the general elections. Our system will keep users up to date on all matters concerning election candidates and provide a swift means of voting. Results will be efficiently caluclated in real time, with the use of perfectly designed algorithms that are verifiable and accurate.</p>
+			<h1 class="display-4">Accountability &amp; Transparency</h1>
+			<p class="lead">ASCVigil&trade; goes the extra mile to ensure that our leaders are accountable and transparent in their actions. It creates the platform for discussion and delibration for issues pertaining to student governance.</p>
 		</div>
 		<br>
 		<div class="container" style="text-align: center;">
-			<h1 class="display-4">Accountability &amp; Transparency</h1>
-			<p class="lead">AshVigil&trade; goes the extra mile to ensure that our leaders are accountable and transparent in their actions. It creates the platform for discussion and delibration for issues pertaining to student governance and overall administation. </p>
+			<h1 class="display-4">Technology meets Better Governance</h1>
+			<p class="lead">ASCVigil&trade; seeks to bridge the gap between technology and the general elections. Our system will keep users up to date on all matters concerning election candidates and provide a swift means of voting. Results will be efficiently caluclated in real time, with the use of perfectly designed algorithms that are verifiable and accurate.</p>
 		</div>
 	</div>
 

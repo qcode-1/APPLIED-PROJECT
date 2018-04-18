@@ -177,7 +177,7 @@
 
 			<div class="col-8">
 				
-				<h4>Comments Section</h4>
+				<!-- <h4>Comments Section</h4> -->
 
 				<?php 
 

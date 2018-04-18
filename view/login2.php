@@ -77,7 +77,7 @@ if (isset($_POST['login'])) {
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-		<a class="navbar-brand" href="index.php">
+		<a class="navbar-brand" href="login2.php">
 			<img src="../images/logo.jpg">ASCVigil&trade;
 		</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -88,7 +88,7 @@ if (isset($_POST['login'])) {
 			<ul class="navbar-nav ml-auto">
 
 				<li class="nav-item">
-					<a class="nav-link" href="../index.php">Signup</a>
+					<a class="nav-link" href="../index.php">Sign Up</a>
 				</li>
 			</ul>
 		</div>
@@ -129,13 +129,14 @@ if (isset($_POST['login'])) {
 							</div>
 						</div>
 						<div class="">
-							<a href="fgpass.php" class="text-secondary"><span>Forgot Password?</span></a>
+							<a href="passwordreset.php" class="text-secondary"><span>Forgot Password?</span></a>
 						</div>
 						<div class="subButton">
 							<button type="submit button" class="btn btn-success" name="login">Login</button>
 						</div>
 
 					</form>
+					<small>Not a member? <a class="text-secondary font-italic" href="../index.php">Sign Up</a></small>
 
 				</div>
 

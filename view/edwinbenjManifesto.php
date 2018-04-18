@@ -61,9 +61,6 @@
 				<li class="nav-item">
 					<a class="nav-link" href="polls.php">Polls</a>
 				</li>
-				<!-- <li class="nav-item">
-					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
-				</li> -->
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						ASC Aspirants Manifesto
@@ -235,7 +232,7 @@
 
 			<div class="col-8">
 				
-				<h4>Comments Section</h4>
+				
 
 				<?php 
 

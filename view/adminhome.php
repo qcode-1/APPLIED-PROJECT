@@ -156,6 +156,7 @@
 
 						<button type="button" id="addCommbtn" class="btn btn-outline-info">Add Committee</button>
 						<button type="button" id="editCommbtn" class="btn btn-outline-info">Edit Committee</button>
+						<button type="button" id="editCommbtn" class="btn btn-outline-info">Edit Committee</button>
 						<br><br>
 
 						<div>

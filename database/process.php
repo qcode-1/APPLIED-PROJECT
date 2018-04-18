@@ -76,11 +76,6 @@ function registerStudent() {
 
 
 
-	$passhash = password_hash('restrcitedaccess', PASSWORD_BCRYPT);
-	// echo $passhash;
-
-
-
 	function checkValidEmail($email) {
 
 		include('../mailer/vendor/autoload.php');
@@ -100,7 +95,7 @@ function registerStudent() {
 	    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 	    $mail->SMTPAuth = true;                               // Enable SMTP authentication
 	    $mail->Username = 'nii.quartey19@gmail.com';                 // SMTP username
-	    $mail->Password = 'Marktwain@1';                           // SMTP password
+	    $mail->Password = 'MARKTWAIN@!';                           // SMTP password
 	    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 	    $mail->Port = 587;                                    // TCP port to connect to
 
@@ -123,7 +118,7 @@ function registerStudent() {
 
 	    $mail->send();
 	    //echo 'Message has been sent';
-	    header("Location: login.php");
+	    header("Location: login2.php");
 	}
 
 
@@ -214,238 +209,239 @@ function loginStudent($email, $pwrd) {
 	}
 
 	else {
-			$message = "Connection could not be established!\\nTry again.";
-			echo "<script type='text/javascript'>alert('$message');</script>";
+		$message = "Connection could not be established!\\nTry again.";
+		echo "<script type='text/javascript'>alert('$message');</script>";
+	}
+
+}
+
+
+function logout() {
+	session_start();
+	session_destroy();
+	if (session_destroy()) {
+		header("Location: ../index.php");
+	}
+
+}
+
+
+function loadFeedbackPage() {
+
+	$dbconn = new datbconnection();
+	$query = "SELECT * FROM committee";
+	$result = $dbconn->query($query);
+
+	if ($result) {
+		while ($row = $dbconn->fetchArray()) {
+			$_SESSION['cmid'] = $row['comm_id'];
+			echo "<p><strong>" . $row['comm_headName'] . "</strong></p>
+			<span>" . $row['comm_name'] . "</span>
+			<hr>
+			<p class=\"text-justify\">" . $row['comm_desc'] . "</p>
+			<p>
+			<span><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i><a href=\"feedbackform.php?pgID=" . $row['comm_id'] . "\">Write Feedback</a></span>
+			</p>
+			<br>";
+		}
+	}
+	else {
+		echo "<script type='text/javascript'> alert(\"Please Reload Page.\"); </script>";
+	}
+}
+
+
+
+function loadFeedbackForm($id) {
+
+	$dbconn = new datbconnection();
+	$qry = "SELECT comm_name, comm_id FROM committee where comm_id = '$id' ";
+	$result = $dbconn->query($qry);
+
+	if ($result) {
+
+		while ($row = $dbconn->fetchArray()) {
+			echo '<h3>Feedback Form - ' . $row['comm_name'] .'</h3>
+			<form method="POST">
+			<div class="form-group">
+			<label for="exampleFormControlInput1">Email address</label>
+			<input type="email" class="form-control" name="userEmail" id="exampleFormControlInput1" value="' . $_SESSION['usremail'] . '" placeholder="your email address">
+			</div>
+
+			<div class="form-group">
+			<label for="exampleFormControlTextarea1">Your comments</label>
+			<textarea class="form-control" id="exampleFormControlTextarea1" name="response" rows="3" placeholder="add comments.."></textarea>
+			</div>
+			<button type="submit" name="addfeed" class="btn btn-primary mb-2">Submit</button>
+			</form>';
+		}
+	}
+	else {
+		echo "<script type='text/javascript'> alert(\"Please Reload Page.\"); </script>";
+	}
+}
+
+
+function addFeedback($comt_id) {
+
+	$fid = '';
+	for($i = 0; $i < 3; $i++) {
+		$fid .= mt_rand(0, 9);
+	}
+	$fid = "fb".$fid;
+
+	$eml = $_POST['userEmail'];
+	$resp = $_POST['response'];
+
+	$db = new datbconnection();
+	$query = "INSERT INTO feedback (feedback_id, email_address, commt_id, feedback_text) VALUES ('$fid', '$eml', '$comt_id', '$resp')";
+	$result = $db->query($query);
+
+	if ($result) {
+		echo "<script type=\"text/javascript\">alert(\"Feedback Sent.\"); </script>";
+		header("Location: committee.php");
+		exit();
+	}
+
+	else {
+		echo "<script type='text/javascript'> alert(\"Failed. Try Again\"); </script>";
+	}
+}
+
+
+function loadCommittees() {
+
+	$db = new datbconnection();
+	$query = "SELECT * FROM committee";
+	$result = $db->query($query);
+
+	if ($result) {
+
+		while ($row = $db->fetchArray()) {
+			echo "<option value=" . $row['comm_id'] . ">" . $row['comm_name'] ."</option>";
 		}
 
 	}
 
-
-	function logout() {
-		session_start();
-		session_destroy();
-		if (session_destroy()) {
-			header("Location: ../index.php");
-		}
-
+	else {
+		echo "<script type='text/javascript'> alert(\"Failed to load. Reload page.\"); </script>";
 	}
 
 
-	function loadFeedbackPage() {
+}
 
-		$dbconn = new datbconnection();
-		$query = "SELECT * FROM committee";
-		$result = $dbconn->query($query);
 
-		if ($result) {
-			while ($row = $dbconn->fetchArray()) {
-				$_SESSION['cmid'] = $row['comm_id'];
-				echo "<p><strong>" . $row['comm_headName'] . "</strong></p>
-				<span>" . $row['comm_name'] . "</span>
-				<hr>
-				<p class=\"text-justify\">" . $row['comm_desc'] . "</p>
-				<p>
-				<span><i class=\"fa fa-pencil-square-o\" aria-hidden=\"true\"></i><a href=\"feedbackform.php?pgID=" . $row['comm_id'] . "\">Write Feedback</a></span>
-				</p>
-				<br>";
-			}
-		}
-		else {
-			echo "<script type='text/javascript'> alert(\"Please Reload Page.\"); </script>";
-		}
+function committeeCount(){
+
+	$db = new datbconnection();
+	$query = "SELECT * FROM committee";
+	$result = $db->query($query);
+	$numResults = $db->getRows();
+
+	return $numResults;
+}
+
+
+function addCommittee() {
+
+	$cm_name = $_POST['comm_name'];
+	$cm_head = $_POST['comm_head'];
+	$cm_descrip = $_POST['comm_text'];
+
+	$db = new datbconnection();
+	$query = "INSERT INTO committee (comm_name, comm_headName, comm_desc) VALUES ('$cm_name', '$cm_head', '$cm_descrip')";
+	$result = $db->query($query);
+
+	if ($result) {
+		echo "<script type='text/javascript'>alert(\"New Committee Added. \"); </script>";
 	}
-
-
-
-	function loadFeedbackForm($id) {
-
-		$dbconn = new datbconnection();
-		$qry = "SELECT comm_name, comm_id FROM committee where comm_id = '$id' ";
-		$result = $dbconn->query($qry);
-
-		if ($result) {
-
-			while ($row = $dbconn->fetchArray()) {
-				echo '<h3>Feedback Form - ' . $row['comm_name'] .'</h3>
-				<form method="POST">
-				<div class="form-group">
-				<label for="exampleFormControlInput1">Email address</label>
-				<input type="email" class="form-control" name="userEmail" id="exampleFormControlInput1" value="' . $_SESSION['usremail'] . '" placeholder="your email address">
-				</div>
-
-				<div class="form-group">
-				<label for="exampleFormControlTextarea1">Your comments</label>
-				<textarea class="form-control" id="exampleFormControlTextarea1" name="response" rows="3" placeholder="add comments.."></textarea>
-				</div>
-				<button type="submit" name="addfeed" class="btn btn-primary mb-2">Submit</button>
-				</form>';
-			}
-		}
-		else {
-			echo "<script type='text/javascript'> alert(\"Please Reload Page.\"); </script>";
-		}
+	else {
+		echo "<script type='text/javascript'> alert(\"Failed. Try Again\"); </script>";
 	}
+}
 
 
-	function addFeedback($comt_id) {
+function updateCommData() {
 
-		$fid = '';
-		for($i = 0; $i < 3; $i++) {
-			$fid .= mt_rand(0, 9);
-		}
-		$fid = "fb".$fid;
-
-		$eml = $_POST['userEmail'];
-		$resp = $_POST['response'];
-		
-		$db = new datbconnection();
-		$query = "INSERT INTO feedback (feedback_id, email_address, commt_id, feedback_text) VALUES ('$fid', '$eml', '$comt_id', '$resp')";
-		$result = $db->query($query);
-
-		if ($result) {
-			echo "<script>alert(\"Feedback Sent.\"); </script>";
-			header("Location: committee.php");
-			exit();
-		}
-
-		else {
-			echo "<script type='text/javascript'> alert(\"Failed. Try Again\"); </script>";
-		}
-	}
+	$cm_id = $_POST['cmID'];
+	$cm_name = $_POST['comm_name'];
+	$cm_head = $_POST['comm_head'];
+	$cm_desc = $_POST['comm_descp'];
 
 
-	function loadCommittees() {
 
-		$db = new datbconnection();
-		$query = "SELECT * FROM committee";
-		$result = $db->query($query);
+	$dbconn = new datbconnection();
+	$query = "UPDATE committee SET comm_name = '$cm_name', comm_headName = '$cm_head', comm_desc = '$cm_desc' WHERE comm_id = '$cm_id' ";
+	$success = $dbconn->query($query);
+	echo "<script type='text/javascript'>alert('Committee Details Edited.');</script>";
 
-		if ($result) {
-
-			while ($row = $db->fetchArray()) {
-				echo "<option value=" . $row['comm_id'] . ">" . $row['comm_name'] ."</option>";
-			}
-
-		}
-
-		else {
-			echo "<script type='text/javascript'> alert(\"Failed to load. Reload page.\"); </script>";
-		}
-
-
-	}
-
-
-	function committeeCount(){
-
-		$db = new datbconnection();
-		$query = "SELECT * FROM committee";
-		$result = $db->query($query);
-		$numResults = $db->getRows();
-
-		return $numResults;
-	}
-
-
-	function addCommittee() {
-
-		$cm_name = $_POST['comm_name'];
-		$cm_head = $_POST['comm_head'];
-		$cm_descrip = $_POST['comm_text'];
-
-		$db = new datbconnection();
-		$query = "INSERT INTO committee (comm_name, comm_headName, comm_desc) VALUES ('$cm_name', '$cm_head', '$cm_descrip')";
-		$result = $db->query($query);
-
-		if ($result) {
-			echo "<script type='text/javascript'>alert(\"New Committee Added. \"); </script>";
-		}
-		else {
-			echo "<script type='text/javascript'> alert(\"Failed. Try Again\"); </script>";
-		}
-	}
-
-
-	function updateCommData() {
-
-		$cm_id = $_POST['cmID'];
-		$cm_name = $_POST['comm_name'];
-		$cm_head = $_POST['comm_head'];
-		$cm_desc = $_POST['comm_descp'];
-
-		
-
-		$dbconn = new datbconnection();
-		$query = "UPDATE committee SET comm_name = '$cm_name', comm_headName = '$cm_head', comm_desc = '$cm_desc' WHERE comm_id = '$cm_id' ";
-		$success = $dbconn->query($query);
+	if ($success) {
 		echo "<script type='text/javascript'>alert('Committee Details Edited.');</script>";
-
-		if ($success) {
-			echo "<script type='text/javascript'>alert('Committee Details Edited.');</script>";
-		}
-
 	}
 
+}
 
 
-	function insertComment($pageid) {
 
-		if (isset($_POST['anonCheck'])) {
-			$username = "anon";
-		}
-		else {
-			$username = $_POST['user'];
-		}
-		$datetime = $_POST['datetime'];
-		$comment = $_POST['commnt'];
+function insertComment($pageid) {
 
-		$dbconn = new datbconnection();
-		$query = "INSERT INTO usercomment (comment_signature, user_id, comment_datetime, comments) VALUES ('$pageid', '$username', '$datetime', '$comment')";
-		$addC = $dbconn->query($query);
+	if (isset($_POST['anonCheck'])) {
+		$username = "anon";
+	}
+	else {
+		$username = $_POST['user'];
+	}
+	$datetime = $_POST['datetime'];
+	$comment = $_POST['commnt'];
 
-		if ($addC) {
-			echo "<script type='text/javascript'> alert(\"COMMENT ADDED\"); </script>";
-		}
+	$dbconn = new datbconnection();
+	$query = "INSERT INTO usercomment (comment_signature, username, comment_datetime, comments) VALUES ('$pageid', '$username', '$datetime', '$comment')";
+	$addC = $dbconn->query($query);
 
-		else {
-			echo "<script type='text/javascript'> alert(\"COULD NOT BE ADDED\"); </script>";
-		}		
-
+	if ($addC) {
+		echo "<script type='text/javascript'> alert(\"COMMENT ADDED\"); </script>";
 	}
 
-	function randomNumber() {
-		$result = '';
+	else {
+		echo "<script type='text/javascript'> alert(\"COULD NOT BE ADDED\"); </script>";
+	}		
 
-		for($i = 0; $i < 4; $i++) {
-			$result .= mt_rand(0, 9);
-		}
+}
 
-		echo "stu".$result;
+function randomNumber() {
+	$result = '';
+
+	for($i = 0; $i < 4; $i++) {
+		$result .= mt_rand(0, 9);
 	}
 
+	echo "stu".$result;
+}
 
-	function displayComments($pageid) {
 
-		$dbconn = new datbconnection();
-		$query = "SELECT user_id, comment_datetime, comments FROM usercomment where comment_signature = '$pageid'";
-		$addC = $dbconn->query($query);
+function displayComments($pageid) {
 
-		if ($addC) {
-			while ($rows = $dbconn->fetchArray()) {
-				if ($rows) {
-					echo "<div class=\"commentsection\">
-					<p><span class=\"float-left\"> " .$rows['user_id']. " </span> <span class=\"font-weight-light float-right\">" .$rows['comment_datetime']. "</span></p>
-					<br>
-					<p class=\"float-left\">" .$rows['comments']. "</p>
-					</div>
+	$dbconn = new datbconnection();
+	$query = "SELECT username, comment_datetime, comments FROM usercomment where comment_signature = '$pageid'";
+	$addC = $dbconn->query($query);
+	$count = $dbconn->getRows();
 
-					<br>
-					<br>";
-				}
+	if ($addC) {
+		echo "<span><h4>Comments Section</h4><small class=\"font-weight-bold\">". $count ." Comments</small></span>";
+		while ($rows = $dbconn->fetchArray()) {
+			if ($rows) {
+
+				echo '<div class="card border-dark mb-3" style="">
+				<div class="card-header"><p><span class="float-left"> ' .$rows['username']. ' </span> <span class="font-weight-light float-right">' .$rows['comment_datetime']. '</span></p></div>
+				<div class="card-body text-dark">
+				<p class="card-text">'.$rows['comments'].'</p>
+				</div>
+				</div>';
 			}
 		}
 	}
+}
 
-	?>
+?>
 
 

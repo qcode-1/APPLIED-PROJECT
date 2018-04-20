@@ -28,7 +28,9 @@
 
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+		
 
 		<a class="navbar-brand" href="home.php">
 			<img src="../images/logo.jpg">ASCVigil&trade;
@@ -36,7 +38,6 @@
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
 
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
@@ -49,9 +50,6 @@
 				<li class="nav-item">
 					<a class="nav-link" href="polls.php">Polls</a>
 				</li>
-				<!-- <li class="nav-item">
-					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
-				</li> -->
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						ASC Aspirants Manifesto
@@ -63,6 +61,9 @@
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="elvisyasminManiesto.php" >Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
 					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="manifesto.php">Forums</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -80,13 +81,18 @@
 		<span class="navbar-text">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="../index.php">Logout</a>
+					<a class="nav-link" href="../index.php?logout">Logout<i class="fa fa-sign-out fa-fw"></i></a>
+
+					<?php
+
+					if (isset($_GET['logout'])) {
+						session_destroy();
+					}
+					?>
 				</li>
 			</ul>
 		</span>
 	</nav>
-
-
 
 	
 

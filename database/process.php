@@ -74,6 +74,9 @@ function registerStudent() {
 		}
 	}
 
+	// $passhash = password_hash("restrictedaccess", PASSWORD_BCRYPT);
+	// echo $passhash;
+
 
 
 	function checkValidEmail($email) {
@@ -137,6 +140,18 @@ else {
 }
 
 
+function getUserCount() {
+
+	$datbconn = new datbconnection();
+	$que = "SELECT * FROM student";
+	$result = $datbconn->query($que);
+	$count = $datbconn->getRows();
+
+	echo $count;
+
+}
+
+
 function changePassword($email, $pass) {
 
 	$datbconn = new datbconnection();
@@ -163,6 +178,27 @@ function changePassword($email, $pass) {
 }
 
 
+function showFeedback() {
+
+	$db = new datbconnection();
+	$query = "SELECT feedback.email_address, committee.comm_name, committee.comm_id, feedback.feedback_text, feedback.commt_id FROM committee INNER JOIN feedback ON committee.comm_id = feedback.commt_id";
+	$res = $db->query($query);
+
+	if ($res) {
+
+		while ($row = $db->fetchArray()) {
+			echo '<tr class="gradeA">
+			<td>' . $row['email_address'] .'</td>
+			<td >' . $row['comm_name'] .'</td>
+			<td >' . $row['feedback_text'] .'</td>
+			<td><button type="submit" name="addCommittee" class="btn btn-default">Reply</button></td>
+			</tr>';
+		}
+	}
+
+}
+
+
 //function to verify user details before login
 function loginStudent($email, $pwrd) {
 
@@ -183,7 +219,7 @@ function loginStudent($email, $pwrd) {
 				$_SESSION['user'] = $row['username'];
 				$_SESSION['pollID'] = $row['student_id'];
 				$_SESSION['usremail'] = $email;
-				header ("Location: adminhome.php");  				//starts a session and returns homepage
+				header ("Location: admin.php");  				//starts a session and returns homepage
 			}
 
 			else {
@@ -368,17 +404,13 @@ function updateCommData() {
 	$cm_head = $_POST['comm_head'];
 	$cm_desc = $_POST['comm_descp'];
 
-
-
 	$dbconn = new datbconnection();
 	$query = "UPDATE committee SET comm_name = '$cm_name', comm_headName = '$cm_head', comm_desc = '$cm_desc' WHERE comm_id = '$cm_id' ";
 	$success = $dbconn->query($query);
-	echo "<script type='text/javascript'>alert('Committee Details Edited.');</script>";
 
 	if ($success) {
 		echo "<script type='text/javascript'>alert('Committee Details Edited.');</script>";
 	}
-
 }
 
 

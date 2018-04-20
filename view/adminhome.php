@@ -198,7 +198,7 @@
 								<div class="card-body">
 									<!-- <h5 class="card-title">Info card title</h5> -->
 
-									<form method="POST">
+									
 										<div class="form-group row">
 											<label for="" class="col-sm-2">Select Committee</label>
 											<div class="col-sm-10">

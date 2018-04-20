@@ -111,7 +111,7 @@ if (isset($_POST['register'])) {
 			<ul class="navbar-nav ml-auto">
 
 				<li class="nav-item">
-					<a class="nav-link" href="view/login2.php">Login</a>
+					<a class="nav-link" href="view/login2.php">Login<i class="fa fa-sign-in fa-fw"></i></a>
 				</li>
 			</ul>
 		</div>

@@ -33,18 +33,15 @@ if (isset($_POST['cmt_id'])) {
 			<div class="form-group row">
 			<label for="" class="col-sm-2 col-form-label">Description</label>
 			<div class="col-sm-10">
-			<textarea class="form-control" name="comm_descp" id="commDesc" rows="6" value="">'. $row['comm_desc'] . '</textarea>
+			<textarea class="form-control" name="comm_descp" id="commDesc" rows="9" value="">'. $row['comm_desc'] . '</textarea>
 			</div>
 			</div>
-			<button type="submit" name="update" class="btn btn-light">Update</button>
+			<button type="submit" name="editCommittee" class="btn btn-default">Edit Committee</button>
 			</div></form>';
 		}
 
 		echo $output;
 
-		if (isset($_POST['update'])) {
-			updateCommData();
-		}
 
 	}
 

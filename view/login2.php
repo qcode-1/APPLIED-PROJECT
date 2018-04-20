@@ -88,7 +88,7 @@ if (isset($_POST['login'])) {
 			<ul class="navbar-nav ml-auto">
 
 				<li class="nav-item">
-					<a class="nav-link" href="../index.php">Sign Up</a>
+					<a class="nav-link" href="../index.php">Sign Up<i class="fa fa-user fa-fw"></i></a>
 				</li>
 			</ul>
 		</div>

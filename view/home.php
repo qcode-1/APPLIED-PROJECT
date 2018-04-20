@@ -82,11 +82,10 @@
 			</ul>
 		</div>
 
-
 		<span class="navbar-text">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="../index.php?logout">Logout</a>
+					<a class="nav-link" href="../index.php?logout">Logout<i class="fa fa-sign-out fa-fw"></i></a>
 
 					<?php
 

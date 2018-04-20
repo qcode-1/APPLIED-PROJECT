@@ -38,7 +38,9 @@
 
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+		
 
 		<a class="navbar-brand" href="home.php">
 			<img src="../images/logo.jpg">ASCVigil&trade;
@@ -46,35 +48,6 @@
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
-		<!-- <div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav">
-				<li class="nav-item active">
-					<a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="committee.php">Committees</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="#">Parliament</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="polls.php">Polls</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						About
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="#">ASCVigil&trade;</a>
-						<a class="dropdown-item" href="#">FAQ's</a>
-					</div>
-				</li>
-			</ul>
-		</div> -->
 
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
@@ -87,60 +60,49 @@
 				<li class="nav-item">
 					<a class="nav-link" href="polls.php">Polls</a>
 				</li>
-				<!-- <li class="nav-item">
-					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
-				</li> -->
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						ASC Aspirants
+						ASC Aspirants Manifesto
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="edwinbenjManifesto.php">Edwin Adatsi &amp; Benjamin Annan</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item disabled" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
+						<a class="dropdown-item" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item disabled" href="elvisyasminManiesto.php">Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
+						<a class="dropdown-item" href="elvisyasminManiesto.php" >Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
 					</div>
 				</li>
-
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						JEC Aspirants
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="benjnanaManifesto">Benjamin Kusi &amp; Nana Ehoa Acquaye</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="chretonam.php">Christopher Zanu &amp; Etonam Dotse</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="molaud.php">Molife Chaplain &amp; Audrey Mutswiri</a>
-					</div>
+				<li class="nav-item">
+					<a class="nav-link" href="manifesto.php">Forums</a>
 				</li>
-				<!-- <li class="nav-item">
-					<a class="nav-link" href="#">Parliament</a>
-				</li> -->
-				
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						About
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="#">ASCVigil&trade;</a>
-						<a class="dropdown-item" href="#">FAQ's</a>
+						<a class="dropdown-item" href="faq.php">FAQ's</a>
 					</div>
 				</li>
 			</ul>
 		</div>
 
+
 		<span class="navbar-text">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="../index.php">Logout</a>
+					<a class="nav-link" href="../index.php?logout">Logout<i class="fa fa-sign-out fa-fw"></i></a>
+
+					<?php
+
+					if (isset($_GET['logout'])) {
+						session_destroy();
+					}
+					?>
 				</li>
 			</ul>
 		</span>
 	</nav>
-
-
 
 	<div class="container">
 		<div class="row">

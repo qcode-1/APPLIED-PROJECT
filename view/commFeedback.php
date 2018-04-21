@@ -133,8 +133,17 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
+                        <li><a href="../index.php?logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+
+                        <?php
+
+                        if (isset($_GET['logout'])) {
+                            session_destroy();
+                        }
+                        
+                        ?>
+
+                    </li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>

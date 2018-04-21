@@ -1,0 +1,35 @@
+
+.headerMessage {
+	background-color: #8e9eab;
+}
+
+body { 
+
+	background-color: #F8F9FB ;
+
+}
+
+.cats {
+	list-style: none;
+}
+
+.head3 {
+	text-align: center;
+}
+
+.col-6{
+	background-color: #dbdbdb; 
+	border-radius: 10px;
+	text-align: center;
+}
+
+.container {
+	/*padding-top: 15px;*/
+}
+
+
+.footer {
+	padding: 1rem;
+	width: 100%;
+	text-align: center;
+}

@@ -11,22 +11,24 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<link rel="stylesheet" type="text/css" href="../css/home.css">
+	<link rel="stylesheet" type="text/css" href="../css/forums.css">
 
 	
 
-	<title> Welcome, <?php  session_start();
-	echo $_SESSION['user'];?> - ASCVigil&trade;</title>
+	<title>Forums - ASCVigil&trade;</title>
 </head>
 <body>
 
 	<?php
-
-	require_once("../database/process.php");
-
-
-	// session_start();
+	session_start();
 	// echo $_SESSION['user'];
+	require_once("../database/process.php");
+	require_once("../database/forumDatabase.php");
+
+	if (isset($_POST['addDiscussion'])) {
+		echo "<script type='text/javascript'> alert(\"Didnt work.\"); </script>";
+	addForum($_SESSION['id']);
+}
 
 	?>
 
@@ -68,7 +70,7 @@
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="forums.php">Forums</a>
+					<a class="nav-link" href="manifesto.php">Forums</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -100,55 +102,85 @@
 
 
 
-	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<img class="d-block w-100" src="../images/carousel.jpg" title="First slide">
-				<div class="carousel-caption d-none d-md-block">
-					<h4>Student Representatives</h4>
-					<p>Another year round, a new set of executives to be ushered in. Who gets the vote?</p>
-				</div>
-			</div>
-			<div class="carousel-item">
-				<img class="d-block w-100" src="../images/carousel.jpg" title="Second slide">
-				<div class="carousel-caption d-none d-md-block" >
-					<h4>Student Representatives</h4>
-					<p>Another year round, a new set of executives to be ushered in. Who gets the vote?</p>
-				</div>
-			</div>
-			<div class="carousel-item">
-				<img class="d-block w-100" src="../images/carousel.jpg" title="Third slide">
-				<div class="carousel-caption d-none d-md-block ">
-					<h4>Student Representatives</h4>
-					<p>Another year round, a new set of executives to be ushered in. Who gets the vote?</p>
-				</div>
-			</div>
-		</div>
-		<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-	</div>
+	
 
 
-	<div class="jumbotron jumbotron-fluid">
-		
+	<div class="jumbotron">
 		<div class="container" style="text-align: center;">
-			<h1 class="display-4">Accountability &amp; Transparency</h1>
-			<p class="lead">ASCVigil&trade; goes the extra mile to ensure that our leaders are accountable and transparent in their actions. It creates the platform for discussion and delibration for issues pertaining to student governance.</p>
-		</div>
-		<br>
-		<div class="container" style="text-align: center;">
-			<h1 class="display-4">Technology meets Better Governance</h1>
-			<p class="lead">ASCVigil&trade; seeks to bridge the gap between technology and the general elections. Our system will keep users up to date on all matters concerning election candidates and provide a swift means of voting. Results will be efficiently caluclated in real time, with the use of perfectly designed algorithms that are verifiable and accurate.</p>
+			<h3 class="">Welcome To ASCVigil&trade; Forums</h3>
+			<p class="">Share your ideas and thoughts with members of the Ashesi Community. Get insights on developments and also start discussions around your topics of interest. Please read the <a class="text-danger" href="faq.php">FAQ's</a> before posting.</p>
 		</div>
 	</div>
 
-	<div class="jumbotron jumbotron-fluid">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-lg-3">
+				
+				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#discussionModal" data-whatever="">Start Discussion</button>
+
+				<div class="modal fade" id="discussionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<form method="POST">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalLabel">Start a Discussion</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<div class="form-group">
+										<label for="recipient-name" class="col-form-label">Topic</label>
+										<input type="text" class="form-control" name="forumTopic" name="forumTopic">
+									</div>
+									<div class="form-group">
+										<label>Category</label>
+										<select class="form-control" name="forum_cat" id="forum_cat" name="classes">
+											<?php
+											loadCategories();
+											?>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="message-text" class="col-form-label">Post</label>
+										<textarea class="form-control" name="forum_post" id="forum_post"></textarea>
+									</div>
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<button type="button" name="addDiscussion" id="addDiscussion" class="btn btn-info">Post Discussion</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+
+				<br>
+				<br>
+
+				<div>
+					<p>CATEGORIES</p>
+					<hr>
+					<ul style="list-style: none;">
+						<?php
+						//displays catgeories
+						displayCategories();
+						?>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="col-lg-9">
+				
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="jumbotron">
 		<div class="container" style="text-align: center;">
 			<h4>Want to receive regular updates?</h4>
 			<p><div class="input-group mb-3">
@@ -173,9 +205,47 @@
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="../js/jquery-3.3.1.min.js"></script>
-	<script src="https://surveyjs.azureedge.net/1.0.13/survey.jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
+	<script>
+
+		
+
+			$('#addDiscussion').click(function() {
+
+				var topic = $('#forumTopic').val();
+				var cat = $('#forum_cat').val();
+				var post = $('#forum_post').val();
+
+				if (topic == '' && post == '') {
+					alert("Please Fill The Required Fields");
+					console.log("Please Fill The Required Fields");
+				}
+
+				else {
+
+					$.ajax({
+
+						url: "../controller/addDiscus.php",
+						method: "POST",
+						data: {topic:topic, cat:cat, post:post},
+						success: function(data) {
+
+							if (data == 'No') {
+								alert("Wrong Data");
+							}
+
+							else {
+								$("#modal-content").html("<p>Forum Submitted</p>");
+							}
+						}
+					})
+				}
+			});
+
+
+	</script>
 
 
 

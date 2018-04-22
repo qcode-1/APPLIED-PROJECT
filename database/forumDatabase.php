@@ -119,6 +119,17 @@ function insertSubject() {
 
 }
 
+function getForumCount() {
+
+	$dbconn = new datbconnection();
+	$query = "SELECT * FROM forum";
+	$result = $dbconn->query($query);
+	$count = $dbconn->getRows();
+
+	echo $count;
+
+}
+
 function loadCategories() {
 
 	$db = new datbconnection();
@@ -147,25 +158,9 @@ function addCategory() {
 
 }
 
-function addTopic() {
-
-	$tpSubject = $_POST[''];
-	$tpdate = $_POST[''];
-	$tpCat = $_POST[''];
-	$tpBy = $_POST[''];
-
-	$db = new datbconnection();
-	$query = "INSERT INTO topics (topic_subject, topic_date, topic_cat, topic_by) VALUES ()";
-	$result = $db->query($query);
-
-}
-
 function editTopic() {
 
 }
-
-
-
 
 
 function addForum($id) {
@@ -173,8 +168,6 @@ function addForum($id) {
 	$fTopic = $_POST['forumTopic'];
 	$fCat = $_POST['forum_cat'];
 	$fPost = $_POST['forum_post'];
-	// $postText = $_POST[''];
-	// $postDate = $_POST[''];
 
 	$db = new datbconnection();
 	$query = "INSERT INTO forum (user_id, forum_topic, forum_cat, forum_text) VALUES ('$id', '$fTopic', '$fCat', '$fPost')";
@@ -190,12 +183,6 @@ function addForum($id) {
 	}
 
 }
-
-
-
-
-
-
 
 
 

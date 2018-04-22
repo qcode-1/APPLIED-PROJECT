@@ -44,7 +44,7 @@
     <?php
 
     require_once("../database/process.php");
-
+    require_once("../database/forumDatabase.php");
 
     if (isset($_POST['addCommittee'])) {
         addCommittee();
@@ -146,7 +146,7 @@
                         if (isset($_GET['logout'])) {
                             session_destroy();
                         }
-                        
+
                         ?>
 
                     </li>

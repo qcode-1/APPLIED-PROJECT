@@ -9,9 +9,11 @@ require_once('dbConnection.php');
 
 
 //Load composer's autoloader
-//require_once ('../mailer/vendor/autoload.php');
+require_once ('../mailer/vendor/autoload.php');
 
 date_default_timezone_set('UTC');
+
+// displayForums();
 
 
 
@@ -30,7 +32,60 @@ function displayCategories() {
 			";
 		}
 	}
+}
 
+function displayForums() {
+
+	$db = new datbconnection();
+	$qry = "SELECT forum.forum_id, student.username, category.cat_name, category.cat_badge, forum.forum_topic, forum.forum_text FROM forum, student, category WHERE forum.user_id=student.student_id AND category.cat_id=forum.forum_cat";
+
+	$result = $db->query($qry);
+
+	if ($result) {
+		// max-width: 18rem;
+
+		while ($row = $db->fetchArray()) {
+
+			if (getUsername($_SESSION['id']) == $row['username']) {
+
+				echo '<div class="card border-info mb-3" style="">
+				<div class="card-header"><a class="" href="forumPage?forumID=' . $row['forum_id'] . '">' . $row['forum_topic'] . '</a>
+				<span style="display: block;"><small>Started by YOU</small> <small class="float-right badge badge-'. $row['cat_badge'] .'"> ' . $row['cat_name'] .  ' </small></span></div>
+
+				<div class="card-body text-dark">
+				<p class="card-text">' . $row['forum_text'] . '</p>
+				</div>
+				</div>';
+
+			}
+
+			else {
+
+				echo '<div class="card border-info mb-3" style="">
+				<div class="card-header"><a href="forumPage?forumID=' . $row['forum_id'] . '">' . $row['forum_topic'] . '</a>
+				<span style="display: block;"><small>Started by ' . $row['username']  . '</small> <small class="float-right badge badge-'. $row['cat_badge'] .'"> ' . $row['cat_name'] .  ' </small></span></div>
+
+				<div class="card-body text-dark">
+				<p class="card-text">' . $row['forum_text'] . '</p>
+				</div>
+				</div>';
+
+			}
+		}
+	}
+}
+
+function getUsername($id) {
+
+	$db = new datbconnection();
+	$query = "SELECT username FROM student WHERE student_id = '$id'";
+	$result = $db->query($query);
+
+	if ($result) {
+		while ($row = $db->fetchArray()) {
+			return $row['username'];
+		}
+	}
 }
 
 
@@ -110,24 +165,7 @@ function editTopic() {
 }
 
 
-function displayForums() {
 
-	$db = new datbconnection();
-	$query = "SELECT forum.forum_id, forum.user_id, forum.forum_topic, forum.forum_cat, forum.forum_text, student.student_id,  student.username, category.cat_name FROM forum, student, category WHERE forum.user_id = student.student_id & forum.forum_cat = category.cat_name";
-	$result = $db->query($query);
-
-
-
-
-	echo '<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h5 class="card-title">Info card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card\'s content.</p>
-  </div>
-</div>';
-
-}
 
 
 function addForum($id) {

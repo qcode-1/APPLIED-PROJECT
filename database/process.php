@@ -474,6 +474,17 @@ function displayComments($pageid) {
 	}
 }
 
+
+function getForumCount() {
+
+	$query = "SELECT * FROM forum";
+	$result = $dbconn->query($query);
+	$count = $dbconn->getRows();
+
+	echo $count;
+
+}
+
 ?>
 
 

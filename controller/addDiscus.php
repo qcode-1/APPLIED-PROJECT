@@ -1,20 +1,23 @@
 <?php
 
 require_once('../database/dbConnection.php');
-require_once('../database/forumDatabase.php');
 
 session_start();
 
-if (isset($_POST['addDiscussion'])) {
+// if (isset($_POST['addDiscussion'])) {
 
 	$id = $_SESSION['id'];
 	$fTopic = $_POST['forumTopic'];
 	$fCat = $_POST['forum_cat'];
 	$fPost = $_POST['forum_post'];
 
+	echo "<script>console.log(jhgkhjg" . $fTopic . ")</script>";
+	echo $fCat;
+	echo $fPost;
+
 	$db = new datbconnection();
-	$query = "INSERT INTO forum (user_id, forum_topic, forum_cat, forum_text) VALUES ('$id', '$fTopic', '$fCat', '$fPost')";
-	$result = $db->query($query);
+	$q = "INSERT INTO forum (user_id, forum_topic, forum_cat, forum_text) VALUES ('$id', '$fTopic', '$fCat', '$fPost')";
+	$result = $db->query($q);
 
 	if ($result) {
 		echo "worked";
@@ -25,6 +28,6 @@ if (isset($_POST['addDiscussion'])) {
 		echo "Didnt work";
 	}
 
-}
+// }
 
 ?>

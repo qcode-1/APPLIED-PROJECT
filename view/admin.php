@@ -243,7 +243,7 @@
                                 <i class="fa fa-forumbee fa-5x"></i>
                             </div>
                             <div class="col-xs-9 text-right">
-                                <div class="huge"><?php getUserCount(); ?></div>
+                                <div class="huge"><?php getForumCount(); ?></div>
                                 <div>On-going forums</div>
                             </div>
                         </div>

@@ -27,8 +27,8 @@
 
 	if (isset($_POST['addDiscussion'])) {
 		echo "<script type='text/javascript'> alert(\"Didnt work.\"); </script>";
-	addForum($_SESSION['id']);
-}
+		addForum($_SESSION['id']);
+	}
 
 	?>
 
@@ -108,7 +108,7 @@
 	<div class="jumbotron">
 		<div class="container" style="text-align: center;">
 			<h3 class="">Welcome To ASCVigil&trade; Forums</h3>
-			<p class="">Share your ideas and thoughts with members of the Ashesi Community. Get insights on developments and also start discussions around your topics of interest. Please read the <a class="text-danger" href="faq.php">FAQ's</a> before posting.</p>
+			<p class="">Share your ideas and thoughts with members of the Ashesi Community. Get insights on developments and also start discussions around your topics of interest. Please read the <a class="text-info" href="faq.php">FAQ's</a> before posting.</p>
 		</div>
 	</div>
 
@@ -122,7 +122,7 @@
 				<div class="modal fade" id="discussionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
-							<form method="POST">
+							<form method="POST" action="../controller/addDiscus.php">
 								<div class="modal-header">
 									<h5 class="modal-title" id="exampleModalLabel">Start a Discussion</h5>
 									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -132,11 +132,11 @@
 								<div class="modal-body">
 									<div class="form-group">
 										<label for="recipient-name" class="col-form-label">Topic</label>
-										<input type="text" class="form-control" name="forumTopic" name="forumTopic">
+										<input type="text" class="form-control" name="forumTopic" id="forumtopic">
 									</div>
 									<div class="form-group">
 										<label>Category</label>
-										<select class="form-control" name="forum_cat" id="forum_cat" name="classes">
+										<select class="form-control" name="forum_cat" id="forumcat">
 											<?php
 											loadCategories();
 											?>
@@ -144,7 +144,7 @@
 									</div>
 									<div class="form-group">
 										<label for="message-text" class="col-form-label">Post</label>
-										<textarea class="form-control" name="forum_post" id="forum_post"></textarea>
+										<textarea class="form-control" name="forum_post" id="forumpost"></textarea>
 									</div>
 								</div>
 								<div class="modal-footer">
@@ -173,8 +173,9 @@
 			</div>
 
 			<div class="col-lg-9">
-				
-
+				<?php
+				displayForums();
+				?>
 			</div>
 
 		</div>
@@ -210,39 +211,37 @@
 
 	<script>
 
-		
+		$('#addDiscussion').click(function() {
 
-			$('#addDiscussion').click(function() {
+			var topic = $('#forumtopic').val();
+			var cat = $('#forumcat').val();
+			var post = $('#forumpost').val();
 
-				var topic = $('#forumTopic').val();
-				var cat = $('#forum_cat').val();
-				var post = $('#forum_post').val();
+			if (topic == '' && post == '') {
+				alert("Please Fill The Required Fields");
+				console.log("Please Fill The Required Fields");
+			}
 
-				if (topic == '' && post == '') {
-					alert("Please Fill The Required Fields");
-					console.log("Please Fill The Required Fields");
-				}
+			else {
 
-				else {
+				$.ajax({
+					url: "../controller/addDiscus.php",
+					method: "POST",
+					data: {topic:topic, cat:cat, post:post},
+					success: function(data) {
 
-					$.ajax({
-
-						url: "../controller/addDiscus.php",
-						method: "POST",
-						data: {topic:topic, cat:cat, post:post},
-						success: function(data) {
-
-							if (data == 'No') {
-								alert("Wrong Data");
-							}
-
-							else {
-								$("#modal-content").html("<p>Forum Submitted</p>");
-							}
+						if (data == 'No') {
+							alert("Wrong Data");
 						}
-					})
-				}
-			});
+
+						else {
+							$("#discussionModal").hide();
+							location.reload();
+						}
+					}
+				})
+			}
+		});
 
 
 	</script>

@@ -50,7 +50,7 @@ function displayForums() {
 
 				echo '<div class="card border-info mb-3" style="">
 				<div class="card-header"><a class="" href="forumPage?forumID=' . $row['forum_id'] . '">' . $row['forum_topic'] . '</a>
-				<span style="display: block;"><small>Started by YOU</small> <small class="float-right badge badge-'. $row['cat_badge'] .'"> ' . $row['cat_name'] .  ' </small></span></div>
+				<span style="display: block;"><small> ~ by YOU</small> <small class="float-right badge badge-'. $row['cat_badge'] .'"> ' . $row['cat_name'] .  ' </small></span></div>
 
 				<div class="card-body text-dark">
 				<p class="card-text">' . $row['forum_text'] . '</p>
@@ -63,7 +63,7 @@ function displayForums() {
 
 				echo '<div class="card border-info mb-3" style="">
 				<div class="card-header"><a href="forumPage?forumID=' . $row['forum_id'] . '">' . $row['forum_topic'] . '</a>
-				<span style="display: block;"><small>Started by ' . $row['username']  . '</small> <small class="float-right badge badge-'. $row['cat_badge'] .'"> ' . $row['cat_name'] .  ' </small></span></div>
+				<span style="display: block;"><small> ~ by ' . $row['username']  . '</small> <small class="float-right badge badge-'. $row['cat_badge'] .'"> ' . $row['cat_name'] .  ' </small></span></div>
 
 				<div class="card-body text-dark">
 				<p class="card-text">' . $row['forum_text'] . '</p>

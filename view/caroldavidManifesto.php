@@ -41,7 +41,9 @@
 
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+		
 
 		<a class="navbar-brand" href="home.php">
 			<img src="../images/logo.jpg">ASCVigil&trade;
@@ -49,7 +51,6 @@
 		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-
 
 		<div class="collapse navbar-collapse" id="navbarNavDropdown">
 			<ul class="navbar-nav">
@@ -60,11 +61,8 @@
 					<a class="nav-link" href="committee.php">Committees</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="noPolls.php">Polls</a>
+					<a class="nav-link" href="polls.php">Polls</a>
 				</li>
-				<!-- <li class="nav-item">
-					<a class="nav-link" href="manifesto.php">Track Manifesto</a>
-				</li> -->
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						ASC Aspirants Manifesto
@@ -74,8 +72,11 @@
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="elvisyasminManiesto.php">Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
+						<a class="dropdown-item" href="elvisyasminManiesto.php" >Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
 					</div>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="forums.php">Forums</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -83,7 +84,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 						<a class="dropdown-item" href="#">ASCVigil&trade;</a>
-						<a class="dropdown-item" href="#">FAQ's</a>
+						<a class="dropdown-item" href="faq.php">FAQ's</a>
 					</div>
 				</li>
 			</ul>
@@ -92,7 +93,14 @@
 		<span class="navbar-text">
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link" href="../index.php">Logout</a>
+					<a class="nav-link" href="../index.php?logout">Logout<i class="fa fa-sign-out fa-fw"></i></a>
+
+					<?php
+
+					if (isset($_GET['logout'])) {
+						session_destroy();
+					}
+					?>
 				</li>
 			</ul>
 		</span>
@@ -194,7 +202,7 @@
 					</div>
 
 					<div class="form-group">
-						<input type="hidden" class="form-control" name="datetime" id="userName" aria-describedby="user" value="<?php echo date("Y-m-d H:i:s"); ?>">
+						<input type="hidden" class="form-control" name="datetime" id="userName" aria-describedby="user" value="<?php echo date("Y-m-d"); ?>">
 					</div>
 
 					<div class="form-group">

@@ -8,13 +8,7 @@ use PHPMailer\PHPMailer\Exception;
 require_once('dbConnection.php');
 
 
-//Load composer's autoloader
-require_once ('../mailer/vendor/autoload.php');
-
 date_default_timezone_set('UTC');
-
-// displayForums();
-
 
 
 function displayCategories() {
@@ -49,8 +43,9 @@ function displayForums() {
 			if (getUsername($_SESSION['id']) == $row['username']) {
 
 				echo '<div class="card border-info mb-3" style="">
-				<div class="card-header"><a class="" href="forumPage?forumID=' . $row['forum_id'] . '">' . $row['forum_topic'] . '</a>
-				<span style="display: block;"><small> ~ by YOU</small> <small class="float-right badge badge-'. $row['cat_badge'] .'"> ' . $row['cat_name'] .  ' </small></span></div>
+				<div class="card-header"><a class="" href="forumPage.php?forumID=' . $row['forum_id'] . '">' . $row['forum_topic'] . '</a>
+				<span style="display: block;"><small> ~ by YOU</small> 
+				<small class="float-right badge badge-'.$row['cat_badge'].'"> ' . $row['cat_name'] . ' | ' . getPostCount($row['forum_id']) . ' posts</small></span></div>
 
 				<div class="card-body text-dark">
 				<p class="card-text">' . $row['forum_text'] . '</p>
@@ -62,8 +57,9 @@ function displayForums() {
 			else {
 
 				echo '<div class="card border-info mb-3" style="">
-				<div class="card-header"><a href="forumPage?forumID=' . $row['forum_id'] . '">' . $row['forum_topic'] . '</a>
-				<span style="display: block;"><small> ~ by ' . $row['username']  . '</small> <small class="float-right badge badge-'. $row['cat_badge'] .'"> ' . $row['cat_name'] .  ' </small></span></div>
+				<div class="card-header"><a href="forumPage.php?forumID=' . $row['forum_id'] . '">' . $row['forum_topic'] . '</a>
+				<span style="display: block;"><small> ~ by ' . $row['username']  . '</small> 
+				<small class="float-right badge badge-'. $row['cat_badge'] .'"> ' . $row['cat_name'] . ' | ' . getPostCount($row['forum_id']) . ' posts</small></span></div>
 
 				<div class="card-body text-dark">
 				<p class="card-text">' . $row['forum_text'] . '</p>
@@ -86,21 +82,6 @@ function getUsername($id) {
 			return $row['username'];
 		}
 	}
-}
-
-
-function insertPost() {
-
-	$pid = $_POST[''];
-	$fid = $_POST[''];
-	$postby = $_POST[''];
-	$postText = $_POST[''];
-	$postDate = $_POST[''];
-
-	$db = new datbconnection();
-	$query = "";
-	$result = $db->query($query);
-
 }
 
 
@@ -158,17 +139,12 @@ function addCategory() {
 
 }
 
-function editTopic() {
-
-}
-
 
 function addForum($id) {
 
 	$fTopic = $_POST['forumTopic'];
 	$fCat = $_POST['forum_cat'];
 	$fPost = $_POST['forum_post'];
-
 	$db = new datbconnection();
 	$query = "INSERT INTO forum (user_id, forum_topic, forum_cat, forum_text) VALUES ('$id', '$fTopic', '$fCat', '$fPost')";
 	$result = $db->query($query);
@@ -176,12 +152,125 @@ function addForum($id) {
 	if ($result) {
 		echo "worked";
 	}
-
 	else {
-
 		echo "<script type='text/javascript'> alert(\"Didnt work.\"); </script>";
 	}
+}
 
+function displayHeader($fid) {
+
+	$dbconn = new datbconnection();
+	$query = "SELECT category.cat_name, category.cat_badge, forum.forum_topic, forum.forum_text FROM forum, category where forum.forum_id = '$fid' AND forum.forum_cat = category.cat_id";
+	$result = $dbconn->query($query);
+
+	if ($result) {
+
+		while ($row = $dbconn->fetchArray()) {
+			echo '<div class="jumbotron bg-' . $row['cat_badge'] . '">
+			<div class="container text-dark" style="text-align: center;">
+			<p class="">' . $row['forum_topic'] . '</p>
+			<span style="display: block;">' . $row['forum_text'] .'</span>
+			<span class="badge badge-light">' . $row['cat_name'] . '</span>
+			</div>
+			</div>';
+		}
+	}
+}
+
+
+function insertPost($fid) {
+
+	$postby = $_POST['userId'];
+	$postText = $_POST['myText'];
+	$postDate = $_POST['post_date'];
+
+	$datb = new datbconnection();
+	$query = "INSERT INTO posts (forum_id, post_by, post_text, post_date) VALUES ('$fid', '$postby', '$postText', '$postDate')";
+	$result = $datb->query($query);
+
+	if ($result) {
+		echo "WORKED";
+	}
+	else {
+		echo "DIDNT WORK";
+	}
+
+}
+
+
+function getDatediff($d) {
+
+	$date2 = date("Y-m-d");
+
+	$diff = abs(strtotime($date2) - strtotime($d));
+
+	$years = floor($diff / (365*60*60*24));
+	$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+	$day = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+
+	return $day;
+
+}
+
+
+function displayPosts($forumid) {
+
+	$dbconn = new datbconnection();
+	$query = "SELECT * FROM posts where forum_id = '$forumid'";
+	$result = $dbconn->query($query);
+	$count = $dbconn->getRows();
+
+	if ($result) {
+
+		if ($count > 0) {
+
+			while ($row = $dbconn->fetchArray()) {
+
+				if (getDatediff($row['post_date']) == 0) {
+
+					echo '<span class="font-weight-bold font-italic">' . getUsername($row['post_by']) . '</span> <small class="float-right text-secondary">today</small>
+					<span style="display: block;">' . $row['post_text'] . '</span>
+					<hr>
+					<br>';
+				}
+
+				else if (getDatediff($row['post_date']) == 1) {
+
+				echo '<span class="font-weight-bold font-italic">' . getUsername($row['post_by']) . '</span> <small class="float-right text-secondary">' . getDatediff($row['post_date']) . ' day ago</small>
+					<span style="display: block;">' . $row['post_text'] . '</span>
+					<hr>
+					<br>';
+				}
+
+				else {
+
+					echo '<span class="font-weight-bold font-italic">' . getUsername($row['post_by']) . '</span> <small class="float-right text-secondary">' . getDatediff($row['post_date']) . ' days ago</small>
+					<span style="display: block;">' . $row['post_text'] . '</span>
+					<hr>
+					<br>';
+
+				}
+			}
+		}
+
+		else {
+			echo '<p style="text-align: center;">NO POSTS YET</p> 
+			<hr>
+			<br>';
+		}
+	}
+}
+
+
+function getPostCount($fid) {
+
+
+	$dbconn = new datbconnection();
+	$query = "SELECT * FROM posts where forum_id = '$fid'";
+	$result = $dbconn->query($query);
+	$count = $dbconn->getRows();
+
+	return $count;
 }
 
 

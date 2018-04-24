@@ -74,7 +74,7 @@
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="manifesto.php">Forums</a>
+					<a class="nav-link" href="forums.php">Forums</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -87,7 +87,6 @@
 				</li>
 			</ul>
 		</div>
-
 
 		<span class="navbar-text">
 			<ul class="navbar-nav">
@@ -104,7 +103,6 @@
 			</ul>
 		</span>
 	</nav>
-
 
 
 	<div class="container">
@@ -226,7 +224,7 @@
 					</div>
 
 					<div class="form-group">
-						<input type="hidden" class="form-control" name="datetime" id="userName" aria-describedby="user" value="<?php echo date("Y-m-d H:i:s"); ?>">
+						<input type="hidden" class="form-control" name="datetime" id="userName" aria-describedby="user" value="<?php echo date("Y-m-d"); ?>">
 					</div>
 
 					<div class="form-group">

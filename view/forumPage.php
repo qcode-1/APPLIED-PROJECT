@@ -12,24 +12,19 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link rel="stylesheet" type="text/css" href="../css/forums.css">
-
 	
 
-	<title>Forums - ASCVigil&trade;</title>
+	<title>Open Forums - ASCVigil&trade;</title>
 </head>
 <body>
 
 	<?php
 	session_start();
-	// echo $_SESSION['user'];
+
+	date_default_timezone_set('Europe/London');
+
 	require_once("../database/process.php");
 	require_once("../database/forumDatabase.php");
-
-	if (isset($_POST['addDiscussion'])) {
-		echo "<script type='text/javascript'> alert(\"Added Forum.\"); </script>";
-		addForum($_SESSION['id']);
-	}
-
 	?>
 
 
@@ -70,7 +65,7 @@
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="manifesto.php">Forums</a>
+					<a class="nav-link" href="forums.php">Forums</a>
 				</li>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -101,104 +96,69 @@
 	</nav>
 
 
+	<div>
+		<?php
+		displayHeader($_GET['forumID']);
+		?>
+	</div>
 
 	
 
-
-	<div class="jumbotron">
-		<div class="container" style="text-align: center;">
-			<h3 class="">Welcome To ASCVigil&trade; Forums</h3>
-			<p class="">Share your ideas and thoughts with members of the Ashesi Community. Get insights on developments and also start discussions around your topics of interest. Please read the <a class="text-info" href="faq.php">FAQ's</a> before posting.</p>
-		</div>
-	</div>
-
 	<div class="container">
+		<br>
 		<br>
 		<div class="row">
 
-			<div class="col-lg-3">
-				
-				<button type="button" class="btn btn-info" data-toggle="modal" data-target="#discussionModal" data-whatever="">Start Discussion</button>
+			<div class="col-lg-12">
 
-				<div class="modal fade" id="discussionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Start a Discussion</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<form method="POST">
-								<div class="modal-body">
-									<div class="form-group">
-										<label class="col-form-label">Topic</label>
-										<input type="text" class="form-control" name="forumTopic" id="forumTopic">
-										 
-									</div>
-									<div class="form-group">
-										<label>Category</label>
-										<select class="form-control" name="forum_cat" id="forum_cat">
-											<?php
-											loadCategories();
-											?>
-										</select>
-									</div>
-									<div class="form-group">
-										<label for="message-text" class="col-form-label">Post</label>
-										<textarea class="form-control" name="forum_post" id="forum_post"></textarea>
-										
-									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									<input type="submit" name="addDiscussion" value="Post Discussion" id="addDiscussion" class="btn btn-info"/>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-
-				<br>
-				<br>
-
-				<?php 
-					
-					 function beans(){
-
-					 	$x = $_REQUEST['forumTopic'];
-					    $y = $_REQUEST['forum_cat'];
-
-					 	echo $x;
-					 	echo $y;
-
-					 }
-
-					 if(isset($_POST['addDiscussion'])){
-					 	beans();
-					 }
-				?>
-
-				<div>
-					<p>CATEGORIES</p>
-					<hr>
-					<ul style="list-style: none;">
-						<?php
-						//displays catgeories
-						displayCategories();
-						?>
-					</ul>
-				</div>
-
-			</div>
-
-			<div class="col-lg-9">
 				<?php
-				displayForums();
+
+				if (isset($_GET['forumID'])) {
+
+					if (isset($_POST['postBtn'])) {
+						insertPost($_GET['forumID']);
+					}
+
+					else {
+						displayPosts($_GET['forumID']);
+					}
+				}
+
+				
+
 				?>
+
 			</div>
+
+
+
+			<div class="col-lg-12">
+				<br>
+				<br>
+				<hr>
+
+				<form method="POST">
+					<div class="form-group">
+						<input type="hidden" class="form-control" name="userId" id="userId" value="<?php echo $_SESSION['id'];?>">
+					</div>
+
+					<div class="form-group">
+						<input type="hidden" class="form-control" name="post_date" id="post_date" value="<?php echo date("Y-m-d"); ?>">
+					</div>
+
+					<div class="form-group">
+						
+						<textarea style="border: dashed;" class="form-control" name="myText" id="myText" rows="5"></textarea>
+					</div>
+					<button type="submit" name="postBtn" disabled="true" class="btn btn-info mb-2" id="postBtn" >Add Post</button>
+				</form>
+				<br>
+			</div>
+
+
 
 		</div>
+
 	</div>
 
 	<div class="jumbotron">
@@ -229,41 +189,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
-	<script>
+	<script type="text/javascript">
+		document.getElementById("myText").addEventListener("keyup", ()=>{
+			document.getElementById("postBtn").disabled = false;
 
-		$('#addDiscussion').click(function() {
-
-			var topic = $('#forumTopic').val();
-			var cat = $('#forum_cat').val();
-			var post = $('#forum_post').val();
-
-			if (topic == '' && post == '') {
-				alert("Please Fill The Required Fields");
-				console.log("Please Fill The Required Fields");
-			}
-
-			else {
-
-				$.ajax({
-					url: "../controller/addDiscus.php",
-					method: "POST",
-					data: {topic:topic, cat:cat, post:post},
-					success: function(data) {
-
-						if (data == 'No') {
-							alert("Wrong Data");
-						}
-
-						else {
-							$("#discussionModal").hide();
-							location.reload();
-						}
-					}
-				})
-			}
-		});
-
-
+		})
 	</script>
 
 

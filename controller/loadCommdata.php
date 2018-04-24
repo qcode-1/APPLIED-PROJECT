@@ -42,16 +42,16 @@ if (isset($_POST['cmt_id'])) {
 
 		echo $output;
 
-
 	}
 
 	else {
 		echo "Query Failed";
 	}
 }
+
 else{
 	echo "Not Set";
 }
 
-
 ?>
+

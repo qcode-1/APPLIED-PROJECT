@@ -8,8 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Admin Notes - ASCVigil&trade;</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -34,6 +35,18 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+    <?php
+
+    require_once("../database/process.php");
+
+
+    if (isset($_POST['addNote'])) {
+        addNotes();
+    }
+
+    ?>
+
 </head>
 
 <body>
@@ -55,14 +68,13 @@
 
             <ul class="nav navbar-top-links navbar-right">
                
-                <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
                         <li>
-                            <a href="#">
+                            <a href="adminNote.php">
                                 <div>
                                     <i class="fa fa-comment fa-fw"></i> Add a New Note
                                 </div>
@@ -150,75 +162,51 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Outreach Activity Assessment</h1>
+                    <h1 class="page-header">ADD A NEW NOTE</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            How effective ASC has been in terms of outreach?
+                            Add A Note/Reminder
                         </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-8">
 
-                        <div style="max-height: 800px; max-width: 800px;">
-                            <canvas id="histChart" width="500" height="500"></canvas>
+                                    <form method="POST">
+                                        
+                                        <div class="form-group">
+                                            <label class="col-form-label">Note Title</label>
+                                            
+                                                <input type="text" class="form-control"  name="noteTitle" id="noteTitle">
+                                            
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label class="col-form-label">Note Text</label>
+                                            
+                                                <textarea class="form-control" name="note_text" id="note_text" rows="3"></textarea>
+                                            
+                                        </div>
+                                        <button type="submit" name="addNote" class="btn btn-default">Add Note</button>
+                                    </form>
+                                    
+                                </div>
+                                <!-- /.col-lg-6 (nested) -->
+                                
+                                <!-- /.col-lg-6 (nested) -->
+                            </div>
+                            <!-- /.row (nested) -->
                         </div>
-                        
+                        <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-12 -->
-                <div class="center col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Number of students who have taken part in outreach activity
-                        </div>
-                        
-
-                        <div style="max-height: 800px; max-width: 800px;">
-                            <canvas id="pieChart" width="500" height="500"></canvas>
-                        </div>
-
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-6 -->
-
-                <div class="center col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Frequency of participation in outreach activity
-                        </div>
-                        
-
-                        <div style="max-height: 800px; max-width: 800px;">
-                            <canvas id="freqChart" width="500" height="500"></canvas>
-                            <p style="text-align: center;"></p>
-                        </div>
-
-                    </div>
-                    <!-- /.panel -->
-                </div>
-
-                <div class="center col-lg-6">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Distribution of Classes
-                        </div>
-                        
-
-                        <div style="max-height: 800px; max-width: 800px;">
-                            <canvas id="classChart" width="500" height="500"></canvas>
-                        </div>
-
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                
-
-
             </div>
             <!-- /.row -->
         </div>
@@ -244,21 +232,11 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Flot Charts JavaScript -->
-    <script src="../vendor/flot/excanvas.min.js"></script>
-    <script src="../vendor/flot/jquery.flot.js"></script>
-    <script src="../vendor/flot/jquery.flot.pie.js"></script>
-    <script src="../vendor/flot/jquery.flot.resize.js"></script>
-    <script src="../vendor/flot/jquery.flot.time.js"></script>
-    <script src="../vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
-    <script src="../data/flot-data.js"></script>
+    <!-- Morris Charts JavaScript -->
+    <script src="../vendor/raphael/raphael.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
-    <script type="text/javaScript" src="../js/inclusionpoll.js"></script>
 
 </body>
 

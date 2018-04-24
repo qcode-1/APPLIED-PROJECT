@@ -7,6 +7,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require_once('dbConnection.php');
+require_once('forumDatabase.php');
 
 
 //Load composer's autoloader
@@ -411,6 +412,10 @@ function updateCommData() {
 	if ($success) {
 		echo "<script type='text/javascript'>alert('Committee Details Edited.');</script>";
 	}
+
+	else {
+		echo "<script type='text/javascript'>alert('Failed. Try Again.');</script>";
+	}
 }
 
 
@@ -454,24 +459,88 @@ function randomNumber() {
 function displayComments($pageid) {
 
 	$dbconn = new datbconnection();
-	$query = "SELECT username, comment_datetime, comments FROM usercomment where comment_signature = '$pageid'";
+	$query = "SELECT comment_id, username, comment_datetime, comments FROM usercomment where comment_signature = '$pageid' ORDER BY comment_datetime DESC, comment_id DESC";
 	$addC = $dbconn->query($query);
 	$count = $dbconn->getRows();
 
 	if ($addC) {
+
 		echo "<span><h4>Comments Section</h4><small class=\"font-weight-bold\">". $count ." Comments</small></span>";
+
 		while ($rows = $dbconn->fetchArray()) {
-			if ($rows) {
+
+			if (getDatediff($rows['comment_datetime']) == 0) {
 
 				echo '<div class="card border-dark mb-3" style="">
-				<div class="card-header"><p><span class="float-left"> ' .$rows['username']. ' </span> <span class="font-weight-light float-right">' .$rows['comment_datetime']. '</span></p></div>
+				<div class="card-header"><p><span class="float-left"> ' .$rows['username']. ' </span> <small class="font-weight-light float-right">today</small></p></div>
+				<div class="card-body text-dark">
+				<p class="card-text">'.$rows['comments'].'</p>
+				</div>
+				</div>';
+
+			}
+
+			else if (getDatediff($rows['comment_datetime']) == 1) {
+
+				echo '<div class="card border-dark mb-3" style="">
+				<div class="card-header"><p><span class="float-left"> ' .$rows['username']. ' </span> <small class="font-weight-light float-right">' .getDatediff($rows['comment_datetime']). ' day ago</small></p></div>
+				<div class="card-body text-dark">
+				<p class="card-text">'.$rows['comments'].'</p>
+				</div>
+				</div>';
+
+			}
+
+			else {
+
+				echo '<div class="card border-dark mb-3" style="">
+				<div class="card-header"><p><span class="float-left"> ' .$rows['username']. ' </span> <small class="font-weight-light float-right">' .getDatediff($rows['comment_datetime']). ' days ago</small></p></div>
 				<div class="card-body text-dark">
 				<p class="card-text">'.$rows['comments'].'</p>
 				</div>
 				</div>';
 			}
+
 		}
 	}
+}
+
+
+function addNotes() {
+
+	$title = $_POST['noteTitle'];
+	$text = $_POST['note_text'];
+
+	$dbconn = new datbconnection();
+	$query = "INSERT INTO notes (note_title, note_text) VALUES ('$title', '$text')";
+	$result = $dbconn->query($query);
+
+	if ($result) {
+		echo "<script type='text/javascript'>alert('Note Added.');</script>";
+	}
+
+	else {
+		echo "<script type='text/javascript'>alert('Failed. Try Again.');</script>";
+	}
+
+}
+
+
+function displayNotes() {
+
+	$dbconn = new datbconnection();
+	$query = "SELECT * FROM notes";
+	$result = $dbconn->query($query);
+	$count = $dbconn->getRows();
+
+	if ($result) {
+
+	}
+
+	else {
+		echo "Failed to load Notes. Reload Page";
+	}
+
 }
 
 ?>

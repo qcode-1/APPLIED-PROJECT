@@ -10,7 +10,8 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 
-    <title>Edit Committee Details - ASCVigil&trade;</title>
+
+    <title>Admin  - ASCVigil&trade;</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -18,11 +19,14 @@
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -36,25 +40,19 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+</head>
+
+<body>
 
     <?php
 
     require_once("../database/process.php");
 
-
-    if (isset($_POST['editCommittee'])) {
-        updateCommData();
-    }
-
     ?>
-
-</head>
-
-<body>
 
     <div id="wrapper">
 
-         <!-- Navigation -->
+        <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -68,7 +66,8 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-               
+
+                <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -84,7 +83,6 @@
                     </ul>
                     <!-- /.dropdown-alerts -->
                 </li>
-                
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -98,15 +96,15 @@
                         <li class="divider"></li>
                         <li><a href="../index.php?logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 
-                        <?php
+                            <?php
 
-                        if (isset($_GET['logout'])) {
-                            session_destroy();
-                        }
-                        
-                        ?>
+                            if (isset($_GET['logout'])) {
+                                session_destroy();
+                            }
 
-                    </li>
+                            ?>
+
+                        </li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
@@ -167,7 +165,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">EDIT COMMITTEE</h1>
+                    <h1 class="page-header">Review Comments</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -175,39 +173,38 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            Edit Details of Existing Committee
-                        </div>
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-8">
-
-                                    <div class="form-group">
-                                        <label >Select Committee</label>
-                                        <select class="form-control" name="comm" id="inputComms" >
-                                            <?php loadCommittees(); ?>
-                                        </select>
-                                    </div>
-
-                                    <!--  -->
-
-                                    <div id ="commdetails">
-
-                                        </div>
-                                    
-                                </div>
-                                <!-- /.col-lg-6 (nested) -->
-                                
-                                <!-- /.col-lg-6 (nested) -->
+                        <div class="table-responsive">
+                            <div class="panel-heading">
+                                Table Showing User Comments
                             </div>
-                            <!-- /.row (nested) -->
+                            <!-- /.panel-heading -->
+                            <div class="panel-body">
+                                <table width="100%" class="table table-striped table-bordered table-hover" id="editable_table">
+                                    <thead>
+                                        <tr>
+                                            <th>Comment ID</th>
+                                            <th>Page Signature</th>
+                                            <th>Username</th>
+                                            <th>Comment</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php   checkComment();    ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- /.panel-body -->
                         </div>
-                        <!-- /.panel-body -->
+                        <!-- /.panel -->
                     </div>
-                    <!-- /.panel -->
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+            <!-- /.row -->
+            
+            
             <!-- /.row -->
         </div>
         <!-- /#page-wrapper -->
@@ -224,7 +221,7 @@
     </div>
 
     <!-- jQuery -->
-    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -232,40 +229,28 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="../vendor/raphael/raphael.min.js"></script>
-    <script src="../vendor/morrisjs/morris.min.js"></script>
-    <script src="../data/morris-data.js"></script>
-
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
-    <script type="text/javascript">
+    <script type="text/javascript" src="../jquery-tabledit/jquery.tabledit.js"></script>
 
-        $(document).ready(function(){
-
-            $('#inputComms').on('change', function() {
-
-                var cmt_id = $(this).val();
-
-                if (cmt_id) {
-
-                    $.ajax({
-                        url: "../controller/loadCommdata.php",
-                        method: "POST",
-                        data: {cmt_id: cmt_id},
-                        success: function(data) {
-                            $('#commdetails').html(data);
-                        },
-                        failure: function(err){
-                            alert(err);
-                        }
-                    });
-                }
-            });
-        });
-
-    </script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+     $('#editable_table').Tabledit({
+        url: '../controller/approveComment.php',
+        columns: {
+            identifier: [0, 'comment_id'],
+            editable: [[1, 'comment_signature'], [2, 'username'], [3, 'comments'], [4, 'status']]
+        }, 
+        restoreButton: false,
+        onsuccess: function (data, textStatus, jqXHR) {
+            
+            if (data.action == 'delete') {
+                $('#'+data.id).remove();
+            }
+        }
+    });
+</script>
 
 </body>
 

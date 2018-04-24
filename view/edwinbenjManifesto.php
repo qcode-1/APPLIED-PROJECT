@@ -13,9 +13,6 @@
 
 	<link rel="stylesheet" type="text/css" href="../css/comm.css">
 
-	<!-- <link rel="stylesheet" type="text/css" href="../css/manifesto.css"> -->
-
-	
 
 	<title>Manifesto (Edwin and Benjamin) - ASCVigil&trade;</title>
 
@@ -225,10 +222,10 @@
 					<br>
 
 					<p class="text-justify">
-						Finally, we believe in engaging in healthy discourse since we all aim for a better Ashesi. We encourage the entire student body to be free to voice out your opinions to us, and to any of the other ASC executives or committee members. In light of that, there will be an open half semester review of the committees to the entire student body and budget reallocation where necessary. There would also be Ashesi “Decaf & Sandwich” sessions where students praise, complain and brainstorm ways to fix issues raised.</p>
+					Finally, we believe in engaging in healthy discourse since we all aim for a better Ashesi. We encourage the entire student body to be free to voice out your opinions to us, and to any of the other ASC executives or committee members. In light of that, there will be an open half semester review of the committees to the entire student body and budget reallocation where necessary. There would also be Ashesi “Decaf & Sandwich” sessions where students praise, complain and brainstorm ways to fix issues raised.</p>
 
-						<p class="text-justify"><strong>
-						It is time to realize it is all about YOU! if this is what you want, if this is what you believe in, you must Vote Edwin Adatsi and Benjamin Annan for the Ashesi community we ALL envision.</strong></p>
+					<p class="text-justify"><strong>
+					It is time to realize it is all about YOU! if this is what you want, if this is what you believe in, you must Vote Edwin Adatsi and Benjamin Annan for the Ashesi community we ALL envision.</strong></p>
 
 				</p>
 			</div>
@@ -288,6 +285,8 @@
 
 	</div>
 
+	
+
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container" style="text-align: center;">
 			<h4>Want to receive regular updates?</h4>
@@ -299,6 +298,7 @@
 			</div></p>
 		</div>
 	</div>
+
 
 	<div class="footer bg-dark text-white">
 		<p class="">&copy; AshVigil. All rights reserved.</p>
@@ -325,8 +325,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
+<script type="text/javascript">
+	
+	$( document ).ready(function() {
+		$("#alertSuccess").delay(3000).fadeOut("slow");
+	});
 
-
+</script>
 
 
 </body>

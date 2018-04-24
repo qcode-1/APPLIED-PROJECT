@@ -55,62 +55,23 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-               
-                <!-- /.dropdown -->
+
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
                         <li>
-                            <a href="#">
+                            <a href="adminNote.php">
                                 <div>
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                    <i class="fa fa-comment fa-fw"></i> Add a New Note
                                 </div>
                             </a>
                         </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small">12 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                       
                     </ul>
                     <!-- /.dropdown-alerts -->
                 </li>
+                
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -124,15 +85,15 @@
                         <li class="divider"></li>
                         <li><a href="../index.php?logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 
-                        <?php
+                            <?php
 
-                        if (isset($_GET['logout'])) {
-                            session_destroy();
-                        }
-                        
-                        ?>
+                            if (isset($_GET['logout'])) {
+                                session_destroy();
+                            }
 
-                    </li>
+                            ?>
+
+                        </li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
@@ -143,7 +104,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        
+
                         <li>
                             <a href="admin.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
@@ -163,6 +124,9 @@
                             <a href="commFeedback.php"><i class="fa fa-table fa-fw"></i>Feedback</a>
                         </li>
                         <li>
+                            <a href="reviewComments.php"><i class="fa fa-comments fa-fw"></i>Comments</a>
+                        </li>
+                        <li>
                             <a href="mgPolls.php"><i class="fa fa-wrench fa-fw"></i> Manage Polls</a>
                         </li>
                         <li>
@@ -177,7 +141,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                       
+
                         
                         
                     </ul>

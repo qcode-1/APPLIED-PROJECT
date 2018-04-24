@@ -123,6 +123,9 @@
                             <a href="commFeedback.php"><i class="fa fa-table fa-fw"></i>Feedback</a>
                         </li>
                         <li>
+                        <a href="reviewComments.php"><i class="fa fa-comments fa-fw"></i>Comments</a>
+                    </li>
+                        <li>
                             <a href="mgPolls.php"><i class="fa fa-wrench fa-fw"></i> Manage Polls</a>
                         </li>
                         <li>

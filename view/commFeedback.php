@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Admin  - ASCVigil&trade;</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -68,60 +68,21 @@
             <ul class="nav navbar-top-links navbar-right">
                
                 <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small">12 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                       
-                    </ul>
-                    <!-- /.dropdown-alerts -->
-                </li>
+                 <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-alerts">
+                    <li>
+                        <a href="adminNote.php">
+                            <div>
+                                <i class="fa fa-comment fa-fw"></i> Add a New Note
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-alerts -->
+            </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -174,6 +135,9 @@
                             <a href="commFeedback.php"><i class="fa fa-table fa-fw"></i>Feedback</a>
                         </li>
                         <li>
+                        <a href="reviewComments.php"><i class="fa fa-comments fa-fw"></i>Comments</a>
+                    </li>
+                        <li>
                             <a href="mgPolls.php"><i class="fa fa-wrench fa-fw"></i> Manage Polls</a>
                         </li>
                         <li>
@@ -201,7 +165,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Feedback Tables</h1>
+                    <h1 class="page-header">Feedback Table</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>

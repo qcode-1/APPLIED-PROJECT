@@ -64,32 +64,31 @@ function registerStudent() {
 		$reg = $database->query($query);
 
 		if ($reg) {
+			echo "<div class=\"alertSuccess alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Registration Successful.</div>";
 			header ("Location: view/login2.php"); //if successful , return index page
-			$msg = "Registration successful. \\nTry again.";
-			echo "<script type='text/javascript'>alert('$msg');</script>"; 
 		}
 		else {
-			$msg = "Registration could not be completed. \\nTry again.";
-				echo "<script type='text/javascript'>alert('$msg');</script>"; //return an alert message if unsuccessful
-			}
+			echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Registration Failed. Please try again later.</div>";
+			header("Refresh:1");
 		}
 	}
+}
 
 	// $passhash = password_hash("restrictedaccess", PASSWORD_BCRYPT);
 	// echo $passhash;
 
 
 
-	function checkValidEmail($email) {
+function checkValidEmail($email) {
 
-		include('../mailer/vendor/autoload.php');
-		$email = $_POST['eml'];
+	include('../mailer/vendor/autoload.php');
+	$email = $_POST['eml'];
 
-		$datbconn = new datbconnection();
-		$que = "SELECT email FROM student where email = '$email'";
-		$result = $datbconn->query($que);
+	$datbconn = new datbconnection();
+	$que = "SELECT email FROM student where email = '$email'";
+	$result = $datbconn->query($que);
 
-		if ($result && $datbconn->getNumRows() > 0) {
+	if ($result && $datbconn->getNumRows() > 0) {
 
 	    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 	    try {
@@ -128,15 +127,16 @@ function registerStudent() {
 
 	catch (Exception $e) {
     //echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-		echo "<script type='text/javascript'>alert('UNSUCCESSFUL');</script>";
+		echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Please try again.</div>";
+		header("Refresh:1");
 
 	}
 
 }
 
 else {
-	$message = "This email does not exist.\\nEnter a valid email address.";
-	echo "<script type='text/javascript'>alert('$message');</script>";
+	echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">This email does not exist.\\nEnter a valid email address</div>";
+	header("Refresh:1");
 }
 }
 
@@ -166,14 +166,13 @@ function changePassword($email, $pass) {
 		$result = $datbconn->query($que);
 
 		if ($result) {
-			$message = "Password changed successfully.\\nTry again.";
-			echo "<script type='text/javascript'>alert('$message');</script>";
+			echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Password changed successfully.\\nTry again.</div>";
 			header("Location: login.php");
 		}
 
 		else {
-			$message = "An error occured.\\nTry again.";
-			echo "<script type='text/javascript'>alert('$message');</script>";
+			echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">An error occured.\\nTry again.</div>";
+			header("Refresh: 2");
 		}
 	}
 }
@@ -224,8 +223,8 @@ function loginStudent($email, $pwrd) {
 			}
 
 			else {
-				$message = "Username and/or Password incorrect.\\nTry again.";
-				echo "<script type='text/javascript'>alert('$message');</script>";
+				echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Username and/or Password incorrect.\\nTry again.</div>";
+				header("Refresh: 2");
 			}
 		}
 
@@ -239,15 +238,15 @@ function loginStudent($email, $pwrd) {
 				header ("Location: home.php");  				//starts a session and returns homepage
 			}
 			else {
-				$message = "Username and/or Password incorrect.\\nTry again.";
-				echo "<script type='text/javascript'>alert('$message');</script>";
+				echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Username and/or Password incorrect.\\nTry again.</div>";
+				header("Refresh: 2");
 			}
 		}
 	}
 
 	else {
-		$message = "Connection could not be established!\\nTry again.";
-		echo "<script type='text/javascript'>alert('$message');</script>";
+		echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Failed.\\nTry again.</div>";
+				header("Refresh: 2");
 	}
 
 }
@@ -283,7 +282,8 @@ function loadFeedbackPage() {
 		}
 	}
 	else {
-		echo "<script type='text/javascript'> alert(\"Please Reload Page.\"); </script>";
+		echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Failed to load page. Please try again later.</div>";
+		header("Refresh:2");
 	}
 }
 
@@ -314,7 +314,8 @@ function loadFeedbackForm($id) {
 		}
 	}
 	else {
-		echo "<script type='text/javascript'> alert(\"Please Reload Page.\"); </script>";
+		echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Failed to load forms. Please try again later.</div>";
+		header("Refresh:2");
 	}
 }
 
@@ -335,13 +336,17 @@ function addFeedback($comt_id) {
 	$result = $db->query($query);
 
 	if ($result) {
-		echo "<script type=\"text/javascript\">alert(\"Feedback Sent.\"); </script>";
-		header("Location: committee.php");
-		exit();
+		echo "<div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">
+		Your feedback has been collected. Thank You.
+		</div>
+		<p style=\"text-align: center;\">Return To <a class=\"text-secondary\" href=\"committee.php\">Committee Page.</a></p>";
 	}
 
 	else {
-		echo "<script type='text/javascript'> alert(\"Failed. Try Again\"); </script>";
+		echo "<div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">
+		Failed to send feedback. Please try again later.
+		</div>
+		<p style=\"text-align: center;\">Return To <a class=\"text-secondary\" href=\"committee.php\">Committee Page.</a></p>";
 	}
 }
 
@@ -390,10 +395,12 @@ function addCommittee() {
 	$result = $db->query($query);
 
 	if ($result) {
-		echo "<script type='text/javascript'>alert(\"New Committee Added. \"); </script>";
+		echo "<div class=\"alertSuccess alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">New Committee Added.</div>";
+		header("Refresh:2");
 	}
 	else {
-		echo "<script type='text/javascript'> alert(\"Failed. Try Again\"); </script>";
+		echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Failed. Please try again later.</div>";
+		header("Refresh:2");
 	}
 }
 
@@ -410,11 +417,13 @@ function updateCommData() {
 	$success = $dbconn->query($query);
 
 	if ($success) {
-		echo "<script type='text/javascript'>alert('Committee Details Edited.');</script>";
+		echo "<div class=\"alertSuccess alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Commmittee Details Updated.</div>";
+		header("Refresh:2");
 	}
 
 	else {
-		echo "<script type='text/javascript'>alert('Failed. Try Again.');</script>";
+		echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Failed. Please try again later.</div>";
+		header("Refresh:2");
 	}
 }
 
@@ -432,15 +441,19 @@ function insertComment($pageid) {
 	$comment = $_POST['commnt'];
 
 	$dbconn = new datbconnection();
-	$query = "INSERT INTO usercomment (comment_signature, username, comment_datetime, comments) VALUES ('$pageid', '$username', '$datetime', '$comment')";
+	$query = "INSERT INTO usercomment (comment_signature, username, comment_datetime, comments, status) VALUES ('$pageid', '$username', '$datetime', '$comment', 'false')";
 	$addC = $dbconn->query($query);
 
 	if ($addC) {
-		echo "<script type='text/javascript'> alert(\"COMMENT ADDED\"); </script>";
+		echo "<div class=\"alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">
+		Your comment has been added and is under review. Thank You.
+		</div>";
 	}
 
 	else {
-		echo "<script type='text/javascript'> alert(\"COULD NOT BE ADDED\"); </script>";
+		echo "<div class=\"alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0;\" id=\"alertSuccess\">
+		Unable to add your comment. Please try again later.
+		</div>";
 	}		
 
 }
@@ -459,7 +472,7 @@ function randomNumber() {
 function displayComments($pageid) {
 
 	$dbconn = new datbconnection();
-	$query = "SELECT comment_id, username, comment_datetime, comments FROM usercomment where comment_signature = '$pageid' ORDER BY comment_datetime DESC, comment_id DESC";
+	$query = "SELECT comment_id, username, comment_datetime, comments FROM usercomment where comment_signature = '$pageid' AND status = 'true' ORDER BY comment_datetime DESC, comment_id DESC";
 	$addC = $dbconn->query($query);
 	$count = $dbconn->getRows();
 
@@ -516,11 +529,13 @@ function addNotes() {
 	$result = $dbconn->query($query);
 
 	if ($result) {
-		echo "<script type='text/javascript'>alert('Note Added.');</script>";
+		echo "<div class=\"alertSuccess alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Note Added.</div>";
+		header("Refresh:2");
 	}
 
 	else {
-		echo "<script type='text/javascript'>alert('Failed. Try Again.');</script>";
+		echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Failed. Please try again later.</div>";
+		header("Refresh:2");
 	}
 
 }
@@ -531,14 +546,97 @@ function displayNotes() {
 	$dbconn = new datbconnection();
 	$query = "SELECT * FROM notes";
 	$result = $dbconn->query($query);
-	$count = $dbconn->getRows();
+	$count = 0;
 
 	if ($result) {
+
+		while ($row = $dbconn->fetchArray()) {
+
+			if ($count % 2 == 0) {
+
+				echo '<li>
+				<div class="timeline-badge info"><i class="fa fa-pencil"></i>
+				</div>
+				<div class="timeline-panel">
+				<div class="timeline-heading">
+				<h4 class="timeline-title">' . $row['note_title'] .'</h4>
+				</div>
+				<div class="timeline-body">
+				<p>' . $row['note_text'] .'</p>
+				<hr>
+				<div class="btn-group">
+				<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+				<i class="fa fa-gear"></i> <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+				<li><a href="../database/delNote.php?notID=' . $row['note_id'] . '">Delete</a>
+				</li>
+				</ul>
+				</div>
+				</div>
+				</div>
+				</li>';
+				$count++;
+
+			}
+
+			else {
+
+				echo '<li class="timeline-inverted">
+				<div class="timeline-badge warning"><i class="fa fa-pencil"></i>
+				</div>
+				<div class="timeline-panel">
+				<div class="timeline-heading">
+				<h4 class="timeline-title">' . $row['note_title'] .'</h4>
+				</div>
+				<div class="timeline-body">
+				<p>' . $row['note_text'] .'</p>
+				<hr>
+				<div class="btn-group">
+				<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+				<i class="fa fa-gear"></i> <span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+				<li><a href="../database/delNote.php?notID=' . $row['note_id'] . '">Delete</a>
+				</li>
+				</ul>
+				</div>
+				</div>
+				</div>
+				</li>';
+				$count++;
+			}
+		}
 
 	}
 
 	else {
-		echo "Failed to load Notes. Reload Page";
+		echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Failed to load notes. Please try again later.</div>";
+		header("Refresh:2");
+	}
+
+}
+
+
+function checkComment() {
+
+
+	$db = new datbconnection();
+	$query = "SELECT * FROM usercomment";
+	$res = $db->query($query);
+
+	if ($res) {
+
+		while ($row = $db->fetchArray()) {
+			echo '<tr class="gradeA">
+			<td>' . $row['comment_id'] .'</td>
+			<td >' . $row['comment_signature'] .'</td>
+			<td >' . $row['username'] .'</td>
+			<td>' . $row['comments'] .'</td>
+			<td>' . $row['status'] .'</td>
+			
+			</tr>';
+		}
 	}
 
 }

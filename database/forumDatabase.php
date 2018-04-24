@@ -31,7 +31,7 @@ function displayCategories() {
 function displayForums() {
 
 	$db = new datbconnection();
-	$qry = "SELECT forum.forum_id, student.username, category.cat_name, category.cat_badge, forum.forum_topic, forum.forum_text FROM forum, student, category WHERE forum.user_id=student.student_id AND category.cat_id=forum.forum_cat";
+	$qry = "SELECT forum.forum_id, student.username, category.cat_name, category.cat_badge, forum.forum_topic, forum.forum_text FROM forum, student, category WHERE forum.user_id=student.student_id AND category.cat_id=forum.forum_cat ORDER BY forum.forum_id DESC";
 
 	$result = $db->query($qry);
 
@@ -134,7 +134,7 @@ function addCategory() {
 	$result = $db->query($query);
 
 	if ($result) {
-		echo "<script type='text/javascript'> alert(\"Successfully Added.\"); </script>";
+		echo "<div class=\"alertSuccess alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">New category added.</div>";
 	}
 
 }
@@ -150,10 +150,10 @@ function addForum($id) {
 	$result = $db->query($query);
 
 	if ($result) {
-		echo "worked";
+		echo "<div class=\"alertSuccess alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">You have started a new forum. Happy posting.</div>";
 	}
 	else {
-		echo "<script type='text/javascript'> alert(\"Didnt work.\"); </script>";
+		echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Could not post forum. Please try again later.</div>";
 	}
 }
 
@@ -189,10 +189,11 @@ function insertPost($fid) {
 	$result = $datb->query($query);
 
 	if ($result) {
-		echo "WORKED";
+		echo "<div class=\"alertSuccess alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Post submitted.</div>";
+		header("Refresh:2");
 	}
 	else {
-		echo "DIDNT WORK";
+		echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Post failed. Please try again later</div>";
 	}
 
 }

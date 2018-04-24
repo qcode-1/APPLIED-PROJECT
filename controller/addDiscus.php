@@ -19,12 +19,12 @@ if (isset($_POST['forumTopic']) && isset($_POST['forum_post'])) {
 	$result = $db->query($q);
 
 	if ($result) {
-		echo "worked";
+		echo "<div class=\"alertSuccess alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">You have started a new forum. Happy posting.</div>";
 	}
 
 	else {
 
-		echo "Didnt work";
+		echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Could not post forum. Please try again later.</div>";
 	}
 
 }

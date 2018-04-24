@@ -26,7 +26,6 @@
 	require_once("../database/forumDatabase.php");
 
 	if (isset($_POST['addDiscussion'])) {
-		echo "<script type='text/javascript'> alert(\"Added Forum.\"); </script>";
 		addForum($_SESSION['id']);
 	}
 
@@ -129,12 +128,13 @@
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<form method="POST">
-								<div class="modal-body">
+							
+							<div class="modal-body">
+								<form method="POST">
 									<div class="form-group">
 										<label class="col-form-label">Topic</label>
 										<input type="text" class="form-control" name="forumTopic" id="forumTopic">
-										 
+
 									</div>
 									<div class="form-group">
 										<label>Category</label>
@@ -149,35 +149,18 @@
 										<textarea class="form-control" name="forum_post" id="forum_post"></textarea>
 										
 									</div>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-									<input type="submit" name="addDiscussion" value="Post Discussion" id="addDiscussion" class="btn btn-info"/>
-								</div>
-							</form>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+										<input type="submit" name="addDiscussion" value="Post Discussion" id="addDiscussion" class="btn btn-info"/>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
 
 				<br>
 				<br>
-
-				<?php 
-					
-					 function beans(){
-
-					 	$x = $_REQUEST['forumTopic'];
-					    $y = $_REQUEST['forum_cat'];
-
-					 	echo $x;
-					 	echo $y;
-
-					 }
-
-					 if(isset($_POST['addDiscussion'])){
-					 	beans();
-					 }
-				?>
 
 				<div>
 					<p>CATEGORIES</p>
@@ -222,7 +205,6 @@
 	</div>
 
 
-
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="../js/jquery-3.3.1.min.js"></script>
@@ -256,18 +238,22 @@
 
 						else {
 							$("#discussionModal").hide();
-							location.reload();
+							// location.reload();
 						}
 					}
 				})
 			}
 		});
 
-
 	</script>
 
-
-
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			$("#alertSuccess").delay(3000).fadeOut("slow");
+		});
+	</script>
 
 </body>
 </html>
+
+

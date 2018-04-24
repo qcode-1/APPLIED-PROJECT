@@ -58,8 +58,8 @@
 
     <div id="wrapper">
 
-       <!-- Navigation -->
-       <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+     <!-- Navigation -->
+     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -75,20 +75,20 @@
 
 
             <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="adminNote.php">
-                                <div>
-                                    <i class="fa fa-comment fa-fw"></i> Add a New Note
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-alerts -->
-                </li>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-alerts">
+                    <li>
+                        <a href="adminNote.php">
+                            <div>
+                                <i class="fa fa-comment fa-fw"></i> Add a New Note
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-alerts -->
+            </li>
 
             
             <li class="dropdown">
@@ -140,6 +140,9 @@
                     </li>
                     <li>
                         <a href="commFeedback.php"><i class="fa fa-table fa-fw"></i>Feedback</a>
+                    </li>
+                    <li>
+                        <a href="reviewComments.php"><i class="fa fa-comments fa-fw"></i>Comments</a>
                     </li>
                     <li>
                         <a href="mgPolls.php"><i class="fa fa-wrench fa-fw"></i> Manage Polls</a>
@@ -266,74 +269,26 @@
                     <div class="panel-heading">
                         <i class="fa fa-clock-o fa-fw"></i> Adminstrator Notes
                         <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Actions
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="adminNote.php">Add Note</a>
-                                        </li>
-                                        
-                                    </ul>
-                                </div>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    Actions
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li><a href="adminNote.php">Add Note</a>
+                                    </li>
+
+                                </ul>
                             </div>
+                        </div>
                     </div>
                     <!-- /.panel-heading -->
                     <div class="panel-body">
                         <ul class="timeline">
 
-                            <li class="timeline-inverted">
-                                <div class="timeline-badge warning"><i class="fa fa-pencil"></i>
-                                </div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolorem quibusdam, tenetur commodi provident cumque magni voluptatem libero, quis rerum. Fugiat esse debitis optio, tempore. Animi officiis alias, officia repellendus.</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium maiores odit qui est tempora eos, nostrum provident explicabo dignissimos debitis vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere.</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="timeline-badge info"><i class="fa fa-pencil"></i>
-                                </div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus numquam facilis enim eaque, tenetur nam id qui vel velit similique nihil iure molestias aliquam, voluptatem totam quaerat, magni commodi quisquam.</p>
-                                    </div>
-                                </div>
-                            </li>
-
-                           
-                           
-                            <li>
-                                <div class="timeline-badge info"><i class="fa fa-save"></i>
-                                </div>
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                    </div>
-                                    <div class="timeline-body">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis minus modi quam ipsum alias at est molestiae excepturi delectus nesciunt, quibusdam debitis amet, beatae consequuntur impedit nulla qui! Laborum, atque.</p>
-                                        <hr>
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
-                                                <i class="fa fa-gear"></i> <span class="caret"></span>
-                                            </button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#">Action</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            <?
+                            displayNotes();
+                            ?>
 
                         </ul>
                     </div>

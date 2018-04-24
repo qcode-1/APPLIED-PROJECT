@@ -418,12 +418,12 @@ function updateCommData() {
 
 	if ($success) {
 		echo "<div class=\"alertSuccess alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Commmittee Details Updated.</div>";
-		header("Refresh:2");
+		header("Refresh:1");
 	}
 
 	else {
 		echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Failed. Please try again later.</div>";
-		header("Refresh:2");
+		header("Refresh:1");
 	}
 }
 

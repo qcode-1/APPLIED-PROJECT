@@ -123,26 +123,13 @@
 		</div>
 	</div>
 
-	<div class="jumbotron jumbotron-fluid">
-		<div class="container" style="text-align: center;">
-			<h4>Want to receive regular updates?</h4>
-			<p><div class="input-group mb-3">
-				<input type="text" class="form-control" placeholder="Enter your email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-				<div class="input-group-append">
-					<span class="input-group-text bg-warning" id="basic-addon2">Subscribe</span>
-				</div>
-			</div></p>
-		</div>
-	</div>
-
 	<div class="footer bg-dark text-white">
 		<p class="">&copy; AshVigil. All rights reserved.</p>
 		<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
 		<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
-		<p>Email: <b><i>info@quickbuy.com</i></b></p>
+		<p>Email: <b><i>admin@ascvigil.com</i></b></p>
 		<p><b>2018</b></p>
 	</div>
-
 
 
 	<!-- Optional JavaScript -->

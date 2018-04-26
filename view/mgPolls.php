@@ -153,9 +153,9 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-
-                        
-                        
+                        <li>
+                        <a href="newsletter.php"><i class="fa fa-envelope fa-fw"></i>Newsletter</a>
+                    </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -222,12 +222,12 @@
 <!-- /#wrapper -->
 
 <div class="footer bg-dark text-white">
-    <p class="">&copy; AshVigil. All rights reserved.</p>
-    <p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
-    <p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
-    <p>Email: <b><i>ascvigil@ashesi.edu.gh</i></b></p>
-    <p><b>2018</b></p>
-</div>
+        <p class="">&copy; AshVigil. All rights reserved.</p>
+        <p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
+        <p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
+        <p>Email: <b><i>admin@ascvigil.com</i></b></p>
+        <p><b>2018</b></p>
+    </div>
 
 <!-- jQuery -->
 <script src="../vendor/jquery/jquery.min.js"></script>

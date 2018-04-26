@@ -21,12 +21,11 @@
 <body>
 
 	<?php
-
 	require_once("../database/process.php");
-
-
-	// session_start();
-	// echo $_SESSION['user'];
+	
+	if (isset($_POST['subscribe'])) {
+		optIN($_SESSION['id']);
+	}
 
 	?>
 
@@ -149,12 +148,12 @@
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container" style="text-align: center;">
 			<h4>Want to receive regular updates?</h4>
-			<p><div class="input-group mb-3">
-				<input type="text" class="form-control" placeholder="Enter your email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-				<div class="input-group-append">
-					<span class="input-group-text bg-warning" id="basic-addon2">Subscribe</span>
-				</div>
-			</div></p>
+			<form method="POST">
+				<p><div class="input-group mb-3">
+					<input type="email" class="form-control" placeholder="Enter your email" aria-label="User email" name="subEmail">
+					<button class="btn btn-warning" type="submit" name="subscribe">Subscribe</button>
+				</div></p>
+			</form>
 		</div>
 	</div>
 
@@ -162,7 +161,7 @@
 		<p class="">&copy; AshVigil. All rights reserved.</p>
 		<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
 		<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
-		<p>Email: <b><i>ascvigil@ashesi.edu.gh</i></b></p>
+		<p>Email: <b><i>admin@ascvigil.com</i></b></p>
 		<p><b>2018</b></p>
 	</div>
 
@@ -175,8 +174,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
-
-
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			$("#alertSuccess").delay(3000).fadeOut("slow");
+		});
+	</script>
 
 </body>
 </html>

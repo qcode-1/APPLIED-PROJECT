@@ -19,16 +19,16 @@
 
 	<title>FAQ's - ASCVigil&trade;</title>
 
-	</head>
-	<body>
+</head>
+<body>
 
-		<?php
+	<?php
 
-		require_once("../database/process.php");
+	require_once("../database/process.php");
 
-		date_default_timezone_set('Europe/London');
+	date_default_timezone_set('Europe/London');
 
-		if (isset($_POST['addComment'])) {
+	if (isset($_POST['addComment'])) {
 		insertComment();
 	}
 
@@ -107,30 +107,13 @@
 		<div class="row">
 			<br>
 			<div class="col-12">
-				<h2 class="cand" style="text-align: left;">Frequently Asked Questions</h2>
+				<br>
+				<!-- <h2 class="cand" style="text-align: left;">Frequently Asked Questions</h2> -->
 			</div>
 
 			<div class="col-12">
 				<nav id="navbar-example2" class="navbar navbar-light bg-light">
-					<a class="navbar-brand" href="#">FAQ's</a>
-
-					<!-- <ul class="nav nav-pills">
-						<li class="nav-item">
-							<a class="nav-link" href="#fat">@fat</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#mdo">@mdo</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="#one">one</a>
-								<a class="dropdown-item" href="#two">two</a>
-								<div role="separator" class="dropdown-divider"></div>
-								<a class="dropdown-item" href="#three">three</a>
-							</div>
-						</li>
-					</ul> -->
+					<h2><a class="navbar-brand" href="#">Frequently Asked Questions</a></h2>
 				</nav>
 				<div data-spy="scroll" data-target="#navbar-example2" data-offset="0">
 					<br>
@@ -164,31 +147,13 @@
 
 		<br>
 		<br>
-		<hr>
-
-
-		<!--  -->
-
-
-	</div>
-
-	<div class="jumbotron jumbotron-fluid">
-		<div class="container" style="text-align: center;">
-			<h5>Want to receive regular updates?</h5>
-			<p><div class="input-group mb-3">
-				<input type="text" class="form-control" placeholder="Enter your email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-				<div class="input-group-append">
-					<span class="input-group-text bg-warning" id="basic-addon2">Subscribe</span>
-				</div>
-			</div></p>
-		</div>
 	</div>
 
 	<div class="footer bg-dark text-white">
 		<p class="">&copy; AshVigil. All rights reserved.</p>
 		<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
 		<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
-		<p>Email: <b><i>ascvigil@ashesi.edu.gh</i></b></p>
+		<p>Email: <b><i>admin@ascvigil.com</i></b></p>
 		<p><b>2018</b></p>
 	</div>
 
@@ -198,15 +163,6 @@
 <script src="../js/jquery-3.3.1.min.js"></script>
 
 <script type="text/javascript">
-
-	document.getElementById("commentText").addEventListener("keyup", ()=>{
-		document.getElementById("cmmBtn").disabled = false;
-
-	})
-
-	
-
-</script>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="../js/jquery-3.3.1.min.js"></script>

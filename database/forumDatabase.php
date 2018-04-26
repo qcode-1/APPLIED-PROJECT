@@ -274,6 +274,73 @@ function getPostCount($fid) {
 	return $count;
 }
 
+function sendNews() {
+
+	include('../mailer/vendor/autoload.php');
+	$subject = $_POST['subject'];
+	$message = $_POST['message'];
+	$topic = $_POST['newstopic'];
+
+	$datbconn = new datbconnection();
+	$que = "SELECT user_email FROM subscription";
+	$result = $datbconn->query($que);
+
+	if ($result && $datbconn->getNumRows() > 0) {
+
+	    $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+	    try {
+	    //Server settings
+	    //$mail->SMTPDebug = 1;                                 // Enable verbose debug output
+	    $mail->isSMTP();                                      // Set mailer to use SMTP
+	    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+	    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+	    $mail->Username = 'nii.quartey19@gmail.com';                 // SMTP username
+	    $mail->Password = 'MARKTWAIN@!';                           // SMTP password
+	    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+	    $mail->Port = 587;                                    // TCP port to connect to
+
+
+while ($row = $datbconn->fetchArray()) {
+	    //Recipients
+	    $mail->setFrom('nii.quartey19@gmail.com', 'ASCVigil Newsletter');
+	    $mail->addAddress($row['user_email'], '');     // Add a recipient
+
+	    $body = "<p><h4>" . $topic . "</h4></p>
+	    <p class=\"text-justify\">" . $message . "</p>
+	    <p>Any Questions? Please login and use the contact form.</p>
+
+	    <p class=\"text-primary\" style=\"text-align: center;\">This Newsletter is brought to you by ASCVigil&trade;.</p>";
+
+	    //Content
+	    $mail->isHTML(true);                                  // Set email format to HTML
+	    $mail->Subject = $subject;
+	    $mail->Body    = $body;
+	    $mail->AltBody = strip_tags($body);
+
+	    $mail->send();
+
+	}
+	    //echo 'Message has been sent';
+	    echo "<div class=\"alertSuccess alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Newsletter Sent.</div>";
+		header("Refresh:2");
+	}
+
+
+	catch (Exception $e) {
+    //echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+		echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Failed. Please try again.</div>";
+		header("Refresh:1");
+
+	}
+
+}
+
+else {
+	echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Failed. Please try again.</div>";
+	header("Refresh:1");
+}
+}
 
 
 ?>
+

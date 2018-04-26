@@ -30,7 +30,7 @@ if (isset($_POST['forumTopic']) && isset($_POST['forum_post'])) {
 }
 
 else {
-	echo "NOT SET";
+	echo "<div class=\"alertSuccess alert alert-danger\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Failed. Please try again later.</div>";
 }
 
 ?>

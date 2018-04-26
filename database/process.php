@@ -620,7 +620,6 @@ function displayNotes() {
 
 function checkComment() {
 
-
 	$db = new datbconnection();
 	$query = "SELECT * FROM usercomment";
 	$res = $db->query($query);
@@ -637,6 +636,22 @@ function checkComment() {
 			
 			</tr>';
 		}
+	}
+
+}
+
+
+function optIN($id) {
+
+	$email = $_POST['subEmail'];
+
+	$db = new datbconnection();
+	$query = "INSERT INTO subscription (user_id, user_email) VALUES ('$id', '$email')";
+	$res = $db->query($query);
+
+	if ($res) {
+		echo "<div class=\"alertSuccess alert alert-success\" role=\"alert\" style=\"margin-bottom: 0; text-align: center;\" id=\"alertSuccess\">Thank You For Signing Up to the ASCVigil&trade; Newsletter.</div>";
+		header("Refresh:1");
 	}
 
 }

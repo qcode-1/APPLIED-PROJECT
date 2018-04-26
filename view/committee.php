@@ -23,6 +23,12 @@
 
 	require_once("../database/process.php");
 
+	session_start();
+
+	if (isset($_POST['subscribe'])) {
+		optIN($_SESSION['id']);
+	}
+
 	?>
 
 
@@ -105,10 +111,10 @@
 			</div>
 
 			<div class="col-3">
-				<div class="nav flex-column nav-pills sidebar" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-					<a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="false">Message from ASC President &amp; Vice</a>
-					<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Committees &amp; Executives</a>
-					<a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">ASC History</a>
+				<div class="nav flex-column nav-pills sidebar bg-light" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+					<a class="nav-link text-dark" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="false">Message from ASC President &amp; Vice</a>
+					<a class="nav-link text-dark" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Committees &amp; Executives</a>
+					<a class="nav-link text-dark" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">ASC History</a>
 				</div>
 			</div>
 
@@ -127,33 +133,25 @@
 							loadFeedbackPage();
 
 							?>
-
 						</div>
 						<div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"><h4>Please Visit The Ashesi Website for the Full <a class="text-secondary" href="http://www.ashesi.edu.gh/student-life-5/student-government/history-of-student-government.html">Ashesi Student Council Government History.</a></h4>
 
 							<h5>Thank You.</h5></div>
 						</div>
 					</div>
-
-
-					
-					
-
-
 				</div>
-				
-
+				<hr>
 			</div>
 
 			<div class="jumbotron jumbotron-fluid">
 				<div class="container" style="text-align: center;">
 					<h4>Want to receive regular updates?</h4>
-					<p><div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="Enter your email" aria-label="Recipient's username" aria-describedby="basic-addon2">
-						<div class="input-group-append">
-							<span class="input-group-text bg-warning" id="basic-addon2">Subscribe</span>
-						</div>
-					</div></p>
+					<form method="POST">
+						<p><div class="input-group mb-3">
+							<input type="email" class="form-control" placeholder="Enter your email" aria-label="User email" name="subEmail">
+							<button class="btn btn-warning" type="submit" name="subscribe">Subscribe</button>
+						</div></p>
+					</form>
 				</div>
 			</div>
 
@@ -161,7 +159,7 @@
 				<p class="">&copy; AshVigil. All rights reserved.</p>
 				<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
 				<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
-				<p>Email: <b><i>ascvigil@ashesi.edu.gh</i></b></p>
+				<p>Email: <b><i>admin@ascvigil.com</i></b></p>
 				<p><b>2018</b></p>
 			</div>
 
@@ -172,5 +170,7 @@
 			<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+
 		</body>
 		</html>
+

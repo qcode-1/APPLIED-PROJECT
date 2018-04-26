@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 
-    <title>Edit Committee Details - ASCVigil&trade;</title>
+    <title>Admin - ASCVigil&trade;</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,7 +26,6 @@
 
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
     <link rel="stylesheet" type="text/css" href="../css/admin.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -42,8 +41,12 @@
     require_once("../database/process.php");
 
 
-    if (isset($_POST['editCommittee'])) {
-        updateCommData();
+    if (isset($_POST['addCommittee'])) {
+        addCommittee();
+    }
+
+    if (isset($_POST['sendNews'])) {
+        sendNews();
     }
 
     ?>
@@ -54,7 +57,7 @@
 
     <div id="wrapper">
 
-         <!-- Navigation -->
+        <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -68,7 +71,7 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-               
+
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -84,7 +87,7 @@
                     </ul>
                     <!-- /.dropdown-alerts -->
                 </li>
-                
+
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -98,15 +101,15 @@
                         <li class="divider"></li>
                         <li><a href="../index.php?logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 
-                        <?php
+                            <?php
 
-                        if (isset($_GET['logout'])) {
-                            session_destroy();
-                        }
-                        
-                        ?>
+                            if (isset($_GET['logout'])) {
+                                session_destroy();
+                            }
 
-                    </li>
+                            ?>
+
+                        </li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
@@ -137,8 +140,8 @@
                             <a href="commFeedback.php"><i class="fa fa-table fa-fw"></i>Feedback</a>
                         </li>
                         <li>
-                        <a href="reviewComments.php"><i class="fa fa-comments fa-fw"></i>Comments</a>
-                    </li>
+                            <a href="reviewComments.php"><i class="fa fa-comments fa-fw"></i>Comments</a>
+                        </li>
                         <li>
                             <a href="mgPolls.php"><i class="fa fa-wrench fa-fw"></i> Manage Polls</a>
                         </li>
@@ -167,7 +170,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">EDIT COMMITTEE</h1>
+                    <h1 class="page-header">SEND NEWSLETTER</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -176,24 +179,29 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Edit Details of Existing Committee
+                            Send Newsletter To Subscribers
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-8">
 
-                                    <div class="form-group">
-                                        <label >Select Committee</label>
-                                        <select class="form-control" name="comm" id="inputComms" >
-                                            <?php loadCommittees(); ?>
-                                        </select>
-                                    </div>
-
-                                    <!--  -->
-
-                                    <div id ="commdetails">
-
+                                    <form method="POST">
+                                        <div class="form-group">
+                                            <label class="col-form-label">Subject</label>
+                                            <input type="text" class="form-control"  name="subject" id="subject">
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-form-label">Topic</label>
+                                            <input type="text" class="form-control"  name="newstopic" id="newstopic">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-form-label">Messsage</label>
+                                            
+                                            <textarea class="form-control" name="message" id="message" rows="3" value="<?php echo isset($_POST['message']) ? $_POST['message'] : ''; ?>"></textarea>
+                                            
+                                        </div>
+                                        <button type="submit" name="sendNews" class="btn btn-default">Send Newsletter</button>
+                                    </form>
                                     
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->
@@ -224,7 +232,7 @@
     </div>
 
     <!-- jQuery -->
-    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -234,35 +242,14 @@
 
     <!-- Morris Charts JavaScript -->
     <script src="../vendor/raphael/raphael.min.js"></script>
-    <script src="../vendor/morrisjs/morris.min.js"></script>
-    <script src="../data/morris-data.js"></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
 
     <script type="text/javascript">
 
-        $(document).ready(function(){
-
-            $('#inputComms').on('change', function() {
-
-                var cmt_id = $(this).val();
-
-                if (cmt_id) {
-
-                    $.ajax({
-                        url: "../controller/loadCommdata.php",
-                        method: "POST",
-                        data: {cmt_id: cmt_id},
-                        success: function(data) {
-                            $('#commdetails').html(data);
-                        },
-                        failure: function(err){
-                            alert(err);
-                        }
-                    });
-                }
-            });
+        $( document ).ready(function() {
+            $("#alertSuccess").delay(3000).fadeOut("slow");
         });
 
     </script>

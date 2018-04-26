@@ -66,23 +66,23 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
-               
+             
                 <!-- /.dropdown -->
-                 <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-alerts">
-                    <li>
-                        <a href="adminNote.php">
-                            <div>
-                                <i class="fa fa-comment fa-fw"></i> Add a New Note
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.dropdown-alerts -->
-            </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="adminNote.php">
+                                <div>
+                                    <i class="fa fa-comment fa-fw"></i> Add a New Note
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-alerts -->
+                </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -96,15 +96,15 @@
                         <li class="divider"></li>
                         <li><a href="../index.php?logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 
-                        <?php
+                            <?php
 
-                        if (isset($_GET['logout'])) {
-                            session_destroy();
-                        }
-                        
-                        ?>
+                            if (isset($_GET['logout'])) {
+                                session_destroy();
+                            }
+                            
+                            ?>
 
-                    </li>
+                        </li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
@@ -135,8 +135,8 @@
                             <a href="commFeedback.php"><i class="fa fa-table fa-fw"></i>Feedback</a>
                         </li>
                         <li>
-                        <a href="reviewComments.php"><i class="fa fa-comments fa-fw"></i>Comments</a>
-                    </li>
+                            <a href="reviewComments.php"><i class="fa fa-comments fa-fw"></i>Comments</a>
+                        </li>
                         <li>
                             <a href="mgPolls.php"><i class="fa fa-wrench fa-fw"></i> Manage Polls</a>
                         </li>
@@ -152,9 +152,9 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-
-                        
-                        
+                        <li>
+                            <a href="newsletter.php"><i class="fa fa-envelope fa-fw"></i>Newsletter</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -217,7 +217,7 @@
         <p class="">&copy; AshVigil. All rights reserved.</p>
         <p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
         <p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
-        <p>Email: <b><i>ascvigil@ashesi.edu.gh</i></b></p>
+        <p>Email: <b><i>admin@ascvigil.com</i></b></p>
         <p><b>2018</b></p>
     </div>
 
@@ -240,11 +240,11 @@
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
     <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-            responsive: true
+        $(document).ready(function() {
+            $('#dataTables-example').DataTable({
+                responsive: true
+            });
         });
-    });
     </script>
 
 </body>

@@ -148,7 +148,7 @@
 
 					<div class="form-group">
 						
-						<textarea style="border: dashed;" class="form-control" name="myText" id="myText" rows="5"></textarea>
+						<textarea style="border: dashed;" class="form-control" placeholder="Add a comment/post" name="myText" id="myText" rows="5"></textarea>
 					</div>
 					<button type="submit" name="postBtn" disabled="true" class="btn btn-info mb-2" id="postBtn" >Add Post</button>
 				</form>
@@ -177,7 +177,7 @@
 		<p class="">&copy; AshVigil. All rights reserved.</p>
 		<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
 		<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
-		<p>Email: <b><i>ascvigil@ashesi.edu.gh</i></b></p>
+		<p>Email: <b><i>admin@ascvigil.com</i></b></p>
 		<p><b>2018</b></p>
 	</div>
 

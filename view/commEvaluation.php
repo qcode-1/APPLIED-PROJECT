@@ -17,20 +17,21 @@
 
 	<title>
 		
-	Poll Result  - ASCVigil&trade;</title>
+	Polls  - ASCVigil&trade;</title>
 </head>
 <body>
 	<?php  
 
 	session_start();
 	require_once("../database/process.php");
-	echo "<small hidden  id=\"phidden\">";
-	echo $_SESSION['pollID'];  
-	echo "</small>";
+	echo "<small hidden=\"true\"  id=\"phidden\">" . "stu".$_SESSION['pollID'] . "</small>";
+
+	if (isset($_GET['logout'])) {
+		session_start();
+		session_destroy();
+	}
 
 	?>
-
-
 
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -98,8 +99,9 @@
 		</span>
 	</nav>
 
+
 	<div class="container">
-		<h2 class="pollHead">Assessment of ASC President &amp; Vice President - Results</h2>
+		<h2 class="pollHead">Evaluate Committee's of ASC Government</h2>
 		<hr>
 		<div class="row">
 			<br>
@@ -107,23 +109,10 @@
 			<div id="surveyContainer"></div>
 			<div id="surveyResult"></div>
 
-			<small  id="ac"></small>
-			<small  id="pr"></small>
-
-
-			<div style="max-height: 800px; max-width: 800px;">
-				<canvas id="myChart" width="500" height="500"></canvas>
-			</div>
-
-
-			<div style="max-height: 800px; max-width: 800px;">
-				<canvas id="pieChart" width="500" height="500"></canvas>
-			</div>
-
 		</div>
 	</div>
 
-	<div class="footer bg-dark text-white">
+	<div class="sticky-bottom footer bg-dark text-white">
 		<p class="">&copy; AshVigil. All rights reserved.</p>
 		<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
 		<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
@@ -143,8 +132,56 @@
 	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 
 
-	<script type="text/javaScript" src="../js/prespoll.js"></script>
+	<script type="text/javaScript">
+	  // Initialize Firebase
+	  var config = {
+	  	apiKey: "AIzaSyA3Az4iL6IQ7njPUfGiG5WLbpTf4zwvid0",
+	  	authDomain: "final-45892.firebaseapp.com",
+	  	databaseURL: "https://final-45892.firebaseio.com",
+	  	projectId: "final-45892",
+	  	storageBucket: "final-45892.appspot.com",
+	  	messagingSenderId: "839340408240"
+	  };
 
+	  firebase.initializeApp(config);
+	  function runSurveyCheck() {
+	  	currentClientId = document.getElementById('clientIdinput').value || currentClientId;
+	    		//surveyId is null - use the previous surveyId
+	    		survey.loadSurveyFromService(null, currentClientId);
+	    	}
+
+	    	Survey.Survey.cssType = "bootstrap";
+	    	Survey.defaultBootstrapCss.navigationButton = "btn btn-green";
+	    	var currentClientId = document.getElementById('phidden').innerHTML;
+
+	    	var surveyJSON = { 
+	    		surveyId: 'f7c94bb5-3aa2-4c1d-a3ce-2688a5697558',
+	    		clientId: currentClientId
+	    	}
+
+	    	window.survey = new Survey.Model(surveyJSON);
+
+
+	    	survey
+	    	.onComplete
+	    	.add(function (result) {
+	    		survey.sendResult('374676c9-3284-4443-8f6a-466a405fdf33')
+	    		firebase.database().ref("committeeEvaluation").push(result.data)
+	    		.then(() =>console.log("success"))
+	    		.catch(err=> console.log(err))
+	    	});
+	    	$("#surveyContainer").Survey({model: survey});
+
+	    </script>
+
+
+	    <script type="text/javascript">
+
+		$( document ).ready(function() {
+			$("#alertSuccess").delay(3000).fadeOut("slow");
+		});
+
+	</script>
 
 	</body>
 	</html>

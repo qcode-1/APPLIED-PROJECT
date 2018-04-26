@@ -111,13 +111,8 @@
 			<small  id="pr"></small>
 
 
-			<div style="max-height: 800px; max-width: 800px;">
-				<canvas id="myChart" width="500" height="500"></canvas>
-			</div>
-
-
-			<div style="max-height: 800px; max-width: 800px;">
-				<canvas id="pieChart" width="500" height="500"></canvas>
+			<div style="max-height: 800px; ">
+				<canvas id="barChart" width="1100" height="500"></canvas>
 			</div>
 
 		</div>
@@ -143,7 +138,7 @@
 	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 
 
-	<script type="text/javaScript" src="../js/prespoll.js"></script>
+	<script type="text/javaScript" src="../js/commeval.js"></script>
 
 
 	</body>

@@ -86,14 +86,23 @@
 	    			return count;
 	    		}
 
+	    		var divisor = getCount();
+
+	    		// cs = (cs/divisor) * 100;
+	    		// mgs = (mgs/divisor) * 100;
+	    		// bus = (bus/divisor) * 100;
+	    		// enge = (enge/divisor) * 100;
+	    		// engm = (engm/divisor) * 100;
+	    		// engc = (engc/divisor) * 100;
+
 
 	    		var ctx = document.getElementById("myChart").getContext('2d');
 	    		var myChart = new Chart(ctx, {
 	    			type: 'bar',
 	    			data: {
-	    				labels: ["ASC President", "Academic Committee"],
+	    				labels: ["ASC President", "ASC Vice President"],
 	    				datasets: [{
-	    					label: 'Assessment of President and Academic Committee (Max rating: ' +(getCount()*5) +')',
+	    					label: 'Assessment of President and Vice-President (Max rating: ' +(getCount()*5) +')',
 	    					data: [acad, press],
 	    					backgroundColor: [
 	    					'rgba(255, 99, 132, 0.2)',

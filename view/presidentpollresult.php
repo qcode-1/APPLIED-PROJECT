@@ -100,7 +100,7 @@
 
 
 	<div class="container">
-		<h2 class="pollHead">Assess the Behavior and Attitude of the ASC President and Vice - Results</h2>
+		<h2 class="pollHead">Assessment of ASC Presidency and Welfare Committee - Results</h2>
 		<hr>
 		<div class="row">
 			<br>

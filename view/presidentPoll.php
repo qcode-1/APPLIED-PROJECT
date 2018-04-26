@@ -20,104 +20,108 @@
 	Polls  - ASCVigil&trade;</title>
 </head>
 <body>
-	<?php  
+	<!-- <div class="wrapper"> -->
+		<?php  
 
-	session_start();
-	require_once("../database/process.php");
-	echo "<small hidden=\"true\"  id=\"phidden\">" . "stu".$_SESSION['pollID'] . "</small>";
-
-	if (isset($_GET['logout'])) {
 		session_start();
-		session_destroy();
-	}
+		require_once("../database/process.php");
+		echo "<small hidden=\"true\"  id=\"phidden\">" . "stu".$_SESSION['pollID'] . "</small>";
 
-	?>
+		if (isset($_GET['logout'])) {
+			session_start();
+			session_destroy();
+		}
 
-	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		?>
 
-		
+		<!-- Navigation -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-		<a class="navbar-brand" href="home.php">
-			<img src="../images/logo.jpg">ASCVigil&trade;
-		</a>
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
 
-		<div class="collapse navbar-collapse" id="navbarNavDropdown">
-			<ul class="navbar-nav">
-				<li class="nav-item active">
-					<a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="committee.php">Committees</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="polls.php">Polls</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						ASC Aspirants Manifesto
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="edwinbenjManifesto.php">Edwin Adatsi &amp; Benjamin Annan</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="elvisyasminManiesto.php" >Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
-					</div>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="forums.php">Forums</a>
-				</li>
-				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						About
-					</a>
-					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-						<a class="dropdown-item" href="#">ASCVigil&trade;</a>
-						<a class="dropdown-item" href="faq.php">FAQ's</a>
-					</div>
-				</li>
-			</ul>
+
+			<a class="navbar-brand" href="home.php">
+				<img src="../images/logo.jpg">ASCVigil&trade;
+			</a>
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="committee.php">Committees</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="polls.php">Polls</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							ASC Aspirants Manifesto
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="edwinbenjManifesto.php">Edwin Adatsi &amp; Benjamin Annan</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="caroldavidManifesto.php">Carol Armah &amp; David Sasu</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="elvisyasminManiesto.php" >Elvis Okoh-Asirifi &amp; Yasmin Alhassan</a>
+						</div>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="forums.php">Forums</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							About
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+							<a class="dropdown-item" href="#">ASCVigil&trade;</a>
+							<a class="dropdown-item" href="faq.php">FAQ's</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+
+			<span class="navbar-text">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="../index.php?logout">Logout<i class="fa fa-sign-out fa-fw"></i></a>
+
+						<?php
+
+						if (isset($_GET['logout'])) {
+							session_destroy();
+						}
+						?>
+					</li>
+				</ul>
+			</span>
+		</nav>
+
+
+		<div class="container">
+			<h2 class="pollHead">Assessment of ASC President &amp; Vice President</h2>
+			<hr>
+			<div class="row">
+				<br>
+				<div id="chartContainer"></div>
+				<div id="surveyContainer"></div>
+				<div id="surveyResult"></div>
+
+			</div>
 		</div>
+	<!-- </div> -->
 
-		<span class="navbar-text">
-			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="../index.php?logout">Logout<i class="fa fa-sign-out fa-fw"></i></a>
-
-					<?php
-
-					if (isset($_GET['logout'])) {
-						session_destroy();
-					}
-					?>
-				</li>
-			</ul>
-		</span>
-	</nav>
-
-
-	<div class="container">
-		<h2 class="pollHead">Assess the Behavior and Attitude of the ASC President and Vice</h2>
-		<hr>
-		<div class="row">
-			<br>
-			<div id="chartContainer"></div>
-			<div id="surveyContainer"></div>
-			<div id="surveyResult"></div>
-
+	<div style="margin-top: 15em;" class="footer bg-dark text-white">
+		<div class="container">
+			<p class="">&copy; AshVigil. All rights reserved.</p>
+			<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
+			<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
+			<p>Email: <b><i>admin@ascvigil.com</i></b></p>
+			<p><b>2018</b></p>
 		</div>
-	</div>
-
-	<div class="footer bg-dark text-white">
-		<p class="">&copy; AshVigil. All rights reserved.</p>
-		<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
-		<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>
-		<p>Email: <b><i>admin@ascvigil.com</i></b></p>
-		<p><b>2018</b></p>
 	</div>
 
 
@@ -177,11 +181,11 @@
 
 	    <script type="text/javascript">
 
-		$( document ).ready(function() {
-			$("#alertSuccess").delay(3000).fadeOut("slow");
-		});
+	    	$( document ).ready(function() {
+	    		$("#alertSuccess").delay(3000).fadeOut("slow");
+	    	});
 
-	</script>
+	    </script>
 
 	</body>
 	</html>

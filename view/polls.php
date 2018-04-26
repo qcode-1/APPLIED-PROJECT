@@ -115,7 +115,7 @@
 					<div class="card-header" id="headingOne">
 						<h5 class="mb-0">
 							<button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								Assess the Behavior and Attitude of the ASC President and Vice
+								Assessment of the ASC Presidency
 							</button>
 						</h5>
 					</div>
@@ -148,15 +148,15 @@
 					<div class="card-header" id="headingThree">
 						<h5 class="mb-0">
 							<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-								Assess the performance of Class Representatives
+								Assess the performance of ASC Executive Committees
 							</button>
 						</h5>
 					</div>
 					<div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
 						<div class="card-body">
 							<h6>Description</h6>
-							<p>The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. To take part in this poll, please <a href="classrepPoll.php">click here</a>.</p>
-							<p>To view poll results, <a href="prespollresult.php">click here</a></p>
+							<p>The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. The main aim of the poll is to find out how well your class representatives are representing you. as a student of Ashesi, it is importnt to know what is bring done by class representatives to relay your messsage acrosee to their various committees. Class representatives exist to bridge the communication gap between the student government and the student body. To take part in this poll, please <a href="commEvaluation.php">click here</a>.</p>
+							<p>To view poll results, <a href="commEvalResult.php">click here</a></p>
 						</div>
 					</div>
 				</div>
@@ -186,7 +186,6 @@
 		<p>Email: <b><i>admin@ascvigil.com</i></b></p>
 		<p><b>2018</b></p>
 	</div>
-
 
 
 	<!-- Optional JavaScript -->

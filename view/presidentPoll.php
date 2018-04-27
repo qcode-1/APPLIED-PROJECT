@@ -102,8 +102,8 @@
 
 
 		<div class="container">
-			<h2 class="pollHead">Assessment of ASC President &amp; Vice President</h2>
-			<hr>
+			<!-- <h2 class="pollHead">Assessment of ASC President &amp; Vice President</h2> -->
+			<!-- <hr> -->
 			<div class="row">
 				<br>
 				<div id="chartContainer"></div>

@@ -99,7 +99,7 @@
 	</nav>
 
 	<div class="container">
-		<h2 class="pollHead">Assessment of ASC President &amp; Vice President - Results</h2>
+		<h2 class="pollHead">ASC Executive Committee Evaluation - Results</h2>
 		<hr>
 		<div class="row">
 			<br>

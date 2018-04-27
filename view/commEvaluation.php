@@ -101,8 +101,7 @@
 
 
 	<div class="container">
-		<h2 class="pollHead">Evaluate Committee's of ASC Government</h2>
-		<hr>
+		<br>
 		<div class="row">
 			<br>
 			<div id="chartContainer"></div>
@@ -112,7 +111,7 @@
 		</div>
 	</div>
 
-	<div class="sticky-bottom footer bg-dark text-white">
+	<div style="margin-top: 15em;" class="footer bg-dark text-white">
 		<p class="">&copy; AshVigil. All rights reserved.</p>
 		<p>31st Beach Drive, Labadi; PMB CT 48, Cantomnets, Accra, Ghana.</p>
 		<p>Phone: <span><b><i>+233.50.729.4075</i></b>  <i>OR</i>  <b><i>+233.302.679.043</i> </b></span></p>

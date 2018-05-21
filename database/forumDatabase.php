@@ -294,15 +294,15 @@ function sendNews() {
 	    $mail->isSMTP();                                      // Set mailer to use SMTP
 	    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 	    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-	    $mail->Username = 'nii.quartey19@gmail.com';                 // SMTP username
-	    $mail->Password = 'MARKTWAIN@!';                           // SMTP password
+	    $mail->Username = '';                 // SMTP username
+	    $mail->Password = '';                           // SMTP password
 	    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 	    $mail->Port = 587;                                    // TCP port to connect to
 
 
 while ($row = $datbconn->fetchArray()) {
 	    //Recipients
-	    $mail->setFrom('nii.quartey19@gmail.com', 'ASCVigil Newsletter');
+	    $mail->setFrom('', '');					//senders email and name
 	    $mail->addAddress($row['user_email'], '');     // Add a recipient
 
 	    $body = "<p><h4>" . $topic . "</h4></p>

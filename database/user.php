@@ -94,13 +94,13 @@ function registerStudent() {
 	    $mail->isSMTP();                                      // Set mailer to use SMTP
 	    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 	    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-	    $mail->Username = 'nii.quartey19@gmail.com';                 // SMTP username
-	    $mail->Password = 'MARKTWAIN@!';                           // SMTP password
+	    $mail->Username = '';                 // SMTP username
+	    $mail->Password = '';                           // SMTP password
 	    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 	    $mail->Port = 587;                                    // TCP port to connect to
 
 	    //Recipients
-	    $mail->setFrom('nii.quartey19@gmail.com', 'ASCVigil');
+	    $mail->setFrom('', '');					//senders email and name
 	    $mail->addAddress($email, '');     // Add a recipient
 
 	    $body = "<p><h4> Thank You for Using ASCVigil&trade;</h4></p>
